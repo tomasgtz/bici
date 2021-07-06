@@ -80,7 +80,17 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             <?= $this->Flash->render() ?>
             <?= $this->fetch('content') ?>
         </div>
+		
+		<div class="container">
+			<div class="row">
+				<div class="col-10"></div>
+				<div class="col-2"><img src="webroot/img/logo_semovi.png" width="150" alt="Secretaria de Movilidad"></div>
+			</div>
+		</div>
+		
     </main>
+
+	
     <footer class="my-footer align-bottom"><div class="mt-2">&copy;Copyright 2021 Copyright.mx - Todos los derechos reservados | Aviso de privacidad</div></footer>
 </body>
 </html>

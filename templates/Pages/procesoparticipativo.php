@@ -52,17 +52,21 @@ endif;
         <div class="container">
             <div class="content">
                 <div class="row">
-                    <div class="col my-orange-col">
-                       <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                    </div>
-
-					<div class="col my-orange-col">
-						<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                    </div>
-
-					<div class="col my-orange-col">
-						<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                    </div>
+                    <nav>
+						<div class="nav nav-tabs" id="nav-tab" role="tablist">
+							<button class="nav-link active" id="nav-met-tab" data-bs-toggle="tab" data-bs-target="#nav-met" type="button" role="tab" aria-controls="nav-met" aria-selected="true">Metodolog&iacute;a</button>
+							<button class="nav-link" id="nav-encuesta-tab" data-bs-toggle="tab" data-bs-target="#nav-encuesta" type="button" role="tab" aria-controls="nav-encuesta" aria-selected="false">Encuesta</button>
+							<button class="nav-link" id="nav-resultados1-tab" data-bs-toggle="tab" data-bs-target="#nav-resultados1" type="button" role="tab" aria-controls="nav-resultados1" aria-selected="false">Resultados (infograf&iacute;a)</button>
+							<button class="nav-link" id="nav-resultados2-tab" data-bs-toggle="tab" data-bs-target="#nav-resultados2" type="button" role="tab" aria-controls="nav-resultados2" aria-selected="false">Resultados (gr&aacute;ficos)</button>
+						</div>
+					</nav>
+					
+					<div class="tab-content" id="nav-tabContent">
+						<div class="tab-pane fade show active" id="nav-met" role="tabpanel" aria-labelledby="nav-met-tab"> Metodolog&iacute;a texto</div>
+						<div class="tab-pane fade" id="nav-encuesta" role="tabpanel" aria-labelledby="nav-encuesta-tab"> Encuesta texto</div>
+						<div class="tab-pane fade" id="nav-resultados1" role="tabpanel" aria-labelledby="nav-resultados1-tab"> Resultados (infograf&iacute;a) texto</div>
+						<div class="tab-pane fade" id="nav-resultados2" role="tabpanel" aria-labelledby="nav-resultados2-tab"> Resultados (graficos) texto</div>
+					</div>
                 </div>
                
             </div>

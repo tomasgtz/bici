@@ -14,7 +14,6 @@
  * @var \App\View\AppView $this
  */
 
-$cakeDescription = 'CakePHP: the rapid development php framework';
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,8 +21,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>
-        <?= $cakeDescription ?>:
-        <?= $this->fetch('title') ?>
+        Secretar&iacute;a de movilidad: Biciestacionamiento
     </title>
     <?= $this->Html->meta('icon') ?>
 
@@ -33,10 +31,12 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
     <?= $this->fetch('meta') ?>
     
-	<link href="webroot/css/bootstrap.min.css" rel="stylesheet">
-	<script src="webroot/js/jquery-3.3.1.slim.min.js"></script>
-	<script src="webroot/js/popper.min.js"></script>
-    <script src="webroot/js/bootstrap.min.js"></script>
+	<?php echo $this->Html->css('bootstrap.min.css'); ?>
+	<?php echo $this->Html->script('jquery-3.3.1.slim.min'); ?>
+	<?php echo $this->Html->script('popper.min'); ?>
+    <?php echo $this->Html->script('bootstrap.min'); ?>
+	<?php echo $this->Html->script('bootstrap.bundle'); ?>
+
 </head>
 <body>
 	
@@ -45,10 +45,10 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 			<span class="w-100 d-lg-none d-block">
 				<!-- hidden spacer to center brand on mobile --></span>
 			<a class="navbar-brand d-none d-lg-inline-block px-4" href="#">
-				<img src="webroot/img/logo_secretaria_movilidad.png" width="350" alt="Secretaria de Movilidad">
+				<?php echo $this->Html->image('logo_secretaria_movilidad.png', ['width'=>"150", 'alt'=>"Secretaria de Movilidad"]); ?>
 			</a>
 			<a class="navbar-brand-two mx-auto d-lg-none d-inline-block px-4" href="#">
-				<img src="webroot/img/logo_secretaria_movilidad.png" width="350" alt="Secretaria de Movilidad">
+				<?php echo $this->Html->image('logo_secretaria_movilidad.png', ['width'=>"150", 'alt'=>"Secretaria de Movilidad"]); ?>
 			</a>
 			<div class="m-2 w-100 text-right">
 				<button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
@@ -59,16 +59,47 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 		<div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
 			<ul class="navbar-nav ms-auto flex-nowrap">
 				<li class="nav-item">
-					<a href="#" class="nav-link m-2 menu-item nav-active">Secci&oacute;n</a>
+					<a href="#" class="nav-link m-2 menu-item nav-active">Inicio</a>
 				</li>
-				<li class="nav-item">
-					<a href="#" class="nav-link m-2 menu-item">Secci&oacute;n</a>
+
+				<li class="nav-item dropdown" id="myDropdown">
+					<a class="nav-link" href="#" data-bs-toggle="dropdown">Proceso participativo</a>
+					<ul class="dropdown-menu">
+						<li><a class="dropdown-item" href="#"> Encuesta de percepci&oacute;n de talleres </a>
+							<ul class="submenu dropdown-menu">
+								<li><a class="dropdown-item" href="#">Metodolog&iacute;a</a></li>
+								<li><a class="dropdown-item" href="#">Encuesta</a></li>
+								<li><a class="dropdown-item" href="#">Resultados (infograf&iacute;a)</a></li>
+								<li><a class="dropdown-item" href="#">Resultados (gr&aacute;ficas)</a></li>
+							</ul>
+						</li>
+						<li><a class="dropdown-item" href="#"> Encuesta de satisfacci&oacute;n </a>
+							<ul class="submenu dropdown-menu">
+								<li><a class="dropdown-item" href="#">Metodolog&iacute;a</a></li>
+								<li><a class="dropdown-item" href="#">Encuesta</a></li>
+								<li><a class="dropdown-item" href="#">Resultados (infograf&iacute;a)</a></li>
+								<li><a class="dropdown-item" href="#">Resultados (gr&aacute;ficas)</a></li>
+							</ul>
+						</li>
+						<li><a class="dropdown-item" href="#"> Encuesta de apropiaci&oacute;n de espacios p&uacute;blicos </a>
+							<ul class="submenu dropdown-menu">
+								<li><a class="dropdown-item" href="#">Metodolog&iacute;a</a></li>
+								<li><a class="dropdown-item" href="#">Encuesta</a></li>
+								<li><a class="dropdown-item" href="#">Resultados (infograf&iacute;a)</a></li>
+								<li><a class="dropdown-item" href="#">Resultados (gr&aacute;ficas)</a></li>
+							</ul>
+						</li>
+					</ul>
 				</li>
+				  
+		
+					<?php // echo $this->Html->link('Proceso Participativo', [
+						//'controller' => 'Pages',
+						//'action' => 'procesoparticipativo'
+					//], ['class' => 'nav-link m-2 menu-item']); ?>
+				
 				<li class="nav-item">
-					<a href="#" class="nav-link m-2 menu-item">Secci&oacute;n</a>
-				</li>
-				<li class="nav-item">
-					<a href="#" class="nav-link m-2 menu-item">Secci&oacute;n</a>
+					<a href="#" class="nav-link m-2 menu-item">Mapa interactivo</a>
 				</li>
 			</ul>
 		</div>
@@ -84,7 +115,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 		<div class="container">
 			<div class="row">
 				<div class="col-10"></div>
-				<div class="col-2"><img src="webroot/img/logo_semovi.png" width="150" alt="Secretaria de Movilidad"></div>
+				<div class="col-2"><?php echo $this->Html->image('logo_semovi.png', ['width'=>"150", 'alt'=>"Secretaria de Movilidad"]); ?></div>
 			</div>
 		</div>
 		

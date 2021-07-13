@@ -251,3 +251,55 @@ a.nav-link {
         content: " \2190";
     }
 }
+
+
+
+@media all and (min-width: 992px) {
+
+	.dropdown-menu li{
+		position: relative;
+	}
+	.dropdown-menu .submenu{ 
+		display: none;
+		position: absolute;
+		left:100%; top:-7px;
+	}
+	.dropdown-menu .submenu-left{ 
+		right:100%; left:auto;
+	}
+
+	.dropdown-menu > li:hover{ background-color: #f1f1f1 }
+	.dropdown-menu > li:hover > .submenu{
+		display: block;
+	}
+}	
+/* ============ desktop view .end// ============ */
+
+/* ============ small devices ============ */
+@media (max-width: 991px) {
+
+.dropdown-menu .dropdown-menu{
+		margin-left:0.7rem; margin-right:0.7rem; margin-bottom: .5rem;
+}
+
+}
+
+
+ul.dropdown-menu.show, ul.submenu.dropdown-menu {
+	background-color: #3D2533 !important;
+	border: 1px #E0DD00 solid;
+}
+
+a.dropdown-item {
+	color: #E0DD00 !important;
+}
+
+a.dropdown-item:active, a.dropdown-item:visited, a.dropdown-item:link {
+	color: #F18627 !important;
+	background-color: #3D2533 !important;
+}
+
+a.dropdown-item:hover {
+	color: #2B293A !important;
+	background-color: #E0DD00 !important;
+}

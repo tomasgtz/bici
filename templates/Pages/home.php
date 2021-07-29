@@ -41,30 +41,140 @@ $checkConnection = function (string $name) {
     return compact('connected', 'error');
 };
 
+/*
 if (!Configure::read('debug')) :
     throw new NotFoundException(
         'Please replace templates/Pages/home.php with your own version or re-enable debug mode.'
     );
-endif;
+endif;*/
 
 ?>
 
-        <div class="container">
-            <div class="content">
-                <div class="row">
-                    <div class="col my-orange-col">
-                       <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                    </div>
 
-					<div class="col my-orange-col">
-						<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                    </div>
+<section>            
+	<div class="container-fluid">
+		<div class="row text-center">
+			
+			<div class="col-xs-10 col-sm-5 col-md-5 col-lg-2 col-xl-2 col-xxl-2 text-center my-orange-col">
+				<a class="link-caja" href="#registro">
+				<?php echo $this->Html->image('circulos_concentricos.png', ['class' => 'caja']); ?>
+				<br><i>Registro</i>
+				</a>
+			</div>
+		
+			<div class="col-xs-10 col-sm-5 col-md-5 col-lg-2 col-xl-2 col-xxl-2 text-center my-orange-col">
+				<a class="link-caja" href="#lugares">
+				<?php echo $this->Html->image('circulos_concentricos.png', ['class' => 'caja']); ?>
+				<br><i>Lugares disponibles</i>
+				</a>
+			</div>
+			
+			<div class="col-xs-10 col-sm-5 col-md-5 col-lg-2 col-xl-2 col-xxl-2 text-center my-orange-col">
+				<a class="link-caja" href="#personas">
+				<?php echo $this->Html->image('circulos_concentricos.png', ['class' => 'caja']); ?>
+				<br><i>Personas inscritas</i>
+				</a>
+			</div>
+	
+			<div class="col-xs-10 col-sm-5 col-md-5 col-lg-2 col-xl-2 col-xxl-2 text-center my-orange-col">
+				<a class="link-caja" href="#viajes">
+				<?php echo $this->Html->image('circulos_concentricos.png', ['class' => 'caja']); ?>
+				<br><i>Viajes realizados</i>
+				</a>
+			</div>
+	
+			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-2 col-xl-2 col-xxl-2 text-center my-orange-col">
+				<a class="link-caja" href="#funcionamiento">
+				<?php echo $this->Html->image('circulos_concentricos.png', ['class' => 'caja']); ?>
+				<br><i>Funcionamiento</i>
+				</a>
+			</div>
 
-					<div class="col my-orange-col">
-						<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                    </div>
-                </div>
-               
-            </div>
-        </div>
+		</div>
+	</div>
+</section>
 
+<section id="registro" class="orange-section">
+sfsdfsdf<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+</section>
+
+
+<section id="lugares" class="orange-section">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 text-center">
+				<span class="mi-texto"><b>LUGARES DISPONIBLES</b></span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 text-center">
+				<span class="mi-texto">Pr&oacute;ximamente</span>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section id="personas" class="orange-section">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 text-center">
+				<span class="mi-texto"><b>PERSONAS INSCRITAS</b></span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 text-center">
+				<span class="mi-texto">Hombres registrados<br><span class="kpi">110</span></span>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 text-center ">
+				<span class="mi-texto">Mujeres registradas<br><span class="kpi">110</span></span>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 text-center ">
+				<span class="mi-texto">Total registrados<br><span class="kpi">220</span></span>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section id="viajes" class="orange-section">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 text-center">
+				<span class="mi-texto"><b>VIAJES REALIZADOS</b></span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 text-center">
+				<span class="mi-texto">Pr&oacute;ximamente</span>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section id="funcionamiento" class="orange-section">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 text-center">
+				<span class="mi-texto"><b>FUNCIONAMIENTO</b></span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 text-center">
+				<span class="mi-texto">Pr&oacute;ximamente</span>
+			</div>
+		</div>
+	</div>
+</section>

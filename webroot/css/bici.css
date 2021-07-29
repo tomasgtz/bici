@@ -1,4 +1,3 @@
-/* Miligram overrides */
 body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 400;
@@ -24,7 +23,7 @@ a {
 a:hover,
 a:focus,
 a:active  {
-    color:#2a6496;
+    color:#F18627 !important;
     -webkit-transition:all 0.2s easeout;
     transition:all 0.2s ease-out;
 }
@@ -96,8 +95,9 @@ th {
 
 a.nav-link {
 	color: #E0DD00;
-	font-size: 32px;
+	font-size: 28px;
 	font-family: "Gotham Medium", Helvetica, Arial, sans-serif;
+	padding:1rem !important;
 }
 
 .side-nav-item {
@@ -118,21 +118,10 @@ a.nav-link {
 .my-footer {
 	background-color: #E0DD00;
 	text-align:center;
-	
 	font-size: 14px;
-	position: absolute;
     bottom: 0;
     width: 100%;
     height: 40px;
-}
-
-
-
-.my-orange-col {
-	background-color: #F18627;
-	margin: 2rem;
-	border-top-left-radius: 1rem;
-	border-bottom-right-radius: 1rem;
 }
 
 
@@ -230,7 +219,23 @@ a.nav-link {
     justify-content: center;
 }
 
-@media screen and (max-width: 640px) {
+
+@media screen and (min-width: 100px) {
+	.caja {
+		width: 100px;
+	}
+
+	.my-orange-col {
+		background-color: #F18627;
+		margin-bottom: 0.2rem;
+		margin-left: 0.2rem;
+		border-top-left-radius: 1rem;
+		border-bottom-right-radius: 1rem;
+		font-size: 20px;
+	}
+}
+
+@media screen and (min-width: 640px) {
     .top-nav {
         margin: 0 auto;
     }
@@ -244,14 +249,26 @@ a.nav-link {
         display: inline;
         margin: 0 1.5rem 0 0;
     }
+	.caja {
+		width: 150px;
+	}
     .asc:after {
         content: " \2192";
     }
     .desc:after {
         content: " \2190";
     }
-}
 
+	.my-orange-col {
+		background-color: #F18627;
+		margin-bottom: 0.5rem;
+		margin-left: 0.5rem;
+		border-top-left-radius: 1rem;
+		border-bottom-right-radius: 1rem;
+		color: #3D2533;
+		font-size: 20px;
+	}
+}
 
 
 @media all and (min-width: 992px) {
@@ -272,18 +289,45 @@ a.nav-link {
 	.dropdown-menu > li:hover > .submenu{
 		display: block;
 	}
-}	
+
+	.dropdown-menu .dropdown-menu{
+		margin-left:0.1rem; 
+		margin-right:0.7rem; 
+		margin-bottom: .5rem;
+	}
+
+	.caja {
+		width: 120px;
+	}
+
+	.my-orange-col {
+		background-color: #F18627;
+		margin-bottom: 0.5rem;
+		border-top-left-radius: 1rem;
+		border-bottom-right-radius: 1rem;
+		color: #3D2533;
+		font-size: 20px;
+	}
+}
+
+
+@media all and (min-width: 1600px) {
+	.caja {
+		width: 170px;
+	}
+
+	.my-orange-col {
+		background-color: #F18627;
+		margin-left: 0.5rem;
+		border-top-left-radius: 1rem;
+		border-bottom-right-radius: 1rem;
+		color: #3D2533;
+		font-size: 30px;
+	}
+}
+
+
 /* ============ desktop view .end// ============ */
-
-/* ============ small devices ============ */
-@media (max-width: 991px) {
-
-.dropdown-menu .dropdown-menu{
-		margin-left:0.7rem; margin-right:0.7rem; margin-bottom: .5rem;
-}
-
-}
-
 
 ul.dropdown-menu.show, ul.submenu.dropdown-menu {
 	background-color: #3D2533 !important;
@@ -303,3 +347,63 @@ a.dropdown-item:hover {
 	color: #2B293A !important;
 	background-color: #E0DD00 !important;
 }
+
+.tabcontents {
+	height: 500px;
+	background-color: #F18627 !important;
+	color: white;
+	font-size: 22px;
+}
+
+.tabtitle {
+	background-color: #2B293A !important;
+	color: #F18627 !important;
+	margin-bottom: 0px !important;
+	margin: 5px;
+}
+
+.tabtop {
+	margin: -3px;
+	border-bottom: 0px solid #dee2e6 !important;
+}
+
+.tabcontentsheader {
+	color: #3D2533;
+	font-size: 30px;
+
+}
+
+a.link-caja, a.link-caja:focus, a.link-caja:active a.link-caja:hover, a.link-caja:visited {
+	color: #3D2533 !important;
+	text-decoration: none !important;
+	overflow: hidden; 
+}
+
+.orange-section {
+	margin-top: 2px;
+	padding: 30px 10px 30px 10px;
+	background-color: #F18627;
+	border-top-left-radius: 1rem;
+	border-bottom-right-radius: 1rem;
+	font-size: 20px;
+}
+
+.kpi {
+	font-weight: bolder;
+	font-size: 40px;
+}
+
+.mi-texto {
+	color: white;
+	font-face: "Avenir Book" !important;
+}
+
+.charts-section {
+	height: 500px;
+	width: 100%;
+	overflow-y: scroll;
+}
+.charts-section-in {
+	height: auto;
+}
+

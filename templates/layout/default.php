@@ -16,7 +16,7 @@
 
 ?>
 <!DOCTYPE html>
-<html>
+<html class="h-100">
 <head>
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -38,12 +38,12 @@
 	<?php echo $this->Html->script('bootstrap.bundle'); ?>
 
 </head>
-<body>
+<body class="d-flex flex-column h-100">
 	
+
 	<nav class="navbar navbar-expand-lg ">
 		<div class="d-flex flex-grow-1">
-			<span class="w-100 d-lg-none d-block">
-				<!-- hidden spacer to center brand on mobile --></span>
+			<span class="w-100 d-lg-none d-block"></span>
 			<a class="navbar-brand d-none d-lg-inline-block px-4" href="#">
 				<?php echo $this->Html->image('logo_secretaria_movilidad.png', ['width'=>"150", 'alt'=>"Secretaria de Movilidad"]); ?>
 			</a>
@@ -56,72 +56,122 @@
 				</button>
 			</div>
 		</div>
+
+		
 		<div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
 			<ul class="navbar-nav ms-auto flex-nowrap">
-				<li class="nav-item">
-					<a href="#" class="nav-link m-2 menu-item nav-active">Inicio</a>
-				</li>
+				<li class="nav-item">					
+					<?php echo $this->Html->link('INICIO', [
+						'controller' => 'Pages',
+						'action' => 'display'
+					], ['class' => 'nav-link nav-active']); ?>
 
+				</li>
 				<li class="nav-item dropdown" id="myDropdown">
-					<a class="nav-link" href="#" data-bs-toggle="dropdown">Proceso participativo</a>
+					
+					<?php echo $this->Html->link('PROCESO PARTICIPATIVO', [
+						'controller' => 'Pages',
+						'action' => 'procesoparticipativo'
+					], ['class' => 'nav-link nav-active', 'data-bs-toggle' => 'dropdown']); ?>
+
+
 					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="#"> Encuesta de percepci&oacute;n de talleres </a>
-							<ul class="submenu dropdown-menu">
-								<li><a class="dropdown-item" href="#">Metodolog&iacute;a</a></li>
-								<li><a class="dropdown-item" href="#">Encuesta</a></li>
-								<li><a class="dropdown-item" href="#">Resultados (infograf&iacute;a)</a></li>
-								<li><a class="dropdown-item" href="#">Resultados (gr&aacute;ficas)</a></li>
-							</ul>
+						<li>							
+							<?php echo $this->Html->link('Resultados (Infografía)', [
+								'controller' => 'Pages',
+								'action' => 'procesoparticipativo', 1
+							], ['class' => 'dropdown-item']); ?>
 						</li>
-						<li><a class="dropdown-item" href="#"> Encuesta de satisfacci&oacute;n </a>
-							<ul class="submenu dropdown-menu">
-								<li><a class="dropdown-item" href="#">Metodolog&iacute;a</a></li>
-								<li><a class="dropdown-item" href="#">Encuesta</a></li>
-								<li><a class="dropdown-item" href="#">Resultados (infograf&iacute;a)</a></li>
-								<li><a class="dropdown-item" href="#">Resultados (gr&aacute;ficas)</a></li>
-							</ul>
+						<li>
+							<?php echo $this->Html->link('Desarrollo', [
+								'controller' => 'Pages',
+								'action' => 'procesoparticipativo', 2
+							], ['class' => 'dropdown-item']); ?>
 						</li>
-						<li><a class="dropdown-item" href="#"> Encuesta de apropiaci&oacute;n de espacios p&uacute;blicos </a>
-							<ul class="submenu dropdown-menu">
-								<li><a class="dropdown-item" href="#">Metodolog&iacute;a</a></li>
-								<li><a class="dropdown-item" href="#">Encuesta</a></li>
-								<li><a class="dropdown-item" href="#">Resultados (infograf&iacute;a)</a></li>
-								<li><a class="dropdown-item" href="#">Resultados (gr&aacute;ficas)</a></li>
-							</ul>
+						<li>
+							<?php echo $this->Html->link('Metodología', [
+								'controller' => 'Pages',
+								'action' => 'procesoparticipativo', 3
+							], ['class' => 'dropdown-item']); ?>
+						</li>
+						<li>
+							<?php echo $this->Html->link('Seguimiento', [
+								'controller' => 'Pages',
+								'action' => 'procesoparticipativo', 4
+							], ['class' => 'dropdown-item']); ?>
 						</li>
 					</ul>
 				</li>
-				  
-		
-					<?php // echo $this->Html->link('Proceso Participativo', [
-						//'controller' => 'Pages',
-						//'action' => 'procesoparticipativo'
-					//], ['class' => 'nav-link m-2 menu-item']); ?>
-				
-				<li class="nav-item">
-					<a href="#" class="nav-link m-2 menu-item">Mapa interactivo</a>
+
+				<li class="nav-item dropdown" id="myDropdown2">
+					<a class="nav-link" href="#" data-bs-toggle="dropdown">GOBIERNO ABIERTO</a>
+					<ul class="dropdown-menu">
+						<li><a class="dropdown-item" href="#">Mapa interactivo</a></li>
+						<li><a class="dropdown-item" href="#">Descarga de informaci&oacute;n</a></li>
+					</ul>
 				</li>
+		
+					
+				
+			
 			</ul>
-		</div>
-	</nav>
+		</div> 
+
+
+	</nav> 
+	
 
 	
-    <main class="main">
-        <div class="container">
+    <main class="main flex-shrink-0">
+        <div class="container-fluid">
             <?= $this->Flash->render() ?>
             <?= $this->fetch('content') ?>
         </div>
-		
-		<div class="container">
-			<div class="row">
-				<div class="col-10"></div>
-				<div class="col-2"><?php echo $this->Html->image('logo_semovi.png', ['width'=>"150", 'alt'=>"Secretaria de Movilidad"]); ?></div>
-			</div>
+		<div class="row">
+			<div class="col-xs-6 col-sm-6 col-md-10 col-lg-10 col-xl-10 col-xxl-10"></div>
+			<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 col-xl-2 col-xxl-2"><?php echo $this->Html->image('logo_semovi.png', ['width'=>"150", 'alt'=>"Secretaria de Movilidad"]); ?></div>
 		</div>
-		
     </main>
 
-	
-    <footer class="my-footer align-bottom"><div class="mt-2">&copy;Copyright 2021 Copyright.mx - Todos los derechos reservados | Aviso de privacidad</div></footer>
+	<footer class="my-footer align-bottom mt-auto">
+		<div class="mt-2">&copy;Copyright 2021 Copyright.mx - Todos los derechos reservados | Aviso de privacidad</div>  
+	</footer>
+
+ <script>
+ document.addEventListener("DOMContentLoaded", function(){
+// make it as accordion for smaller screens
+if (window.innerWidth < 992) {
+
+  // close all inner dropdowns when parent is closed
+  document.querySelectorAll('.navbar .dropdown').forEach(function(everydropdown){
+    everydropdown.addEventListener('hidden.bs.dropdown', function () {
+		
+      // after dropdown is hidden, then find all submenus
+        this.querySelectorAll('.submenu').forEach(function(everysubmenu){
+          // hide every submenu as well
+          everysubmenu.style.display = 'none';
+        });
+    })
+  });
+
+  document.querySelectorAll('.dropdown-menu a').forEach(function(element){
+    element.addEventListener('mouseover', function (e) {
+        let nextEl = this.nextElementSibling;
+        if(nextEl && nextEl.classList.contains('submenu')) {	
+          // prevent opening link if link needs to open dropdown
+          e.preventDefault();
+          if(nextEl.style.display == 'block'){
+            nextEl.style.display = 'none';
+          } else {
+            nextEl.style.display = 'block';
+          }
+
+        }
+    });
+  })
+}
+// end if innerWidth
+}); 
+ </script>
 </body>
 </html>

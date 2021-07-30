@@ -250,7 +250,7 @@ a.nav-link {
         margin: 0 1.5rem 0 0;
     }
 	.caja {
-		width: 150px;
+		width: 80px;
 	}
     .asc:after {
         content: " \2192";
@@ -407,3 +407,15 @@ a.link-caja, a.link-caja:focus, a.link-caja:active a.link-caja:hover, a.link-caj
 	height: auto;
 }
 
+.col-xs-2-10,
+.col-sm-2-10 {
+  position: relative;
+  min-height: 1px;
+}
+
+@media (min-width: 900px) {
+  .col-lg-2-10 {
+    width: 19% !important;
+    float: left;
+  }
+}

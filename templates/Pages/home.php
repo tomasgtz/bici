@@ -41,12 +41,6 @@ $checkConnection = function (string $name) {
     return compact('connected', 'error');
 };
 
-/*
-if (!Configure::read('debug')) :
-    throw new NotFoundException(
-        'Please replace templates/Pages/home.php with your own version or re-enable debug mode.'
-    );
-endif;*/
 
 ?>
 
@@ -54,36 +48,36 @@ endif;*/
 <section>            
 	<div class="container-fluid">
 		<div class="row text-center">
-			
-			<div class="col-xs-10 col-sm-5 col-md-5 col-lg-2 col-xl-2 col-xxl-2 text-center my-orange-col">
+			<!-- col-xs-10 col-sm-5 col-md-5 col-lg-2 col-xl-2 col-xxl-2 text-center my-orange-col -->
+			<div class="col-xs-10 col-md-2 col-lg-2-10 col-xl-2-10 text-center my-orange-col">
 				<a class="link-caja" href="#registro">
 				<?php echo $this->Html->image('circulos_concentricos.png', ['class' => 'caja']); ?>
 				<br><i>Registro</i>
 				</a>
 			</div>
 		
-			<div class="col-xs-10 col-sm-5 col-md-5 col-lg-2 col-xl-2 col-xxl-2 text-center my-orange-col">
+			<div class="col-xs-10 col-md-2 col-lg-2-10 col-xl-2-10 text-center my-orange-col">
 				<a class="link-caja" href="#lugares">
 				<?php echo $this->Html->image('circulos_concentricos.png', ['class' => 'caja']); ?>
 				<br><i>Lugares disponibles</i>
 				</a>
 			</div>
 			
-			<div class="col-xs-10 col-sm-5 col-md-5 col-lg-2 col-xl-2 col-xxl-2 text-center my-orange-col">
+			<div class="col-xs-10 col-md-2 col-lg-2-10 col-xl-2-10 text-center my-orange-col">
 				<a class="link-caja" href="#personas">
 				<?php echo $this->Html->image('circulos_concentricos.png', ['class' => 'caja']); ?>
 				<br><i>Personas inscritas</i>
 				</a>
 			</div>
 	
-			<div class="col-xs-10 col-sm-5 col-md-5 col-lg-2 col-xl-2 col-xxl-2 text-center my-orange-col">
+			<div class="col-xs-10 col-md-2 col-lg-2-10 col-xl-2-10 text-center my-orange-col">
 				<a class="link-caja" href="#viajes">
 				<?php echo $this->Html->image('circulos_concentricos.png', ['class' => 'caja']); ?>
 				<br><i>Viajes realizados</i>
 				</a>
 			</div>
 	
-			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-2 col-xl-2 col-xxl-2 text-center my-orange-col">
+			<div class="col-xs-10 col-md-2 col-lg-2-10 col-xl-2-10 text-center my-orange-col">
 				<a class="link-caja" href="#funcionamiento">
 				<?php echo $this->Html->image('circulos_concentricos.png', ['class' => 'caja']); ?>
 				<br><i>Funcionamiento</i>
@@ -95,20 +89,8 @@ endif;*/
 </section>
 
 <section id="registro" class="orange-section">
-sfsdfsdf<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+<?php echo $this->render('/Personas/add', 'empty', ['persona' => $persona]); ?>
 
 </section>
 

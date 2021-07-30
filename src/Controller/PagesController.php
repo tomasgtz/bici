@@ -21,6 +21,8 @@ use Cake\Http\Exception\ForbiddenException;
 use Cake\Http\Exception\NotFoundException;
 use Cake\Http\Response;
 use Cake\View\Exception\MissingTemplateException;
+use App\Model\Entity\Persona;
+
 
 /**
  * Static content controller
@@ -45,6 +47,8 @@ class PagesController extends AppController
      */
     public function display(string ...$path): ?Response
     {
+		$persona = new Persona();
+        
         if (!$path) {
             return $this->redirect('/');
         }
@@ -59,7 +63,7 @@ class PagesController extends AppController
         if (!empty($path[1])) {
             $subpage = $path[1];
         }
-        $this->set(compact('page', 'subpage'));
+        $this->set(compact('page', 'subpage', 'persona'));
 
         try {
             return $this->render(implode('/', $path));

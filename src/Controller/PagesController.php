@@ -127,6 +127,14 @@ class PagesController extends AppController
 		}
 
 		$this->set(compact(['id', 's1active', 's2active', 's3active', 's4active']));
-		return $this->render(implode('/', $path));
+		return $this->render('procesoparticipativo');
     }
+
+
+	public function descargadeinformacion(): ?Response
+	{
+	
+		return $this->render('descargadeinformacion');
+	
+	}
 }

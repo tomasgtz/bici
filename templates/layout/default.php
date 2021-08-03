@@ -126,7 +126,14 @@
 					<a class="nav-link" href="#" data-bs-toggle="dropdown">GOBIERNO ABIERTO</a>
 					<ul class="dropdown-menu">
 						<li><a class="dropdown-item" href="#">Mapa interactivo</a></li>
-						<li><a class="dropdown-item" href="#">Descarga de informaci&oacute;n</a></li>
+						<li><a class="dropdown-item" href="#">
+							
+							<?php echo $this->Html->link('Descarga de información', [
+								'controller' => 'Pages',
+								'action' => 'descargadeinformacion'
+							], ['class' => 'dropdown-item']); ?>
+
+						</a></li>
 					</ul>
 				</li>
 		
@@ -158,40 +165,40 @@
     </main>
 
 	<footer class="my-footer align-bottom mt-auto">
-		<div class="mt-2">&copy;Copyright 2021 Copyright.mx - Todos los derechos reservados | Aviso de privacidad</div>  
+		<div class="mt-2 mb-2">&copy;Copyright 2021 Copyright.mx - Todos los derechos reservados | Aviso de privacidad</div>
 	</footer>
 
  <script>
- document.addEventListener("DOMContentLoaded", function(){
+	 document.addEventListener("DOMContentLoaded", function(){
 
-if (window.innerWidth < 992) {
+		if (window.innerWidth < 992) {
 
-  document.querySelectorAll('.navbar .dropdown').forEach(function(everydropdown){
-    everydropdown.addEventListener('hidden.bs.dropdown', function () {
-		
-        this.querySelectorAll('.submenu').forEach(function(everysubmenu){
+		  document.querySelectorAll('.navbar .dropdown').forEach(function(everydropdown){
+			everydropdown.addEventListener('hidden.bs.dropdown', function () {
+				
+				this.querySelectorAll('.submenu').forEach(function(everysubmenu){
 
-          everysubmenu.style.display = 'none';
-        });
-    })
-  });
+				  everysubmenu.style.display = 'none';
+				});
+			})
+		});
 
-  document.querySelectorAll('.dropdown-menu a').forEach(function(element){
-    element.addEventListener('mouseover', function (e) {
-        let nextEl = this.nextElementSibling;
-        if(nextEl && nextEl.classList.contains('submenu')) {	
+	  document.querySelectorAll('.dropdown-menu a').forEach(function(element){
+		element.addEventListener('mouseover', function (e) {
+			let nextEl = this.nextElementSibling;
+			if(nextEl && nextEl.classList.contains('submenu')) {	
 
-          e.preventDefault();
-          if(nextEl.style.display == 'block'){
-            nextEl.style.display = 'none';
-          } else {
-            nextEl.style.display = 'block';
-          }
+			  e.preventDefault();
+			  if(nextEl.style.display == 'block'){
+				nextEl.style.display = 'none';
+			  } else {
+				nextEl.style.display = 'block';
+			  }
 
-        }
-    });
-  })
-}
+			}
+		});
+	  })
+	}
 
 }); 
  </script>

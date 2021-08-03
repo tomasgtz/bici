@@ -40,50 +40,50 @@
 <script>
 	
 
-$('#curp').on('change', function() {
-	
-	var intValue = this.value.substring(4,6) * 1;
-	var month = this.value.substring(6,8) - 1;
-	var day = this.value.substring(8,10);
-	
-	if (Number.isInteger(intValue))
-	{
-		intValue = intValue.toLocaleString('en-US', {
-			minimumIntegerDigits: 2,
-			useGrouping: false
-		  });
-
-		if (intValue < 35)
-			year = "20" + intValue;
-		else
-			year = "19" + intValue;
-
-		var birth = moment([year, month, day]);
-		var today = moment();
-		var age = today.diff(birth, 'years');
+	$('#curp').on('change', function() {
 		
-		if (age < 18)
+		var intValue = this.value.substring(4,6) * 1;
+		var month = this.value.substring(6,8) - 1;
+		var day = this.value.substring(8,10);
+		
+		if (Number.isInteger(intValue))
 		{
-			$('#identificacion-menor').show();
-			$('#identificacion-menor').parent().show();
-			$('#leyenda_id').show();
-			$("#identificacion-menor").prop("required", true);
+			intValue = intValue.toLocaleString('en-US', {
+				minimumIntegerDigits: 2,
+				useGrouping: false
+			  });
+
+			if (intValue < 35)
+				year = "20" + intValue;
+			else
+				year = "19" + intValue;
+
+			var birth = moment([year, month, day]);
+			var today = moment();
+			var age = today.diff(birth, 'years');
+			
+			if (age < 18)
+			{
+				$('#identificacion-menor').show();
+				$('#identificacion-menor').parent().show();
+				$('#leyenda_id').show();
+				$("#identificacion-menor").prop("required", true);
+			} 
+			else
+			{
+				$("#identificacion-menor").prop("required", false);
+				$('#identificacion-menor').hide();
+				$('#identificacion-menor').parent().hide();
+				$('#leyenda_id').hide();
+			}	
 		} 
-		else
+		else 
 		{
-			$("#identificacion-menor").prop("required", false);
-			$('#identificacion-menor').hide();
-			$('#identificacion-menor').parent().hide();
-			$('#leyenda_id').hide();
-		}	
-	} 
-	else 
-	{
-		alert("CURP no valido");	
+			alert("CURP no valido");	
 
-	}
-	
+		}
+		
 
-});
+	});
 
 </script>

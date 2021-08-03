@@ -48,7 +48,36 @@ class PagesController extends AppController
     public function display(string ...$path): ?Response
     {
 		$persona = new Persona();
+		$personas = $this->loadModel('Personas');
+		
+		$query = $personas->find();
+
+		$query
+				->select(['sexo',
+						  'counter_sex' => $query->func()
+									->count('Personas.sexo')])
+				->group('sexo')
+				->order('sexo');
         
+		$registered = $query->toArray();
+		$total_hombres = $total_mujeres = 0;
+
+		if ($registered[0]->counter_sex !== null)
+		{
+			if ($registered[0]->sexo == 'H')
+				$total_hombres = $registered[0]->counter_sex;
+			else
+				$total_mujeres = $registered[0]->counter_sex;
+		}
+
+		if ($registered[1]->counter_sex !== null)
+		{
+			if ($registered[1]->sexo == 'H')
+				$total_hombres = $registered[1]->counter_sex;
+			else
+				$total_mujeres = $registered[1]->counter_sex;
+		}
+
         if (!$path) {
             return $this->redirect('/');
         }
@@ -63,7 +92,7 @@ class PagesController extends AppController
         if (!empty($path[1])) {
             $subpage = $path[1];
         }
-        $this->set(compact('page', 'subpage', 'persona'));
+        $this->set(compact('page', 'subpage', 'persona', 'total_hombres', 'total_mujeres'));
 
         try {
             return $this->render(implode('/', $path));

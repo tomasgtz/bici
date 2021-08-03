@@ -103,7 +103,7 @@ $checkConnection = function (string $name) {
 
 
 <section id="lugares" class="orange-section">
-	<div class="container-fluid">
+	<div class="container-fluid altura-seccion">
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 text-center">
 				<span class="mi-texto"><b>LUGARES DISPONIBLES</b></span>
@@ -118,28 +118,28 @@ $checkConnection = function (string $name) {
 </section>
 
 <section id="personas" class="orange-section">
-	<div class="container-fluid">
+	<div class="container-fluid altura-seccion">
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 text-center">
 				<span class="mi-texto"><b>PERSONAS INSCRITAS</b></span>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 text-center">
-				<span class="mi-texto">Hombres registrados<br><span class="kpi">110</span></span>
+			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 text-center ">
+				<span class="mi-texto">Hombres registrados<br><span class="kpi"><?= $total_hombres ?></span></span>
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 text-center ">
-				<span class="mi-texto">Mujeres registradas<br><span class="kpi">110</span></span>
+				<span class="mi-texto">Mujeres registradas<br><span class="kpi"><?= $total_mujeres ?></span></span>
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4 text-center ">
-				<span class="mi-texto">Total registrados<br><span class="kpi">220</span></span>
+				<span class="mi-texto">Total registrados<br><span class="kpi"><?= $total_hombres + $total_mujeres ?></span></span>
 			</div>
 		</div>
 	</div>
 </section>
 
 <section id="viajes" class="orange-section">
-	<div class="container-fluid">
+	<div class="container-fluid altura-seccion">
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 text-center">
 				<span class="mi-texto"><b>VIAJES REALIZADOS</b></span>
@@ -154,7 +154,7 @@ $checkConnection = function (string $name) {
 </section>
 
 <section id="funcionamiento" class="orange-section">
-	<div class="container-fluid">
+	<div class="container-fluid altura-seccion">
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 text-center">
 				<span class="mi-texto"><b>FUNCIONAMIENTO</b></span>

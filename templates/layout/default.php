@@ -23,7 +23,25 @@
     <title>
         Secretar&iacute;a de movilidad: Biciestacionamiento
     </title>
-    <?= $this->Html->meta('icon') ?>
+    
+	<?= $this->Html->css('ico/apple-icon-57x57.png', ['rel' => 'apple-touch-icon', 'sizes' => '57x57']) ?>
+	<?= $this->Html->css('ico/apple-icon-60x60.png', ['rel' => 'apple-touch-icon', 'sizes' => '60x60']) ?>
+	<?= $this->Html->css('ico/apple-icon-76x76.png', ['rel' => 'apple-touch-icon', 'sizes' => '76x76']) ?>
+	<?= $this->Html->css('ico/apple-icon-114x114.png', ['rel' => 'apple-touch-icon', 'sizes' => '114x114']) ?>
+	<?= $this->Html->css('ico/apple-icon-120x120.png', ['rel' => 'apple-touch-icon', 'sizes' => '120x120']) ?>
+	<?= $this->Html->css('ico/apple-icon-144x144.png', ['rel' => 'apple-touch-icon', 'sizes' => '144x144']) ?>
+	<?= $this->Html->css('ico/apple-icon-152x152.png', ['rel' => 'apple-touch-icon', 'sizes' => '152x152']) ?>
+	<?= $this->Html->css('ico/apple-icon-180x180.png', ['rel' => 'apple-touch-icon', 'sizes' => '180x180']) ?>
+	<?= $this->Html->css('ico/android-icon-192x192.png', ['rel' => 'apple-touch-icon', 'sizes' => '192x192']) ?>
+	<?= $this->Html->css('ico/favicon-32x32.png', ['rel' => 'apple-touch-icon', 'sizes' => '32x32']) ?>
+	<?= $this->Html->css('ico/favicon-96x96.png', ['rel' => 'apple-touch-icon', 'sizes' => '96x96']) ?>
+	<?= $this->Html->css('ico/favicon-16x16.png', ['rel' => 'apple-touch-icon', 'sizes' => '16x16']) ?>
+
+	<?= $this->Html->meta('icon') ?>
+
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/img/ico/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
 
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
 
@@ -46,10 +64,10 @@
 		<div class="d-flex flex-grow-1">
 			<span class="w-100 d-lg-none d-block"></span>
 			<a class="navbar-brand d-none d-lg-inline-block px-4" href="#">
-				<?php echo $this->Html->image('logo_secretaria_movilidad.png', ['width'=>"150", 'alt'=>"Secretaria de Movilidad"]); ?>
+				<?php echo $this->Html->image('logo_secretaria_movilidad.png', ['class' => 'logo', 'alt'=>"Secretaria de Movilidad"]); ?>
 			</a>
 			<a class="navbar-brand-two mx-auto d-lg-none d-inline-block px-4" href="#">
-				<?php echo $this->Html->image('logo_secretaria_movilidad.png', ['width'=>"150", 'alt'=>"Secretaria de Movilidad"]); ?>
+				<?php echo $this->Html->image('logo_secretaria_movilidad.png', ['class' => 'logo', 'alt'=>"Secretaria de Movilidad"]); ?>
 			</a>
 			<div class="m-2 w-100 text-right">
 				<button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
@@ -128,9 +146,14 @@
             <?= $this->Flash->render() ?>
             <?= $this->fetch('content') ?>
         </div>
-		<div class="row">
-			<div class="col-xs-6 col-sm-6 col-md-10 col-lg-10 col-xl-10 col-xxl-10"></div>
-			<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 col-xl-2 col-xxl-2"><?php echo $this->Html->image('logo_semovi.png', ['width'=>"150", 'alt'=>"Secretaria de Movilidad"]); ?></div>
+
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-6 col-sm-6 col-md-10 col-lg-10 col-xl-10 col-xxl-10"></div>
+				<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 col-xl-2 col-xxl-2" align="right">
+				<br><?php echo $this->Html->image('logo_semovi.png', ['width'=>"150", 'alt'=>"Secretaria de Movilidad"]); ?>
+				</div>
+			</div>
 		</div>
     </main>
 
@@ -140,16 +163,14 @@
 
  <script>
  document.addEventListener("DOMContentLoaded", function(){
-// make it as accordion for smaller screens
+
 if (window.innerWidth < 992) {
 
-  // close all inner dropdowns when parent is closed
   document.querySelectorAll('.navbar .dropdown').forEach(function(everydropdown){
     everydropdown.addEventListener('hidden.bs.dropdown', function () {
 		
-      // after dropdown is hidden, then find all submenus
         this.querySelectorAll('.submenu').forEach(function(everysubmenu){
-          // hide every submenu as well
+
           everysubmenu.style.display = 'none';
         });
     })
@@ -159,7 +180,7 @@ if (window.innerWidth < 992) {
     element.addEventListener('mouseover', function (e) {
         let nextEl = this.nextElementSibling;
         if(nextEl && nextEl.classList.contains('submenu')) {	
-          // prevent opening link if link needs to open dropdown
+
           e.preventDefault();
           if(nextEl.style.display == 'block'){
             nextEl.style.display = 'none';
@@ -171,7 +192,7 @@ if (window.innerWidth < 992) {
     });
   })
 }
-// end if innerWidth
+
 }); 
  </script>
 </body>

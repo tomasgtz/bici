@@ -36,6 +36,7 @@
 	<?php echo $this->Html->script('popper.min'); ?>
     <?php echo $this->Html->script('bootstrap.min'); ?>
 	<?php echo $this->Html->script('bootstrap.bundle'); ?>
+	<?php echo $this->Html->script('moment.min'); ?>
 
 </head>
 <body class="d-flex flex-column h-100">

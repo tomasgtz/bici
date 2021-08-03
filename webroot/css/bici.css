@@ -224,11 +224,15 @@ a.nav-link {
 	.caja {
 		width: 100px;
 	}
+	.be-verde-azul {
+		width: 100%;
+	}
+
 
 	.my-orange-col {
 		background-color: #F18627;
 		margin-bottom: 0.2rem;
-		margin-left: 0.2rem;
+		border: 1px solid #3D2533;
 		border-top-left-radius: 1rem;
 		border-bottom-right-radius: 1rem;
 		font-size: 20px;
@@ -252,6 +256,9 @@ a.nav-link {
 	.caja {
 		width: 80px;
 	}
+	.be-verde-azul {
+		width: 100%;
+	}
     .asc:after {
         content: " \2192";
     }
@@ -262,7 +269,7 @@ a.nav-link {
 	.my-orange-col {
 		background-color: #F18627;
 		margin-bottom: 0.5rem;
-		margin-left: 0.5rem;
+		border: 1px solid #3D2533;
 		border-top-left-radius: 1rem;
 		border-bottom-right-radius: 1rem;
 		color: #3D2533;
@@ -291,8 +298,8 @@ a.nav-link {
 	}
 
 	.dropdown-menu .dropdown-menu{
-		margin-left:0.1rem; 
-		margin-right:0.7rem; 
+		#margin-left:0.1rem; 
+		#margin-right:0.7rem; 
 		margin-bottom: .5rem;
 	}
 
@@ -300,8 +307,13 @@ a.nav-link {
 		width: 120px;
 	}
 
+	.be-verde-azul {
+		width: 100%;
+	}
+
 	.my-orange-col {
 		background-color: #F18627;
+		border: 3px solid #3D2533;
 		margin-bottom: 0.5rem;
 		border-top-left-radius: 1rem;
 		border-bottom-right-radius: 1rem;
@@ -316,9 +328,14 @@ a.nav-link {
 		width: 170px;
 	}
 
+	.be-verde-azul {
+		width: 100%;
+	}
+
 	.my-orange-col {
 		background-color: #F18627;
-		margin-left: 0.5rem;
+		padding: 5px;
+		border: 3px solid #3D2533;
 		border-top-left-radius: 1rem;
 		border-bottom-right-radius: 1rem;
 		color: #3D2533;
@@ -388,14 +405,31 @@ a.link-caja, a.link-caja:focus, a.link-caja:active a.link-caja:hover, a.link-caj
 	font-size: 20px;
 }
 
+.blue-section {
+	
+	background-color: #2B293A;
+	margin-top: 2px;
+	padding: 30px 10px 30px 10px;
+	background-color: #2B293A;
+	border-top-left-radius: 1rem;
+	border-bottom-right-radius: 1rem;
+	font-size: 20px;
+}
+
 .kpi {
 	font-weight: bolder;
 	font-size: 40px;
 }
 
+@font-face {
+  font-family: 'AvenirBook';
+  src: local('Avenir Book'),
+       url("../font/Avenir Book.ttf") format('truetype');
+}
+
 .mi-texto {
 	color: white;
-	font-face: "Avenir Book" !important;
+	font-family: "AvenirBook" !important;
 }
 
 .charts-section {
@@ -415,7 +449,7 @@ a.link-caja, a.link-caja:focus, a.link-caja:active a.link-caja:hover, a.link-caj
 
 @media (min-width: 900px) {
   .col-lg-2-10 {
-    width: 19% !important;
+    width: 20% !important;
     float: left;
   }
 }

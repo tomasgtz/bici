@@ -49,35 +49,35 @@ $checkConnection = function (string $name) {
 	<div class="container-fluid">
 		<div class="row text-center">
 			<!-- col-xs-10 col-sm-5 col-md-5 col-lg-2 col-xl-2 col-xxl-2 text-center my-orange-col -->
-			<div class="col-xs-10 col-md-2 col-lg-2-10 col-xl-2-10 text-center my-orange-col">
+			<div class="col-xs-10 col-md-3 col-lg-2-10 col-xl-2-10 text-center my-orange-col">
 				<a class="link-caja" href="#registro">
 				<?php echo $this->Html->image('circulos_concentricos.png', ['class' => 'caja']); ?>
 				<br><i>Registro</i>
 				</a>
 			</div>
 		
-			<div class="col-xs-10 col-md-2 col-lg-2-10 col-xl-2-10 text-center my-orange-col">
+			<div class="col-xs-10 col-md-3 col-lg-2-10 col-xl-2-10 text-center my-orange-col">
 				<a class="link-caja" href="#lugares">
 				<?php echo $this->Html->image('circulos_concentricos.png', ['class' => 'caja']); ?>
 				<br><i>Lugares disponibles</i>
 				</a>
 			</div>
 			
-			<div class="col-xs-10 col-md-2 col-lg-2-10 col-xl-2-10 text-center my-orange-col">
+			<div class="col-xs-10 col-md-3 col-lg-2-10 col-xl-2-10 text-center my-orange-col">
 				<a class="link-caja" href="#personas">
 				<?php echo $this->Html->image('circulos_concentricos.png', ['class' => 'caja']); ?>
 				<br><i>Personas inscritas</i>
 				</a>
 			</div>
 	
-			<div class="col-xs-10 col-md-2 col-lg-2-10 col-xl-2-10 text-center my-orange-col">
+			<div class="col-xs-10 col-md-3 col-lg-2-10 col-xl-2-10 text-center my-orange-col">
 				<a class="link-caja" href="#viajes">
 				<?php echo $this->Html->image('circulos_concentricos.png', ['class' => 'caja']); ?>
 				<br><i>Viajes realizados</i>
 				</a>
 			</div>
 	
-			<div class="col-xs-10 col-md-2 col-lg-2-10 col-xl-2-10 text-center my-orange-col">
+			<div class="col-xs-10 col-md-3 col-lg-2-10 col-xl-2-10 text-center my-orange-col">
 				<a class="link-caja" href="#funcionamiento">
 				<?php echo $this->Html->image('circulos_concentricos.png', ['class' => 'caja']); ?>
 				<br><i>Funcionamiento</i>
@@ -88,10 +88,17 @@ $checkConnection = function (string $name) {
 	</div>
 </section>
 
-<section id="registro" class="orange-section">
-
-<?php echo $this->render('/Personas/add', 'empty', ['persona' => $persona]); ?>
-
+<section id="registro" class="blue-section">
+	<div class="container-fluid">
+		<div class="row mi-texto">
+			<div class="col-xs-2 col-md-4 col-lg-4 col-xl-4 ">
+				<?php echo $this->Html->image('BE_verde_azul.png', ['class' => 'be-verde-azul']); ?>
+			</div>
+			<div class="col-xs-10 col-md-12 col-lg-8 col-xl-8">
+				<?php echo $this->render('/Personas/add', 'empty', ['persona' => $persona]); ?>
+			</div>
+		</div>
+	</div>
 </section>
 
 

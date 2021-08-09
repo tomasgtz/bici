@@ -1,6 +1,9 @@
 body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 400;
+	background-image: url("../img/fondo_be.png") !important;
+	background-repeat: no-repeat !important;
+	background-position: right top !important;
 }
 
 .top-nav-links,
@@ -52,7 +55,7 @@ th a,
 
 /* Main */
 body {
-    background: #3D2533;
+    background: #2B293A;
 }
 .content {
     padding: 2rem;
@@ -240,8 +243,25 @@ a.nav-link {
 		font-size: 20px;
 	}
 
+	.my-yellow-col {
+		background-color: #E0DD00;
+		margin-bottom: 0.2rem;
+		border: 1px solid #3D2533;
+		border-top-left-radius: 1rem;
+		border-bottom-right-radius: 1rem;
+		font-size: 20px;
+	}
+
 	.altura-seccion {
 		height: 280px;
+	}
+
+	.ppimg {
+		width: 800px;
+	}
+
+	.espacio-izq {
+		margin-left: 5px;
 	}
 }
 
@@ -282,11 +302,27 @@ a.nav-link {
 		font-size: 20px;
 	}
 
+	.my-yellow-col {
+		background-color: #E0DD00;
+		margin-bottom: 0.5rem;
+		border: 1px solid #3D2533;
+		border-top-left-radius: 1rem;
+		border-bottom-right-radius: 1rem;
+		color: #3D2533;
+		font-size: 20px;
+	}
+
 	.logo {
 		width: 250px;
 	}
 
+	.ppimg {
+		width: 800px;
+	}
 
+	.espacio-izq {
+		margin-left: 10px;
+	}
 }
 
 
@@ -333,12 +369,30 @@ a.nav-link {
 		font-size: 20px;
 	}
 
+	.my-yellow-col {
+		background-color: #E0DD00;
+		border: 3px solid #3D2533;
+		margin-bottom: 0.5rem;
+		border-top-left-radius: 1rem;
+		border-bottom-right-radius: 1rem;
+		color: #3D2533;
+		font-size: 20px;
+	}
+
 	.logo {
 		width: 320px;
 	}
 
 	.altura-seccion {
 		height: 100px;
+	}
+
+	.ppimg {
+		width: 970px;
+	}
+
+	.espacio-izq {
+		margin-left: 20px;
 	}
 }
 
@@ -362,12 +416,30 @@ a.nav-link {
 		font-size: 30px;
 	}
 
+	.my-yellow-col {
+		background-color: #E0DD00;
+		padding: 5px;
+		border: 3px solid #3D2533;
+		border-top-left-radius: 1rem;
+		border-bottom-right-radius: 1rem;
+		color: #3D2533;
+		font-size: 30px;
+	}
+
 	.logo {
 		width: 450px;
 	}
 
 	.altura-seccion {
 		height: 100px;
+	}
+
+	.ppimg {
+		width: 1500px;
+	}
+
+	.espacio-izq {
+		margin-left: 50px;
 	}
 }
 
@@ -415,7 +487,7 @@ a.dropdown-item:hover {
 .tabcontentsheader {
 	color: #3D2533;
 	font-size: 30px;
-
+	padding: 5px;
 }
 
 a.link-caja, a.link-caja:focus, a.link-caja:active a.link-caja:hover, a.link-caja:visited {
@@ -460,12 +532,26 @@ a.link-caja, a.link-caja:focus, a.link-caja:active a.link-caja:hover, a.link-caj
 	font-family: "AvenirBook" !important;
 }
 
-.charts-section {
+.mi-titulo {
+	color: #F18627;
+	font-size: 48px;
+	font-weight: bolder;
+	font-family: "AvenirBook" !important;
+}
+
+.mi-titulo-blanco {
+	color: white;
+	font-size: 48px;
+	font-weight: bolder;
+	font-family: "AvenirBook" !important;
+}
+
+.scroll-section {
 	height: 500px;
 	width: 100%;
 	overflow-y: scroll;
 }
-.charts-section-in {
+.scroll-section-in {
 	height: auto;
 }
 
@@ -482,3 +568,107 @@ a.link-caja, a.link-caja:focus, a.link-caja:active a.link-caja:hover, a.link-caj
   }
 }
 
+
+.gchart {
+	display: inline-block; 
+	margin: 0 auto;
+}
+
+
+.espacio-arr {
+	margin-top: 50px !important;
+}
+
+
+.btn-cerrar {
+	color: white !important;
+	font-style: italic;
+	font-weight: bolder;
+	font-size: 24px !important;
+	margin: 2px;
+}
+
+.btn-warning2 {
+	color: white !important;
+	font-style: italic;
+	font-weight: bolder;
+	font-size: 24px !important;
+	background-color: #F18627 !important;
+	margin: 2px;
+}
+
+.btn-warning2:hover {
+	color: white !important;
+	background-color: #68412c !important;
+}
+
+.separador {
+	margin-top: 50px !important;
+	height: 10px;
+}
+
+.titulo-usuarios {
+	font-style: italic;
+	font-weight: bolder;
+	color: #2B293A;
+	font-size: 24px !important;
+}
+
+.mi-texto-usuarios {
+	color: white;
+	font-family: "AvenirBook" !important;
+	font-size: 18px;
+	line-height: normal !important;
+}
+
+.center-1 {
+	color: white;
+	font-size: 60px;
+	display: table; 
+	height: 130px; 
+	overflow: hidden;
+	width: 100%;
+}
+
+.center-2 {
+	display: table-cell; 
+	vertical-align: middle;
+	text-align: center;
+	width: 100%;
+}
+
+
+.titulo-azul {
+	font-style: italic;
+	font-weight: bolder;
+	color: #2B293A;
+	font-size: 28px !important;
+}
+
+.numero-azul {
+	font-weight: bolder;
+	color: #2B293A;
+	font-size: 58px !important;
+}
+
+.icon-bici {
+	width: 180px;
+	height: 130px;
+	padding: 25px;
+}
+
+.modal-morado {
+	background-color: #3D2533 !important;
+}
+
+.modal-titulo {
+	color: white;
+	font-style: italic;
+	font-size: 32px;
+	width:100%;
+}
+
+.modal-subtitulo {
+	color: #F18627;
+	font-size: 22px;
+}

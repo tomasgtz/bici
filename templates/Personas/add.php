@@ -9,33 +9,39 @@
 <div class="usuarios form content">
 	<span class="mi-texto"><?= 'Favor de completar los campos para registrarse' ?></span><br><br>
 	<?= $this->Form->create($persona, ['type' => 'file', 'action'=> 'Personas/add']) ?>
-	<fieldset>
+	<fieldset id="registro-personales" class="d-block">
 		<?php
-			echo $this->Form->control('nombre', ['class' => 'form-control']);
-			echo $this->Form->control('apellido_paterno', ['class' => 'form-control']);
-			echo $this->Form->control('apellido_materno', ['class' => 'form-control']);
-			echo $this->Form->control('curp', ['class' => 'form-control']);
-			echo $this->Form->control('correo', ['class' => 'form-control']);
-			echo $this->Form->control('cp', ['class' => 'form-control']);
-			echo $this->Form->control('calle', ['class' => 'form-control']);
-			echo $this->Form->control('numero_exterior', ['class' => 'form-control']);
-			echo $this->Form->control('numero_interior', ['class' => 'form-control']);
+			echo $this->Form->control('nombre', ['class' => 'form-control', 'placeholder'=>'Nombre']);
+			echo $this->Form->control('apellido_paterno', ['class' => 'form-control', 'placeholder'=>'Apellido Paterno']);
+			echo $this->Form->control('apellido_materno', ['class' => 'form-control', 'placeholder'=>'Apellido Materno']);
+			echo $this->Form->control('curp', ['class' => 'form-control', 'placeholder'=>'CURP']);
+			echo $this->Form->control('correo', ['class' => 'form-control', 'placeholder'=>'Correo electrónico']);
+		?>
+	</fieldset>
+
+	<fieldset id="registro-direccion" class="d-none">
+		<?php
+			echo $this->Form->control('cp', ['class' => 'form-control', 'placeholder'=>'Código postal']);
+			echo $this->Form->control('calle', ['class' => 'form-control', 'placeholder'=>'Calle']);
+			echo $this->Form->control('numero_exterior', ['class' => 'form-control', 'placeholder'=>'Número exterior']);
+			echo $this->Form->control('numero_interior', ['class' => 'form-control', 'placeholder'=>'Número interior']);
+		?>
+	</fieldset>
+
+	<fieldset id="registro-documentos" class="d-none">
+		<?php
 			echo $this->Form->control('foto_bici', ['class' => 'form-control', 'type' => 'file']);
-			
 			echo '<br><span class="mi-texto" id="leyenda_id">Si es menor de edad, favor de agregar la identificacion del menor y del padre o la madre</span>';
 			echo $this->Form->control('identificacion', ['class' => 'form-control', 'type' => 'file', 'label' => 'Identificacion adulto']);
-
 			echo $this->Form->control('identificacion_menor', ['class' => 'form-control', 'type' => 'file']);
 		?>
 	</fieldset>
+
 	<br>
-	<?= $this->Form->button(__('Registrarse')) ?>
-	<?= $this->Form->end() ?>
+	<?= $this->Form->button(__('Continuar'), ['id' => 'btn-registro-continuar', 'type' => 'button', 'class' => 'btn btn-warning2']) ?>
+
 </div>
 
-
-
-<!-- col-xxl-6 col-xl-6 col-md-6 col-md-6 col-sm-12 col-xs-12 -->
 
 <script>
 	

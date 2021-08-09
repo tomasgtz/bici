@@ -24,18 +24,18 @@
         Secretar&iacute;a de movilidad: Biciestacionamiento
     </title>
     
-	<?= $this->Html->css('ico/apple-icon-57x57.png', ['rel' => 'apple-touch-icon', 'sizes' => '57x57']) ?>
-	<?= $this->Html->css('ico/apple-icon-60x60.png', ['rel' => 'apple-touch-icon', 'sizes' => '60x60']) ?>
-	<?= $this->Html->css('ico/apple-icon-76x76.png', ['rel' => 'apple-touch-icon', 'sizes' => '76x76']) ?>
-	<?= $this->Html->css('ico/apple-icon-114x114.png', ['rel' => 'apple-touch-icon', 'sizes' => '114x114']) ?>
-	<?= $this->Html->css('ico/apple-icon-120x120.png', ['rel' => 'apple-touch-icon', 'sizes' => '120x120']) ?>
-	<?= $this->Html->css('ico/apple-icon-144x144.png', ['rel' => 'apple-touch-icon', 'sizes' => '144x144']) ?>
-	<?= $this->Html->css('ico/apple-icon-152x152.png', ['rel' => 'apple-touch-icon', 'sizes' => '152x152']) ?>
-	<?= $this->Html->css('ico/apple-icon-180x180.png', ['rel' => 'apple-touch-icon', 'sizes' => '180x180']) ?>
-	<?= $this->Html->css('ico/android-icon-192x192.png', ['rel' => 'apple-touch-icon', 'sizes' => '192x192']) ?>
-	<?= $this->Html->css('ico/favicon-32x32.png', ['rel' => 'apple-touch-icon', 'sizes' => '32x32']) ?>
-	<?= $this->Html->css('ico/favicon-96x96.png', ['rel' => 'apple-touch-icon', 'sizes' => '96x96']) ?>
-	<?= $this->Html->css('ico/favicon-16x16.png', ['rel' => 'apple-touch-icon', 'sizes' => '16x16']) ?>
+	<?= $this->Html->meta('ico/apple-icon-57x57.png', ['rel' => 'apple-touch-icon', 'sizes' => '57x57']) ?>
+	<?= $this->Html->meta('ico/apple-icon-60x60.png', ['rel' => 'apple-touch-icon', 'sizes' => '60x60']) ?>
+	<?= $this->Html->meta('ico/apple-icon-76x76.png', ['rel' => 'apple-touch-icon', 'sizes' => '76x76']) ?>
+	<?= $this->Html->meta('ico/apple-icon-114x114.png', ['rel' => 'apple-touch-icon', 'sizes' => '114x114']) ?>
+	<?= $this->Html->meta('ico/apple-icon-120x120.png', ['rel' => 'apple-touch-icon', 'sizes' => '120x120']) ?>
+	<?= $this->Html->meta('ico/apple-icon-144x144.png', ['rel' => 'apple-touch-icon', 'sizes' => '144x144']) ?>
+	<?= $this->Html->meta('ico/apple-icon-152x152.png', ['rel' => 'apple-touch-icon', 'sizes' => '152x152']) ?>
+	<?= $this->Html->meta('ico/apple-icon-180x180.png', ['rel' => 'apple-touch-icon', 'sizes' => '180x180']) ?>
+	<?= $this->Html->meta('ico/android-icon-192x192.png', ['rel' => 'apple-touch-icon', 'sizes' => '192x192']) ?>
+	<?= $this->Html->meta('ico/favicon-32x32.png', ['rel' => 'apple-touch-icon', 'sizes' => '32x32']) ?>
+	<?= $this->Html->meta('ico/favicon-96x96.png', ['rel' => 'apple-touch-icon', 'sizes' => '96x96']) ?>
+	<?= $this->Html->meta('ico/favicon-16x16.png', ['rel' => 'apple-touch-icon', 'sizes' => '16x16']) ?>
 
 	<?= $this->Html->meta('icon') ?>
 
@@ -58,8 +58,6 @@
 
 </head>
 <body class="d-flex flex-column h-100">
-	
-
 	<nav class="navbar navbar-expand-lg ">
 		<div class="d-flex flex-grow-1">
 			<span class="w-100 d-lg-none d-block"></span>
@@ -80,15 +78,19 @@
 		<div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
 			<ul class="navbar-nav ms-auto flex-nowrap">
 				<li class="nav-item">					
-					<?php echo $this->Html->link('INICIO', [
+					<?php echo $this->Html->link('Inicio', [
 						'controller' => 'Pages',
-						'action' => 'display'
+						'action' => 'home'
 					], ['class' => 'nav-link nav-active']); ?>
+
+				</li>
+				<li class="nav-item">					
+					<a href="#usuarios" class='nav-link nav-active'>Usuarios</a>
 
 				</li>
 				<li class="nav-item dropdown" id="myDropdown">
 					
-					<?php echo $this->Html->link('PROCESO PARTICIPATIVO', [
+					<?php echo $this->Html->link('Proceso participativo', [
 						'controller' => 'Pages',
 						'action' => 'procesoparticipativo'
 					], ['class' => 'nav-link nav-active', 'data-bs-toggle' => 'dropdown']); ?>
@@ -123,7 +125,7 @@
 				</li>
 
 				<li class="nav-item dropdown" id="myDropdown2">
-					<a class="nav-link" href="#" data-bs-toggle="dropdown">GOBIERNO ABIERTO</a>
+					<a class="nav-link" href="#" data-bs-toggle="dropdown">Gobierno abierto</a>
 					<ul class="dropdown-menu">
 						<li><a class="dropdown-item" href="#">Mapa interactivo</a></li>
 						<li><a class="dropdown-item" href="#">
@@ -150,15 +152,22 @@
 	
     <main class="main flex-shrink-0">
         <div class="container-fluid">
+
+		<?php 
+			var_dump($_SESSION); 
+		
+		?>
             <?= $this->Flash->render() ?>
             <?= $this->fetch('content') ?>
         </div>
 
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-xs-6 col-sm-6 col-md-10 col-lg-10 col-xl-10 col-xxl-10"></div>
+				<div class="col-xs-6 col-sm-6 col-md-10 col-lg-10 col-xl-10 col-xxl-10">
+						
+				</div>
 				<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 col-xl-2 col-xxl-2" align="right">
-				<br><?php echo $this->Html->image('logo_semovi.png', ['width'=>"150", 'alt'=>"Secretaria de Movilidad"]); ?>
+				<br>
 				</div>
 			</div>
 		</div>

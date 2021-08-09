@@ -58,34 +58,64 @@ $checkConnection = function (string $name) {
 							</div>
 						</nav>
 						<div class="tab-content tabcontents" id="nav-tabContent">
-							<div class="tab-pane fade show <?= $s1active; ?>" id="nav-resinfo" role="tabpanel" aria-labelledby="nav-resinfo-tab"> 
-								<p class="tabcontentsheader"><i>Resultados (Infograf&iacute;a)</i></p>
-								Res info
+							<div class="tab-pane fade show scroll-section <?= $s1active; ?>" id="nav-resinfo" role="tabpanel" aria-labelledby="nav-resinfo-tab">
+								<div class="container-fluid">
+									<div class="scroll-section-in row">
+										<div class="col-12 text-center">
+
+											<p class="tabcontentsheader"><i>&iquest;Cu&aacute;les fueron los principales resultados del proceso participativo?</i></p>
+											<?= $this->Html->image('proceso_participativo_resultados.png', ['class' => 'ppimg']) ?><br><br>
+											<?= $this->Html->image('proceso_participativo_resultados2.png', ['class' => 'ppimg']) ?>
+										</div>
+									</div>
+								</div>
 							</div>
 							
-							<div class="tab-pane fade show charts-section" id="nav-resdata" role="tabpanel" aria-labelledby="nav-resdata-tab" > 
-								<div class="charts-section-in row">
-									<div class="col-12">
-										<p class="tabcontentsheader"><i>Resultados Datos</i></p>
-										<p>Filtrar por sexo: 
-											<select name="filtro_sexo" id="filtro_sexo">
-												<option value="todos">Todos</option>
-												<option value="femenino">Femenino</option>
-												<option value="masculino">Masculino</option>
-												<option value="prefirio no contestar">Prefirio no contestar</option>
-											</select>
-										<div id="piechart"></div><br>
-										<div id="columnchart_material"></div><br>
-										<div id="dual_x_div"></div><br>
-										<div id="nivel_de_problematica"></div><br>
-										<div id="nivel_de_concordancia"></div><br>
-										<div id="falta"></div>
-									</div>	
+							<div class="tab-pane fade show scroll-section" id="nav-resdata" role="tabpanel" aria-labelledby="nav-resdata-tab" >
+								<div class="container-fluid">
+									<div class="scroll-section-in row">
+										<div class="col-12 text-center">
+											<p class="tabcontentsheader"><i>Resultados Datos</i></p>
+											<p>Filtrar por sexo: 
+												<select name="filtro_sexo" id="filtro_sexo">
+													<option value="todos">Todos</option>
+													<option value="femenino">Femenino</option>
+													<option value="masculino">Masculino</option>
+													<option value="prefirio no contestar">Prefirio no contestar</option>
+												</select>
+												<div id="piechart" class="gchart"></div><br>
+											<div id="columnchart_material" class="gchart"></div><br>
+											<div id="dual_x_div" class="gchart"></div><br>
+											<div id="nivel_de_problematica" class="gchart"></div><br>
+											<div id="nivel_de_concordancia" class="gchart"></div><br>
+											<div id="falta" class="gchart"></div>
+										</div>	
+									</div>
 								</div>
 							</div>
 		
-							<div class="tab-pane fade show <?= $s2active; ?>" id="nav-desarrollo" role="tabpanel" aria-labelledby="nav-desarrollo-tab"> Desarrollo </div>
-							<div class="tab-pane fade show <?= $s3active; ?>" id="nav-met" role="tabpanel" aria-labelledby="nav-met-tab"> Metodolog&iacute;a </div>
+							<div class="tab-pane fade show scroll-section <?= $s2active; ?>" id="nav-desarrollo" role="tabpanel" aria-labelledby="nav-desarrollo-tab">
+								<div class="container-fluid">
+									<div class="scroll-section-in row">
+										<div class="col-12 text-center">
+											<p class="tabcontentsheader"><i>&iquest;C&oacute;mo se llev&oacute; a cabo el proceso participativo?</i></p>
+											<?= $this->Html->image('proceso_participativo_desarrollo.png', ['class' => 'ppimg']) ?>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="tab-pane fade show scroll-section <?= $s3active; ?>" id="nav-met" role="tabpanel" aria-labelledby="nav-met-tab">
+								<div class="container-fluid">
+									<div class="scroll-section-in row">
+										<div class="col-12 text-center">
+											<p class="tabcontentsheader"><i>&iquest;Cu&aacute;les son las etapas del proceso participativo?</i></p>
+											<?= $this->Html->image('proceso_participativo_metodologia.png', ['class' => 'ppimg']) ?><br><br>
+											<p class="tabcontentsheader"><i>&iquest;C&oacute;mo se desarroll&oacute; el proceso participativo?</i></p>
+											<?= $this->Html->image('proceso_participativo_metodologia2.png', ['class' => 'ppimg']) ?><br><br>
+										</div>
+									</div>
+								</div>
+							</div>
 							<div class="tab-pane fade show <?= $s4active; ?>" id="nav-seg" role="tabpanel" aria-labelledby="nav-seg-tab"> Seguimiento </div>
 						</div>
 					</div>

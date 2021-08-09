@@ -121,7 +121,7 @@ class PersonasController extends AppController
 					}
 					else
 					{
-						$this->Flash->success('Se ha registrado exitosamente');
+						$this->Flash->success('Su registro se ha efectuado exitosamente');
 					}
 				} 
 				else 
@@ -145,8 +145,9 @@ class PersonasController extends AppController
 				$this->Flash->error('Error: No se ha podido crear el registro.' . $e->getMessage());
 			}
 			
-			return $this->redirect('/');
+			return $this->redirect(['controller' => 'Pages', 'action' => 'home']);
         }
+
         $this->set(compact('persona'));
     }
 

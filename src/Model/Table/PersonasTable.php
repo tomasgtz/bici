@@ -114,7 +114,8 @@ class PersonasTable extends Table
 
         $validator
             ->scalar('numero_interior')
-            ->maxLength('numero_interior', 5);
+            ->maxLength('numero_interior', 5)
+			->allowEmptyString('numero_interior');
 
         $validator
             ->scalar('foto_bici')

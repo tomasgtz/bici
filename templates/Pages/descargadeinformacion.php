@@ -27,15 +27,15 @@ use Cake\Http\Exception\NotFoundException;
 		<div class="row">
 			<div class="col-12">
 			
-				<?= $this->Html->link('Encuesta de talleres', 'downloads/') ?><br><br>
+				<?= $this->Html->link('Encuesta de talleres', 'downloads/Encuesta de talleres/Encuesta_de_talleres.zip') ?><br><br>
 
-				<?= $this->Html->link('Presentación realizadas en los talleres', '') ?><br><br>
+				<?= $this->Html->link('Presentación realizadas en los talleres', 'downloads/Presentaciones realizadas en los talleres/Presentaciones_realizadas_en_los_talleres.zip') ?><br><br>
 
-				<?= $this->Html->link('Base de datos del diagnóstico de movilidad', '') ?><br><br>
+				<?= $this->Html->link('Base de datos del diagnóstico de movilidad', 'downloads/Base de datos del diagnostico de movilidad/') ?><br><br>
 
-				<?= $this->Html->link('Infografías', '') ?><br><br>
+				<?= $this->Html->link('Infografías', 'downloads/Infografias/Infografias_proceso_participativo.pptx') ?><br><br>
 
-				<?= $this->Html->link('Seguimiento', '') ?><br><br>
+				<?= $this->Html->link('Seguimiento', 'downloads/Seguimiento/base_de_datos_Seguimiento.rtf') ?><br><br>
 				
 			</div>
 		</div>

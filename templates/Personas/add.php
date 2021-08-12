@@ -30,10 +30,13 @@
 
 	<fieldset id="registro-documentos" class="d-none">
 		<?php
-			echo $this->Form->control('foto_bici', ['class' => 'form-control', 'type' => 'file']);
+			echo '<div class="text-izq"><br><span class="mi-texto-naranja" id="leyenda_id">Foto de la bicicleta</span><div>';
+			echo $this->Form->control('foto_bici', ['class' => 'form-control', 'type' => 'file', 'placeholder' => 'Foto de la bicicleta']);
 			echo '<br><span class="mi-texto" id="leyenda_id">Si es menor de edad, favor de agregar la identificacion del menor y del padre o la madre</span>';
-			echo $this->Form->control('identificacion', ['class' => 'form-control', 'type' => 'file', 'label' => 'Identificacion adulto']);
-			echo $this->Form->control('identificacion_menor', ['class' => 'form-control', 'type' => 'file']);
+			echo '<div class="text-izq"><br><span class="mi-texto-naranja" id="leyenda_id">Identificaci&oacute;n adulto</span><div>';
+			echo $this->Form->control('identificacion', ['class' => 'form-control', 'type' => 'file', 'placeholder' => 'Identificacion adulto']);
+			echo '<div class="text-izq"><br><span class="mi-texto-naranja" id="leyenda_id">Identificaci&oacute;n del menor</span><div>';
+			echo $this->Form->control('identificacion_menor', ['class' => 'form-control', 'type' => 'file', 'placeholder' => 'Identificacion menor']);
 		?>
 	</fieldset>
 

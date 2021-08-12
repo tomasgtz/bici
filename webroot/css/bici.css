@@ -532,6 +532,11 @@ a.link-caja, a.link-caja:focus, a.link-caja:active a.link-caja:hover, a.link-caj
 	font-family: "AvenirBook" !important;
 }
 
+.mi-texto-naranja {
+	color: #F18627;
+	font-family: "AvenirBook" !important;
+}
+
 .mi-titulo {
 	color: #F18627;
 	font-size: 48px;
@@ -671,4 +676,9 @@ a.link-caja, a.link-caja:focus, a.link-caja:active a.link-caja:hover, a.link-caj
 .modal-subtitulo {
 	color: #F18627;
 	font-size: 22px;
+}
+
+.text-izq {
+	text-align:left !important;
+	width:100% !important;	
 }

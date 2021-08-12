@@ -152,11 +152,6 @@
 	
     <main class="main flex-shrink-0">
         <div class="container-fluid">
-
-		<?php 
-			var_dump($_SESSION); 
-		
-		?>
             <?= $this->Flash->render() ?>
             <?= $this->fetch('content') ?>
         </div>

@@ -8,7 +8,7 @@
 
 <div class="usuarios form content">
 	<span class="mi-texto"><?= 'Favor de completar los campos para registrarse' ?></span><br><br>
-	<?= $this->Form->create($persona, ['type' => 'file', 'action'=> 'Personas/add']) ?>
+	<?= $this->Form->create($persona, ['type' => 'file', 'action'=> 'Personas/add', 'id'=> 'forma_registro']) ?>
 	<fieldset id="registro-personales" class="d-block">
 		<?php
 			echo $this->Form->control('nombre', ['class' => 'form-control', 'placeholder'=>'Nombre']);
@@ -30,12 +30,14 @@
 
 	<fieldset id="registro-documentos" class="d-none">
 		<?php
-			echo '<div class="text-izq"><br><span class="mi-texto-naranja" id="leyenda_id">Foto de la bicicleta</span><div>';
+			echo '<div class="text-izq"><br><span class="mi-texto-naranja" id="leyenda_foto_bici">Foto de la bicicleta</span><div>';
 			echo $this->Form->control('foto_bici', ['class' => 'form-control', 'type' => 'file', 'placeholder' => 'Foto de la bicicleta']);
+			
 			echo '<br><span class="mi-texto" id="leyenda_id">Si es menor de edad, favor de agregar la identificacion del menor y del padre o la madre</span>';
 			echo '<div class="text-izq"><br><span class="mi-texto-naranja" id="leyenda_id">Identificaci&oacute;n adulto</span><div>';
 			echo $this->Form->control('identificacion', ['class' => 'form-control', 'type' => 'file', 'placeholder' => 'Identificacion adulto']);
-			echo '<div class="text-izq"><br><span class="mi-texto-naranja" id="leyenda_id">Identificaci&oacute;n del menor</span><div>';
+			
+			echo '<div class="text-izq"><br><span class="mi-texto-naranja" id="leyenda_id_menor">Identificaci&oacute;n del menor</span><div>';
 			echo $this->Form->control('identificacion_menor', ['class' => 'form-control', 'type' => 'file', 'placeholder' => 'Identificacion menor']);
 		?>
 	</fieldset>
@@ -75,7 +77,7 @@
 			{
 				$('#identificacion-menor').show();
 				$('#identificacion-menor').parent().show();
-				$('#leyenda_id').show();
+				$('#leyenda_id_menor').show();
 				$("#identificacion-menor").prop("required", true);
 			} 
 			else
@@ -83,7 +85,7 @@
 				$("#identificacion-menor").prop("required", false);
 				$('#identificacion-menor').hide();
 				$('#identificacion-menor').parent().hide();
-				$('#leyenda_id').hide();
+				$('#leyenda_id_menor').hide();
 			}	
 		} 
 		else 

@@ -221,7 +221,7 @@ use Cake\Http\Exception\NotFoundException;
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary btn-cerrar" data-bs-dismiss="modal">Cerrar</button>
+				<button type="button" class="btn btn-secondary btn-cerrar" id="btn-cerrar" data-bs-dismiss="modal">Cerrar</button>
 				
 				<?= $this->Form->button(__('Registrarme'), ['class' => 'btn btn-warning2']) ?>
 				<?= $this->Form->end() ?>
@@ -268,6 +268,12 @@ use Cake\Http\Exception\NotFoundException;
 
 			if ($('#registro-documentos').hasClass('d-block'))
 				return $('#btn-datos-personales').click();
+		});
+
+		$('#btn-cerrar').on('click', function() {
+
+			$('#forma_registro')[0].reset();
+
 		});
 
 	});

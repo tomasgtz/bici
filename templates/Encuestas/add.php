@@ -11,18 +11,12 @@
     }
 </style>
 <div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('List Encuestas'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
+    
     <div class="column-responsive column-80">
         <div class="encuestas form content">
-        <?= $this->Form->create($encuesta,['action'=> '/bici/Encuestas/add','class' => 'form-control']) ?>
+        <?= $this->Form->create($encuesta,['url' => '/Encuestas/add', 'class' => 'form-control']) ?>
         
             <fieldset>
-                <legend><?= __('Add Encuesta') ?></legend>
                 <table width="80%">
                     <tr>
                         <td>¿Utiliza bicileta?(propia, prestada, rentada)?*</td>

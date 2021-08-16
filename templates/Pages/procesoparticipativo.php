@@ -240,7 +240,7 @@ $checkConnection = function (string $name) {
 
 			
         </div>
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-F0hvNugvP2Gf6lDfDNfLzmnDpggVPv8&callback=initMap&libraries=&v=weekly" async></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=<?=$gkey?>&callback=initMap&libraries=&v=weekly" async></script>
 <script>
 
 $(function() {

@@ -75,6 +75,8 @@ class PagesController extends AppController
 	public function procesoparticipativo($id)
     {
 		$s1active = $s2active = $s3active = $s4active = '';
+
+		$gkey = env('GOOGLE_MAP_KEY', '');
 		
 		if ($id == 1) 
 		{
@@ -93,7 +95,7 @@ class PagesController extends AppController
 			$s4active = 'active';
 		}
 
-		$this->set(compact(['id', 's1active', 's2active', 's3active', 's4active']));
+		$this->set(compact(['id', 's1active', 's2active', 's3active', 's4active', 'gkey']));
 		return $this->render('procesoparticipativo');
     }
 

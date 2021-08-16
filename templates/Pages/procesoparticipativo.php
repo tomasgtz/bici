@@ -66,7 +66,10 @@ $checkConnection = function (string $name) {
 	
 	#contener-maps {
 		display:none;
-		background-color:#F18627;
+		background-color:transparent;
+		margin-top: -700px;
+		padding-left: 200px;
+		position:absolute;
 	}
 
 	#maps {
@@ -74,12 +77,25 @@ $checkConnection = function (string $name) {
 		width:900px;
 		height:600px;
 		background-color:#F18627;
-	}
-	.btnCerrarMaps {
 		
 	}
-
+	.btnCerrarMaps {
+		color:#F18627;
+	}
+	
+	#error_utiliza_bicicleta,#error_fub_ocio_deportiva,#error_fub_transporte,#error_fub_ir_trabajar,
+	#error_idd_sacar_meter_domicilio,#error_idd_no_transporte_publico,#error_idd_robo_estacionada,
+	#error_idd_dificultad_estacionada_seguro,#error_idd_falta_ciclovia,#error_idd_vias_alto_flujo,
+	#error_idd_invacion_ciclovias_peatones_coches,#error_idd_conflictos_conductores_automoviles_motos_autobuses,
+	#error_idd_conflictos_peatones_no_respetan,#error_idd_no_conocer_normas,#error_idd_conflictos_otros_ciclistas,
+	#error_idd_peligro_circulacion_ciudad,#error_nub_no_disponer_bicicleta,#error_nub_no_condicion_fisica,
+	#error_nub_sacar_meter_bicileta,#error_nub_imagen_social,#error_nub_no_poder_llevar_bici_transporte,
+	#error_nub_conflictos_conductores_autobuses,#error_nub_conflictos_peatones,#error_nub_conflictos_otros_ciclistas,
+	#error_nub_peligro_circulacion_ciudad,#error_beneficios_considera,#error_coordenadas {
+	display:none;
+	}
 </style>
+
 <script>
 	function abrirMapa(){
 		document.querySelector('#contener-maps').style.display = 'block';
@@ -214,7 +230,7 @@ $checkConnection = function (string $name) {
 							</div>
 							<div class="tab-pane fade show <?= $s4active; ?>" id="nav-seg" role="tabpanel" aria-labelledby="nav-seg-tab"> Seguimiento 
 							<div class="testt">
-							<?php echo $this->render('/Encuestas/add', 'empty', ['encuesta' => $encuesta]); ?>
+							<?php echo @$this->render('/Encuestas/add', 'empty', ['encuesta' => $encuesta]); ?>
 							</div>
 						</div>
 						</div>

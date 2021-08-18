@@ -115,7 +115,7 @@ class EncuestasController extends AppController
             if ($this->Encuestas->save($encuesta)) {
                 $this->Flash->success(__('La encuesta se guardo correctamente.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['controller' => 'Pages', 'action' => 'home']);
             }
             $this->Flash->error(__('La encuesta no se pudo guardar, Por favor intentelo de nuevo.'));
         }

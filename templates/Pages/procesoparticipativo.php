@@ -291,7 +291,7 @@ function initMap() {
         document.getElementById('lat').innerHTML = place.geometry.location.lat();
         document.getElementById('lon').innerHTML = place.geometry.location.lng();
 		//querySelector('coordenadas').value=place.geometry.location.lat() + '-' place.geometry.location.lng();
-		document.querySelector('#coordenadas').value='{"lat": '+place.geometry.location.lat() + ', "lng" :' + place.geometry.location.lng()+']';
+		document.querySelector('#coordenadas').value='['+place.geometry.location.lat() + ',' + place.geometry.location.lng()+']';
     });
 }
 </script>

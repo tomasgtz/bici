@@ -77,29 +77,9 @@ class EncuestasController extends AppController
             $enc['nub_conflictos_otros_ciclistas']			= $this->request->getData('nub_conflictos_otros_ciclistas');
             $enc['nub_peligro_circulacion_ciudad']			= $this->request->getData('nub_peligro_circulacion_ciudad');
             $enc['coordenadas']                 			= $this->request->getData('coordenadas');
-            
-            $enc['created'] = date("Y-m-d H:i:s");
-            //$enc['ip']      = $this->request->clientIp();
-            //Cake\Http\ServerRequest::clientIp()
+            $enc['created']									= date("Y-m-d H:i:s");
+			$enc['ip']										= $this->clientIp();
 
-            function clientIp($defaultIP = '127.0.0.1') {
-                $ipaddr = null;
-                if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-                    $ipaddr = $_SERVER['HTTP_CLIENT_IP'];
-                } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-                    $ipaddr = $_SERVER['HTTP_X_FORWARDED_FOR'];
-                } else {
-                    $ipaddr = $_SERVER['REMOTE_ADDR'];
-                }
-                $ipaddr = trim($ipaddr);
-                if ($ipaddr == '::1') {
-                    $ipaddr = $defaultIP;
-                }
-                return $ipaddr;
-            }
-            $enc['ip'] = clientIp();
-            //debug
-            // var_dump($enc);
 
             /*$countIP = $this->Encuestas->find()->where(['ip' => $enc['ip']])->count();
 
@@ -113,13 +93,15 @@ class EncuestasController extends AppController
             $encuesta = $this->Encuestas->patchEntity($encuesta, $enc);
 
             if ($this->Encuestas->save($encuesta)) {
+
                 $this->Flash->success(__('La encuesta se guardo correctamente.'));
 
                 $s1active = $s2active = $s3active = $s4active = $s5active = '';
                 $id=5;
-                //$gkey ="AIzaSyBctEa4mbmLLHuzIRpFDavVUyBgPaS3atU";
+                
                 $gkey = env('GOOGLE_MAP_KEY', '');
                 $enc  = $this->request->getData('param');
+
                 if ($id == 1) 
                 {
                     $s1active = 'active';
@@ -141,25 +123,13 @@ class EncuestasController extends AppController
                     $s5active = 'active';
                 }
 
-
                 $registros   = $this->Encuestas->find('all')->count();
-                
                 
                 $coordenadasQuery = $this->Encuestas->find();
                 $coordenadasQuery->select(['coordenadas']);
-                /*
-                    foreach($coordenadasQuery as $fila){
-                        echo  $fila->coordenadas
-                    }*/     
-           
 
                 $utiliza_biciletaSql = $this->Encuestas->find();
-                $utiliza_biciletaSql->select(['count' => $utiliza_biciletaSql->func()->count('*'),'utiliza_bicileta'])->group(['utiliza_bicileta']);
-         
-                foreach($fub_ir_trabajarSql as $fila){
-                    $fub_ir_trabajar[$fila->fub_ir_trabajar] = round(($fila->count/$registros)*100,2);
-                }
-
+                $utiliza_biciletaSql = $utiliza_biciletaSql->select(['count' => $utiliza_biciletaSql->func()->count('*'),'utiliza_bicileta'])->group(['utiliza_bicileta'])->toArray();
 
                 $fub_ocio_deportivaSql = $this->Encuestas->find();
                 $fub_ocio_deportivaSql->select(['count' => $fub_ocio_deportivaSql->func()->count('*'),'fub_ocio_deportiva'])->group(['fub_ocio_deportiva']);
@@ -187,27 +157,21 @@ class EncuestasController extends AppController
                 $fub_ir_trabajar['bastante_frecuencia'] = 0;
 
 
-                foreach($fub_ocio_deportivaSql as $fila){
+                foreach($fub_ocio_deportivaSql as $fila)
+				{
                     $fub_ocio_deportiva[$fila->fub_ocio_deportiva] = round(($fila->count/$registros)*100,2);
                 }
 
-                foreach($fub_transporteSql as $fila){
+                foreach($fub_transporteSql as $fila)
+				{
                     $fub_transporte[$fila->fub_transporte] = round(($fila->count/$registros)*100,2);
                 }
 
-                foreach($fub_ir_trabajarSql as $fila){
+                foreach($fub_ir_trabajarSql as $fila)
+				{
                     $fub_ir_trabajar[$fila->fub_ir_trabajar] = round(($fila->count/$registros)*100,2);
                 }
                 
-                //var_dump($fub_ocio_deportiva);
-
-                //var_dump($fub_transporte);
-
-                //var_dump($fub_ir_trabajar);
-
-                //sql($fub_ocio_deportivaSql);
-
-                //var_dump($registros);
   
             $str = "[
           ['','Como actividad de ocio o deportiva', 'Como modo de transporte', 'Para ir a trabajar'],
@@ -216,11 +180,6 @@ class EncuestasController extends AppController
           ['Nunca', ".$fub_ocio_deportiva['nunca'].", ".$fub_transporte['nunca'].", ". $fub_transporte['nunca']." ],
           ['Ocasionalmente', ".$fub_ocio_deportiva['ocasionalmente'].",". $fub_transporte['ocasionalmente'].", ". $fub_transporte['ocasionalmente']." ]        ]";
 
-        
-
-        
-
-                
 
                 $idd_sacar_meter_domicilioSql = $this->Encuestas->find();
                 $idd_sacar_meter_domicilioSql->select(['count' => $idd_sacar_meter_domicilioSql->func()->count('*'),'idd_sacar_meter_domicilio'])->group(['idd_sacar_meter_domicilio']);
@@ -231,10 +190,8 @@ class EncuestasController extends AppController
                 $idd_robo_estacionadaSql = $this->Encuestas->find();
                 $idd_robo_estacionadaSql->select(['count' => $idd_robo_estacionadaSql->func()->count('*'),'idd_robo_estacionada'])->group(['idd_robo_estacionada']);
                 
-
                 $idd_dificultad_estacionada_seguroSql = $this->Encuestas->find();
                 $idd_dificultad_estacionada_seguroSql->select(['count' => $idd_dificultad_estacionada_seguroSql->func()->count('*'),'idd_dificultad_estacionada_seguro'])->group(['idd_dificultad_estacionada_seguro']);
-
 
                 $idd_falta_cicloviaSql = $this->Encuestas->find();
                 $idd_falta_cicloviaSql->select(['count' => $idd_falta_cicloviaSql->func()->count('*'),'idd_falta_ciclovia'])->group(['idd_falta_ciclovia']);
@@ -317,10 +274,9 @@ class EncuestasController extends AppController
                 }
 
                 foreach($idd_robo_estacionadaSql as $fila){
-                    $idd_robo_estacionada[$fila->idd_robo_estacionadaSql] = round(($fila->count/$registros)*100,2);
+                    $idd_robo_estacionada[$fila->idd_robo_estacionada] = round(($fila->count/$registros)*100,2);
                 }
 
-                
                 foreach($idd_dificultad_estacionada_seguroSql as $fila){
                     $idd_dificultad_estacionada_seguro[$fila->idd_dificultad_estacionada_seguro] = round(($fila->count/$registros)*100,2);
                 }
@@ -358,26 +314,70 @@ class EncuestasController extends AppController
                     $idd_peligro_circulacion_ciudad[$fila->idd_peligro_circulacion_ciudad] = round(($fila->count/$registros)*100,2);
                 }
 
+				$strTieneBicicleta = "[
+				['Nivel de Problematica', 'Es un problema',	'Es un problema pero no importante','No es un problema'],
+				['El peligro que supone la circulacion en la ciudad', 
+					".$idd_peligro_circulacion_ciudad['problema'].",
+					".$idd_peligro_circulacion_ciudad['problema_no_importante'].",
+					".$idd_peligro_circulacion_ciudad['no_problema']."
+				],
+				['Conflictos con otros ciclistas', 
+					".$idd_conflictos_otros_ciclistas['problema'].", 
+					".$idd_conflictos_otros_ciclistas['problema_no_importante'].", 
+					".$idd_conflictos_otros_ciclistas['no_problema']."
+				],
+				['No conocer bien las normas para circular, las senales, direcciones de las calzadas, etc', 
+					".$idd_no_conocer_normas['problema'].", 
+					".$idd_no_conocer_normas['problema_no_importante'].", 
+					".$idd_no_conocer_normas['no_problema']."
+				],
+				['Conflicto con los peatones, que no respetan a los ciclistas', 
+					".$idd_conflictos_peatones_no_respetan['problema'].", 
+					".$idd_conflictos_peatones_no_respetan['problema_no_importante'].", 
+					".$idd_conflictos_peatones_no_respetan['no_problema']."	
+				],
+				['Conflictos con los conductores de los automoviles,motos o autobuses, que no respetan a los ciclistas',  
+					".$idd_conflictos_conductores_automoviles_motos_autobuses['problema'].",
+					".$idd_conflictos_conductores_automoviles_motos_autobuses['problema_no_importante'].",
+					".$idd_conflictos_conductores_automoviles_motos_autobuses['no_problema']."
+				],
+				['La invasion de ciclovias por peatones y coches',  
+					".$idd_invacion_ciclovias_peatones_coches['problema'].",
+					".$idd_invacion_ciclovias_peatones_coches['problema_no_importante'].",
+					".$idd_invacion_ciclovias_peatones_coches['no_problema']."
+				],
+				['Vias con alto flujo vehicular',  
+					".$idd_vias_alto_flujo['problema'].",
+					".$idd_vias_alto_flujo['problema_no_importante'].",
+					".$idd_vias_alto_flujo['no_problema']."
+				],
+				['Falta de ciclovia (Calles mal disenadas)',  
+					".$idd_falta_ciclovia['problema'].",
+					".$idd_falta_ciclovia['problema_no_importante'].",
+					".$idd_falta_ciclovia['no_problema']."
+				],
+				['Dificultad para dejarla estacionada en un lugar seguro fuera de casa',  
+					".$idd_dificultad_estacionada_seguro['problema'].",
+					".$idd_dificultad_estacionada_seguro['problema_no_importante'].",
+					".$idd_dificultad_estacionada_seguro['no_problema']."
+				],
+				['Peligro de robos cuando la dejo estacionada.',  
+					".$idd_robo_estacionada['problema'].",
+					".$idd_robo_estacionada['problema_no_importante'].",
+					".$idd_robo_estacionada['no_problema']."
+				],
+				['No poder llevar la bicileidd_robo_estacionadaa en los transportes publicos(Ruta,autobus,etc.)',  
+					".$idd_no_transporte_publico['problema'].",
+					".$idd_no_transporte_publico['problema_no_importante'].",
+					".$idd_no_transporte_publico['no_problema']."
+				],
+				['Sacar y meter la bicileta de mi domicilio',  
+					".$idd_sacar_meter_domicilio['problema'].",
+					".$idd_sacar_meter_domicilio['problema_no_importante'].",
+					".$idd_sacar_meter_domicilio['no_problema']."
+				]				
+				]";
 
-               
-     
-
-                $strTieneBicicleta = "[
-                    ['','Sacar y meter la bicileta de mi domicilio', 'No poder llevar la bicileta en los transportes públicos', 'Peligro de robo cuando la dejo estacionada','Dificultad para dejarla estacionada en un lugar seguro fuera de casa','Falta de ciclovía','Vías con alto flujo vehicular','La invasión de ciclovías por peatones y coches','Conflictos con los conductores de los automoviles,motos o autobuses, que no respetan a los ciclistas','Conflicto con los peatones, que no respetan a                    los ciclistas','No conocer bien las normas para circular, las señales,direcciones de las calzadas, etc','Conflictos con otros ciclistas.','El peligro que supone la circulación en la ciudad.'],
-                    ['Problema', ".$idd_sacar_meter_domicilio['problema'].", ".$idd_no_transporte_publico['problema'].", ".$idd_robo_estacionada['problema'].",".$idd_dificultad_estacionada_seguro['problema'].",".$idd_falta_ciclovia['problema'].",".$idd_vias_alto_flujo['problema'].",".$idd_invacion_ciclovias_peatones_coches['problema'].",".$idd_conflictos_conductores_automoviles_motos_autobuses['problema'].",".$idd_conflictos_peatones_no_respetan['problema'].",".$idd_no_conocer_normas['problema'].",".$idd_conflictos_otros_ciclistas['problema'].",".$idd_peligro_circulacion_ciudad['problema']."],
-                    ['Problema no importante', ".$idd_sacar_meter_domicilio['problema_no_importante'].", ".$idd_no_transporte_publico['problema_no_importante'].", ".$idd_robo_estacionada['problema_no_importante'].",".$idd_dificultad_estacionada_seguro['problema_no_importante'].",".$idd_falta_ciclovia['problema_no_importante'].",".$idd_vias_alto_flujo['problema_no_importante'].",".$idd_invacion_ciclovias_peatones_coches['problema_no_importante'].",".$idd_conflictos_conductores_automoviles_motos_autobuses['problema_no_importante'].",".$idd_conflictos_peatones_no_respetan['problema_no_importante'].",".$idd_no_conocer_normas['problema_no_importante'].",".$idd_conflictos_otros_ciclistas['problema_no_importante'].",".$idd_peligro_circulacion_ciudad['problema_no_importante']."],
-                    ['No problema',  ".$idd_sacar_meter_domicilio['no_problema'].", ".$idd_no_transporte_publico['no_problema'].", ".$idd_robo_estacionada['no_problema'].",".$idd_dificultad_estacionada_seguro['no_problema'].",".$idd_falta_ciclovia['no_problema'].",".$idd_vias_alto_flujo['no_problema'].",".$idd_invacion_ciclovias_peatones_coches['no_problema'].",".$idd_conflictos_conductores_automoviles_motos_autobuses['no_problema'].",".$idd_conflictos_peatones_no_respetan['no_problema'].",".$idd_no_conocer_normas['no_problema'].",".$idd_conflictos_otros_ciclistas['no_problema'].",".$idd_peligro_circulacion_ciudad['no_problema']."]]";
-          
-                    
-
-
-                /*********/
-
-
-
-                
-
-                
                 $nub_no_disponer_bicicletaSql = $this->Encuestas->find();
                 $nub_no_disponer_bicicletaSql->select(['count' => $nub_no_disponer_bicicletaSql->func()->count('*'),'nub_no_disponer_bicicleta'])->group(['nub_no_disponer_bicicleta']);
 
@@ -405,9 +405,6 @@ class EncuestasController extends AppController
                 $nub_peligro_circulacion_ciudadSql = $this->Encuestas->find();
                 $nub_peligro_circulacion_ciudadSql->select(['count' => $nub_peligro_circulacion_ciudadSql->func()->count('*'),'nub_peligro_circulacion_ciudad'])->group(['nub_peligro_circulacion_ciudad']);
 
-                //$coordenadasSql = $this->Encuestas->find();
-                //$coordenadasSql->select(['count' => $coordenadasSql->func()->count('*'),'coordenadas'])->group(['coordenadas']);
-
                 
                 $nub_no_disponer_bicicleta['problema']=0;
                 $nub_no_disponer_bicicleta['problema_no_importante']=0;
@@ -420,7 +417,6 @@ class EncuestasController extends AppController
                 $nub_sacar_meter_bicileta['problema']=0;
                 $nub_sacar_meter_bicileta['problema_no_importante']=0;
                 $nub_sacar_meter_bicileta['no_problema']=0;
-
 
                 $nub_imagen_social['problema']=0;
                 $nub_imagen_social['problema_no_importante']=0;
@@ -482,13 +478,54 @@ class EncuestasController extends AppController
                     $nub_peligro_circulacion_ciudad[$fila->nub_peligro_circulacion_ciudad] = round(($fila->count/$registros)*100,2);
                 }
                 
-
-                 $strSinBicicleta = "[
-                    ['','No disponer de bicicleta.','No tener condición fisica adecuada para rodar en bicicleta','Sacar y meter la bicicleta de mi domicilio','La imagen social poco adecuada que daria desplazarme en bicicleta, teniendo en cuenta mi edad o situación.','No poder llevar la bicleta en los transportes publicos(metrobus, autobus,etc)','Conflictos con los conductores de los automoviles, motos o autobuses que no respetan a los ciclistas','Conflictos con los peatones que no respetan a los ciclistas','Conflictos con otros ciclistas',' El peligro que supone la circulación en la ciudad.'],
-                    ['Problema', ".$nub_no_disponer_bicicleta['problema'].",".$nub_no_condicion_fisica['problema'].",".$nub_sacar_meter_bicileta['problema'].",".$nub_imagen_social['problema'].",".$nub_no_poder_llevar_bici_transporte['problema'].",".$nub_conflictos_conductores_autobuses['problema'].",".$nub_conflictos_peatones['problema'].",".$nub_conflictos_otros_ciclistas['problema'].",".$nub_peligro_circulacion_ciudad['problema']."],
-                    ['Problema no importante', ".$nub_no_disponer_bicicleta['problema_no_importante'].", ".$nub_no_condicion_fisica['problema_no_importante'].", ".$nub_sacar_meter_bicileta['problema_no_importante'].",".$nub_imagen_social['problema_no_importante'].",".$nub_no_poder_llevar_bici_transporte['problema_no_importante'].",".$nub_conflictos_conductores_autobuses['problema_no_importante'].",".$nub_conflictos_peatones['problema_no_importante'].",".$nub_conflictos_otros_ciclistas['problema_no_importante'].",".$nub_peligro_circulacion_ciudad['problema_no_importante']."],
-                    ['No Problema', ".$nub_no_disponer_bicicleta['no_problema'].", ".$nub_no_condicion_fisica['no_problema'].", ".$nub_sacar_meter_bicileta['no_problema'].",".$nub_imagen_social['no_problema'].",".$nub_no_poder_llevar_bici_transporte['no_problema'].",".$nub_conflictos_conductores_autobuses['no_problema'].",".$nub_conflictos_peatones['no_problema'].",".$nub_conflictos_otros_ciclistas['no_problema'].",".$nub_peligro_circulacion_ciudad['no_problema']."]]";
-                                                                                                                                                                                                                                                                                                                                                                        
+				$strSinBicicleta = "[
+				['Nivel de Problematica', 'Es un problema',	'Es un problema pero no importante','No es un problema'],
+				['El peligro que supone la circulacion en la ciudad.', 
+					".$nub_peligro_circulacion_ciudad['problema'].",
+					".$nub_peligro_circulacion_ciudad['problema_no_importante'].",
+					".$nub_peligro_circulacion_ciudad['no_problema']."
+				],
+				['Conflictos con otros ciclistas', 
+					".$nub_conflictos_otros_ciclistas['problema'].", 
+					".$nub_conflictos_otros_ciclistas['problema_no_importante'].", 
+					".$nub_conflictos_otros_ciclistas['no_problema']."
+				],
+				['Conflictos con los peatones que no respetan a los ciclistas', 
+					".$nub_conflictos_peatones['problema'].", 
+					".$nub_conflictos_peatones['problema_no_importante'].", 
+					".$nub_conflictos_peatones['no_problema']."
+				],
+				['Conflictos con los conductores de los automoviles, motos o autobuses que no respetan a los ciclistas', 
+					".$nub_conflictos_conductores_autobuses['problema'].", 
+					".$nub_conflictos_conductores_autobuses['problema_no_importante'].", 
+					".$nub_conflictos_conductores_autobuses['no_problema']."	
+				],
+				['No poder llevar la bicleta en los transportes publicos(metrobus, autobus,etc)',  
+					".$nub_no_poder_llevar_bici_transporte['problema'].",
+					".$nub_no_poder_llevar_bici_transporte['problema_no_importante'].",
+					".$nub_no_poder_llevar_bici_transporte['no_problema']."
+				],
+				['La imagen social poco adecuada que daria desplazarme en bicicleta, teniendo en cuenta mi edad o situacion.',  
+					".$nub_imagen_social['problema'].",
+					".$nub_imagen_social['problema_no_importante'].",
+					".$nub_imagen_social['no_problema']."
+				],
+				['Sacar y meter la bicicleta de mi domicilio',  
+					".$nub_sacar_meter_bicileta['problema'].",
+					".$nub_sacar_meter_bicileta['problema_no_importante'].",
+					".$nub_sacar_meter_bicileta['no_problema']."
+				],
+				['No tener condicion fisica adecuada para rodar en bicicleta',  
+					".$nub_no_condicion_fisica['problema'].",
+					".$nub_no_condicion_fisica['problema_no_importante'].",
+					".$nub_no_condicion_fisica['no_problema']."
+				],
+				['No disponer de bicicleta.',  
+					".$nub_no_condicion_fisica['problema'].",
+					".$nub_no_condicion_fisica['problema_no_importante'].",
+					".$nub_no_condicion_fisica['no_problema']."
+				]	
+				]";
 
                 $this->set(compact(['id', 's1active', 's2active', 's3active', 's4active', 's5active','gkey','enc','encuesta','utiliza_biciletaSql','frecuencia_utiliza_bicicleta','str','strTieneBicicleta','strSinBicicleta','coordenadasQuery']));
 
@@ -564,5 +601,33 @@ class EncuestasController extends AppController
         //return $this->query($sql);
 
     }
+
+
+	private function clientIp($defaultIP = '127.0.0.1') 
+	{
+		$ipaddr = null;
+		
+		if (!empty($_SERVER['HTTP_CLIENT_IP'])) 
+		{
+			$ipaddr = $_SERVER['HTTP_CLIENT_IP'];
+		} 
+		elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) 
+		{
+			$ipaddr = $_SERVER['HTTP_X_FORWARDED_FOR'];
+		} 
+		else 
+		{
+			$ipaddr = $_SERVER['REMOTE_ADDR'];
+		}
+		
+		$ipaddr = trim($ipaddr);
+		
+		if ($ipaddr == '::1') 
+		{
+			$ipaddr = $defaultIP;
+		}
+		
+		return $ipaddr;
+	}
 
 }

@@ -69,127 +69,127 @@ class EncuestasTable extends Table
 
         $validator
             ->scalar('fub_ocio_deportiva')
-            ->maxLength('fub_ocio_deportiva', 20)
+            ->maxLength('fub_ocio_deportiva', 25)
             ->allowEmptyString('fub_ocio_deportiva');
 
         $validator
             ->scalar('fub_transporte')
-            ->maxLength('fub_transporte', 20)
+            ->maxLength('fub_transporte', 25)
             ->allowEmptyString('fub_transporte');
 
         $validator
             ->scalar('fub_ir_trabajar')
-            ->maxLength('fub_ir_trabajar', 20)
+            ->maxLength('fub_ir_trabajar', 25)
             ->allowEmptyString('fub_ir_trabajar');
 
         $validator
             ->scalar('idd_sacar_meter_domicilio')
-            ->maxLength('idd_sacar_meter_domicilio', 20)
+            ->maxLength('idd_sacar_meter_domicilio', 25)
             ->allowEmptyString('idd_sacar_meter_domicilio');
 
         $validator
             ->scalar('idd_no_transporte_publico')
-            ->maxLength('idd_no_transporte_publico', 20)
+            ->maxLength('idd_no_transporte_publico', 25)
             ->allowEmptyString('idd_no_transporte_publico');
 
         $validator
             ->scalar('idd_robo_estacionada')
-            ->maxLength('idd_robo_estacionada', 20)
+            ->maxLength('idd_robo_estacionada', 25)
             ->allowEmptyString('idd_robo_estacionada');
 
         $validator
             ->scalar('idd_dificultad_estacionada_seguro')
-            ->maxLength('idd_dificultad_estacionada_seguro', 20)
+            ->maxLength('idd_dificultad_estacionada_seguro', 25)
             ->allowEmptyString('idd_dificultad_estacionada_seguro');
 
         $validator
             ->scalar('idd_falta_ciclovia')
-            ->maxLength('idd_falta_ciclovia', 20)
+            ->maxLength('idd_falta_ciclovia', 25)
             ->allowEmptyString('idd_falta_ciclovia');
 
         $validator
             ->scalar('idd_vias_alto_flujo')
-            ->maxLength('idd_vias_alto_flujo', 20)
+            ->maxLength('idd_vias_alto_flujo', 25)
             ->allowEmptyString('idd_vias_alto_flujo');
 
         $validator
             ->scalar('idd_invacion_ciclovias_peatones_coches')
-            ->maxLength('idd_invacion_ciclovias_peatones_coches', 20)
+            ->maxLength('idd_invacion_ciclovias_peatones_coches', 25)
             ->allowEmptyString('idd_invacion_ciclovias_peatones_coches');
 
         $validator
             ->scalar('idd_conflictos_conductores_automoviles_motos_autobuses')
-            ->maxLength('idd_conflictos_conductores_automoviles_motos_autobuses', 20)
+            ->maxLength('idd_conflictos_conductores_automoviles_motos_autobuses', 25)
             ->allowEmptyString('idd_conflictos_conductores_automoviles_motos_autobuses');
 
         $validator
             ->scalar('idd_conflictos_peatones_no_respetan')
-            ->maxLength('idd_conflictos_peatones_no_respetan', 20)
+            ->maxLength('idd_conflictos_peatones_no_respetan', 25)
             ->allowEmptyString('idd_conflictos_peatones_no_respetan');
 
         $validator
             ->scalar('idd_no_conocer_normas')
-            ->maxLength('idd_no_conocer_normas', 20)
+            ->maxLength('idd_no_conocer_normas', 25)
             ->allowEmptyString('idd_no_conocer_normas');
 
         $validator
             ->scalar('idd_conflictos_otros_ciclistas')
-            ->maxLength('idd_conflictos_otros_ciclistas', 20)
+            ->maxLength('idd_conflictos_otros_ciclistas', 25)
             ->allowEmptyString('idd_conflictos_otros_ciclistas');
 
         $validator
             ->scalar('idd_peligro_circulacion_ciudad')
-            ->maxLength('idd_peligro_circulacion_ciudad', 20)
+            ->maxLength('idd_peligro_circulacion_ciudad', 25)
             ->allowEmptyString('idd_peligro_circulacion_ciudad');
 
         $validator
             ->scalar('nub_no_disponer_bicicleta')
-            ->maxLength('nub_no_disponer_bicicleta', 20)
+            ->maxLength('nub_no_disponer_bicicleta', 25)
             ->allowEmptyString('nub_no_disponer_bicicleta');
 
         $validator
             ->scalar('nub_no_condicion_fisica')
-            ->maxLength('nub_no_condicion_fisica', 20)
+            ->maxLength('nub_no_condicion_fisica', 25)
             ->allowEmptyString('nub_no_condicion_fisica');
 
         $validator
             ->scalar('nub_sacar_meter_bicileta')
-            ->maxLength('nub_sacar_meter_bicileta', 20)
+            ->maxLength('nub_sacar_meter_bicileta', 25)
             ->allowEmptyString('nub_sacar_meter_bicileta');
 
         $validator
             ->scalar('nub_imagen_social')
-            ->maxLength('nub_imagen_social', 20)
+            ->maxLength('nub_imagen_social', 25)
             ->allowEmptyFile('nub_imagen_social');
 
         $validator
             ->scalar('nub_no_poder_llevar_bici_transporte')
-            ->maxLength('nub_no_poder_llevar_bici_transporte', 20)
+            ->maxLength('nub_no_poder_llevar_bici_transporte', 25)
             ->allowEmptyString('nub_no_poder_llevar_bici_transporte');
 
         $validator
             ->scalar('nub_conflictos_conductores_autobuses')
-            ->maxLength('nub_conflictos_conductores_autobuses', 20)
+            ->maxLength('nub_conflictos_conductores_autobuses', 25)
             ->allowEmptyString('nub_conflictos_conductores_autobuses');
 
         $validator
             ->scalar('nub_conflictos_peatones')
-            ->maxLength('nub_conflictos_peatones', 20)
+            ->maxLength('nub_conflictos_peatones', 25)
             ->allowEmptyString('nub_conflictos_peatones');
 
         $validator
             ->scalar('nub_conflictos_otros_ciclistas')
-            ->maxLength('nub_conflictos_otros_ciclistas', 20)
+            ->maxLength('nub_conflictos_otros_ciclistas', 25)
             ->allowEmptyString('nub_conflictos_otros_ciclistas');
 
         $validator
             ->scalar('nub_peligro_circulacion_ciudad')
-            ->maxLength('nub_peligro_circulacion_ciudad', 20)
+            ->maxLength('nub_peligro_circulacion_ciudad', 25)
             ->allowEmptyString('nub_peligro_circulacion_ciudad');
 
         $validator
             ->scalar('ip')
-            ->maxLength('ip', 20)
+            ->maxLength('ip', 25)
             ->allowEmptyString('ip');
 
         $validator

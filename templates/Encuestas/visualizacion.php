@@ -20,26 +20,6 @@ use Cake\Datasource\ConnectionManager;
 use Cake\Error\Debugger;
 use Cake\Http\Exception\NotFoundException;
 
-// $this->disableAutoLayout();
-
-$checkConnection = function (string $name) {
-    $error = null;
-    $connected = false;
-    try {
-        $connection = ConnectionManager::get($name);
-        $connected = $connection->connect();
-    } catch (Exception $connectionError) {
-        $error = $connectionError->getMessage();
-        if (method_exists($connectionError, 'getAttributes')) {
-            $attributes = $connectionError->getAttributes();
-            if (isset($attributes['message'])) {
-                $error .= '<br />' . $attributes['message'];
-            }
-        }
-    }
-
-    return compact('connected', 'error');
-};
 
 ?>
 
@@ -166,7 +146,7 @@ $checkConnection = function (string $name) {
 
 										
 
-									<?php echo @$this->render('/Encuestas/add-res', 'empty', ['encuesta' => $encuesta]); ?>
+									<?php echo @$this->render('/Encuestas/add-res', 'empty', ['encuesta' => $encuesta, 'utiliza_biciletaSql' => $utiliza_biciletaSql]); ?>
 									 
 
 
@@ -301,16 +281,21 @@ $(function() {
 	}	
 
 	function drawGraficaUtilizaBicicleta() {
-        var data = google.visualization.arrayToDataTable(<?=$strTieneBicicleta;?>);
-
-        var options = {
-          title: 'Indique la importancia que tienen las cuestiones siguientes en cuanto suponene dificultdes para desplazarte por este medio.',
-		  titleTextStyle: {color: 'black', fontSize: 16, bold: true},
-		  width: 1200,
-          height: 500,
-		  colors:['#633729','#CB6E2D', '#FEB346','#E74C3C','#D98880','#C0392B','#A569BD','#943126','#626567','#707B7C','#F39C12'],
-	      legend: {position: 'top', textStyle: {color: '#633729', fontSize: 11}},
-		  vAxis: {title: '%', titleTextStyle: {color: 'black', fontSize: 11, bold: true}},
+        
+		var data = new google.visualization.arrayToDataTable(<?=$strTieneBicicleta?>);
+		var options = {
+			width: 950,
+			height: 900,
+			fontSize: 12,
+			title: 'Indique la importancia que tienen las cuestiones siguientes en cuanto suponene dificultdes para desplazarte por este medio.',
+			titleTextStyle: {color: 'black', fontSize: 16, bold: true},
+			chartArea: {left:350},
+			isStacked: 'percent',
+			colors:['#633729','#CB6E2D', '#FEB346'],
+			legend: {position: 'top'},
+			annotations: { textStyle: {
+				fontSize: 11}
+			}
         };
 
 		var view = new google.visualization.DataView(data);
@@ -338,94 +323,29 @@ $(function() {
                          sourceColumn: 3,
                          type: "string",
                          role: "annotation" 
-						},
-						4,
-						{ 
-						 calc: "stringify",
-                         sourceColumn: 3,
-                         type: "string",
-                         role: "annotation" 
-						}
-						,
-						5,
-						{ 
-						 calc: "stringify",
-                         sourceColumn: 3,
-                         type: "string",
-                         role: "annotation" 
-						}
-						,
-						6,
-						{ 
-						 calc: "stringify",
-                         sourceColumn: 3,
-                         type: "string",
-                         role: "annotation" 
-						},
-						7,
-						{ 
-						 calc: "stringify",
-                         sourceColumn: 3,
-                         type: "string",
-                         role: "annotation" 
-						},
-						8,
-						{ 
-						 calc: "stringify",
-                         sourceColumn: 3,
-                         type: "string",
-                         role: "annotation" 
-						}
-						,
-						9,
-						{ 
-						 calc: "stringify",
-                         sourceColumn: 3,
-                         type: "string",
-                         role: "annotation" 
-						}
-						,
-						10,
-						{ 
-						 calc: "stringify",
-                         sourceColumn: 3,
-                         type: "string",
-                         role: "annotation" 
-						}
-						,
-						11,
-						{ 
-						 calc: "stringify",
-                         sourceColumn: 3,
-                         type: "string",
-                         role: "annotation" 
-						},
-						12,
-						{ 
-						 calc: "stringify",
-                         sourceColumn: 3,
-                         type: "string",
-                         role: "annotation" 
-						}]);
-
-		var chart = new google.visualization.ColumnChart(document.getElementById('grafica_importancia_uitiliza_bicicleta'));
-
-        chart.draw(view, options);
+						}	]);
+		var chart = new google.visualization.BarChart(document.getElementById('grafica_importancia_uitiliza_bicicleta'));
+		chart.draw(view, options);
+        
 	}	
 
 
-	
 	function drawGraficaSinBicicleta() {
         var data = google.visualization.arrayToDataTable(<?=$strSinBicicleta;?>);
 
-        var options = {
-          title: 'Dificultdes para desplazarte por este medio',
-		  titleTextStyle: {color: 'black', fontSize: 16, bold: true},
-		  width: 1200,
-          height: 500,
-		  colors:['#633729','#CB6E2D', '#FEB346','#E74C3C','#D98880','#C0392B','#A569BD','#943126','#626567'],
-	      legend: {position: 'top', textStyle: {color: '#633729', fontSize: 11}},
-		  vAxis: {title: '%', titleTextStyle: {color: 'black', fontSize: 11, bold: true}},
+		var options = {
+			width: 950,
+			height: 900,
+			fontSize: 12,
+			title: 'Si no eres usuario de bicleta, indica la importancia que para ti tienen las cuestiones siguientes en cuanto suponen dificultades para desplazarse por este medio.',
+			titleTextStyle: {color: 'black', fontSize: 16, bold: true},
+			chartArea: {left:350},
+			isStacked: 'percent',
+			colors:['#633729','#CB6E2D', '#FEB346'],
+			legend: {position: 'top'},
+			annotations: { textStyle: {
+				fontSize: 11}
+			}
         };
 
 		var view = new google.visualization.DataView(data);
@@ -453,57 +373,10 @@ $(function() {
                          sourceColumn: 3,
                          type: "string",
                          role: "annotation" 
-						},
-						4,
-						{ 
-						 calc: "stringify",
-                         sourceColumn: 3,
-                         type: "string",
-                         role: "annotation" 
-						}
-						,
-						5,
-						{ 
-						 calc: "stringify",
-                         sourceColumn: 3,
-                         type: "string",
-                         role: "annotation" 
-						}
-						,
-						6,
-						{ 
-						 calc: "stringify",
-                         sourceColumn: 3,
-                         type: "string",
-                         role: "annotation" 
-						},
-						7,
-						{ 
-						 calc: "stringify",
-                         sourceColumn: 3,
-                         type: "string",
-                         role: "annotation" 
-						},
-						8,
-						{ 
-						 calc: "stringify",
-                         sourceColumn: 3,
-                         type: "string",
-                         role: "annotation" 
-						}
-						,
-						9,
-						{ 
-						 calc: "stringify",
-                         sourceColumn: 3,
-                         type: "string",
-                         role: "annotation" 
-						}
-						]);
+						}	]);
 
-		var chart = new google.visualization.ColumnChart(document.getElementById('strSinBicicleta'));
-
-        chart.draw(view, options);
+		var chart = new google.visualization.BarChart(document.getElementById('strSinBicicleta'));
+		chart.draw(view, options);
 	}
 	google.charts.setOnLoadCallback(function() { drawColumnChart();});
 	google.charts.setOnLoadCallback(function() { drawGraficaUtilizaBicicleta();});

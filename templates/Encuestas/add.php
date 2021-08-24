@@ -38,7 +38,7 @@
 						<th>&nbsp; </th>
 						<th>Habitualmente </th>
 						<th>Con bastante frecuencia </th>
-						<th>Ocacionalmente </th>
+						<th>Ocasionalmente </th>
 						<th>Nunca</th>
 					</tr>
 		   

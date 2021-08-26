@@ -83,7 +83,10 @@ use Cake\Http\Exception\NotFoundException;
 		document.querySelector('#contener-maps').style.display = 'none';
 	}
 </script>
+
+<?php if ($s5active == '') { ?>
 <script>
+
       (() => {
         
         var e = {
@@ -127,12 +130,15 @@ use Cake\Http\Exception\NotFoundException;
 
             });
         }
-        e.r(o), e.d(o, { initMap: () => t });
+        e.r(o), e.d(o, { initMapResponderEncuesta: () => t });
         var n = window;
         for (var l in o) n[l] = o[l];
         o.__esModule && Object.defineProperty(n, "__esModule", { value: !0 });
       })();
     </script>
+
+<?php } ?>
+
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
         <div class="container-fluid">
@@ -145,7 +151,8 @@ use Cake\Http\Exception\NotFoundException;
 								<button class="nav-link                   tabtitle" id="nav-resdata-tab" data-bs-toggle="tab" data-bs-target="#nav-resdata" type="button" role="tab" aria-controls="nav-resdata" aria-selected="true">Resultados Datos</button>
 								<button class="nav-link <?= $s2active; ?> tabtitle" id="nav-desarrollo-tab" data-bs-toggle="tab" data-bs-target="#nav-desarrollo" type="button" role="tab" aria-controls="nav-encuesta" aria-selected="false">Desarrollo</button>
 								<button class="nav-link <?= $s3active; ?> tabtitle" id="nav-met-tab" data-bs-toggle="tab" data-bs-target="#nav-met" type="button" role="tab" aria-controls="nav-met" aria-selected="false">Metodolog&iacute;a</button>
-								<button class="nav-link <?= $s4active; ?> tabtitle" id="nav-seg-tab" data-bs-toggle="tab" data-bs-target="#nav-seg" type="button" role="tab" aria-controls="nav-seg" aria-selected="false">Seguimiento</button>
+								<?php if ($s5active == '') { ?> <button class="nav-link <?= $s4active; ?> tabtitle" id="nav-seg-tab" data-bs-toggle="tab" data-bs-target="#nav-seg" type="button" role="tab" aria-controls="nav-seg" aria-selected="false">Seguimiento</button> <?php } ?>
+								<?php if ($s5active == 'active') { ?> <button class="nav-link <?= $s5active; ?> tabtitle" id="nav-res-tab" data-bs-toggle="tab" data-bs-target="#nav-res" type="button" role="tab" aria-controls="nav-res" aria-selected="false">Resultados</button> <?php } ?>
 							</div>
 						</nav>
 						<div class="tab-content tabcontents" id="nav-tabContent">
@@ -207,98 +214,116 @@ use Cake\Http\Exception\NotFoundException;
 									</div>
 								</div>
 							</div>
-							<div class="tab-pane fade show <?= $s4active; ?>" id="nav-seg" role="tabpanel" aria-labelledby="nav-seg-tab"> 
-							<div class="testt">
-							<?php echo @$this->render('/Encuestas/add', 'empty', ['encuesta' => $encuesta]); ?>
+							<?php if ($s5active == '') { ?>
+							<div class="tab-pane fade show scroll-section <?= $s4active; ?>" id="nav-seg" role="tabpanel" aria-labelledby="nav-seg-tab"> 
+								<div class="container-fluid">
+									<div class="scroll-section-in row">
+										<div class="col-12 text-center">
+											<?php echo @$this->render('/Encuestas/add', 'empty', ['encuesta' => $encuesta]); ?>
+										</div>
+									</div>
+								</div>
 							</div>
-						</div>
+							<?php } ?>
+
+							
+							<div class="tab-pane fade show scroll-section <?= $s5active; ?>" id="nav-res" role="tabpanel" aria-labelledby="nav-res-tab"> 
+								<div class="container-fluid">
+									<div class="scroll-section-in row">
+										<div class="col-12 text-center">
+											RESULTADOS
+											<?php echo @$this->render('/Encuestas/add-res', 'empty', ['encuesta' => $encuesta, 'utiliza_biciletaSql' => $utiliza_biciletaSql]); ?>
+											
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
                 </div>
-            </div>
-
-			
+            </div>			
         </div>
-		
 
-		<script>
-function initMap() {
-    var map = new google.maps.Map(document.getElementById('maps'), {
-      center: {lat: 19.040513592328864, lng: -98.19399714573103 },
-      zoom: 13
-    });
-    var input = document.getElementById('searchInput');
-	input.style="width: 350px";
-    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+<?php if ($s5active == '') { ?>
+	<script>
+		function initMapResponderEncuesta() {
+			var map = new google.maps.Map(document.getElementById('maps'), {
+			  center: {lat: 19.040513592328864, lng: -98.19399714573103 },
+			  zoom: 13
+			});
+			var input = document.getElementById('searchInput');
+			input.style="width: 350px";
+			map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
-    var autocomplete = new google.maps.places.Autocomplete(input);
-    autocomplete.bindTo('bounds', map);
+			var autocomplete = new google.maps.places.Autocomplete(input);
+			autocomplete.bindTo('bounds', map);
 
-    var infowindow = new google.maps.InfoWindow();
-    var marker = new google.maps.Marker({
-        map: map,
-        anchorPoint: new google.maps.Point(0, -29)
-    });
+			var infowindow = new google.maps.InfoWindow();
+			var marker = new google.maps.Marker({
+				map: map,
+				anchorPoint: new google.maps.Point(0, -29)
+			});
 
-    autocomplete.addListener('place_changed', function() {
-        infowindow.close();
-        marker.setVisible(false);
-        var place = autocomplete.getPlace();
-        if (!place.geometry) {
-            window.alert("La direccion solicitada no fue encontrada, intente con alguna cercana");
-            return;
-        }
-  
-        // If the place has a geometry, then present it on a map.
-        if (place.geometry.viewport) {
-            map.fitBounds(place.geometry.viewport);
-        } else {
-            map.setCenter(place.geometry.location);
-            map.setZoom(17);
-        }
-        marker.setIcon(({
-            url: place.icon,
-            size: new google.maps.Size(71, 71),
-            origin: new google.maps.Point(0, 0),
-            anchor: new google.maps.Point(17, 34),
-            scaledSize: new google.maps.Size(35, 35)
-        }));
-        marker.setPosition(place.geometry.location);
-        marker.setVisible(true);
-    
-        var address = '';
-        if (place.address_components) {
-            address = [
-              (place.address_components[0] && place.address_components[0].short_name || ''),
-              (place.address_components[1] && place.address_components[1].short_name || ''),
-              (place.address_components[2] && place.address_components[2].short_name || '')
-            ].join(' ');
-        }
-    
-        infowindow.setContent('<div class="mi-texto-naranja"><strong>' + place.name + '</strong><br>' + address);
-        infowindow.open(map, marker);
-      
-        // Location details
-        for (var i = 0; i < place.address_components.length; i++) {
-            if(place.address_components[i].types[0] == 'postal_code'){
-                document.getElementById('postal_code').innerHTML = place.address_components[i].long_name;
-            }
-            if(place.address_components[i].types[0] == 'country'){
-                document.getElementById('country').innerHTML = place.address_components[i].long_name;
-            }
-        }
-        document.getElementById('location').innerHTML = place.formatted_address;
-        document.getElementById('lat').innerHTML = place.geometry.location.lat();
-        document.getElementById('lon').innerHTML = place.geometry.location.lng();
-		//querySelector('coordenadas').value=place.geometry.location.lat() + '-' place.geometry.location.lng();
-		document.querySelector('#coordenadas').value='['+place.geometry.location.lat() + ',' + place.geometry.location.lng()+']';
-    });
-}
-</script>
+			autocomplete.addListener('place_changed', function() {
+				infowindow.close();
+				marker.setVisible(false);
+				var place = autocomplete.getPlace();
+				if (!place.geometry) {
+					window.alert("La direccion solicitada no fue encontrada, intente con alguna cercana");
+					return;
+				}
+		  
+				// If the place has a geometry, then present it on a map.
+				if (place.geometry.viewport) {
+					map.fitBounds(place.geometry.viewport);
+				} else {
+					map.setCenter(place.geometry.location);
+					map.setZoom(17);
+				}
+				marker.setIcon(({
+					url: place.icon,
+					size: new google.maps.Size(71, 71),
+					origin: new google.maps.Point(0, 0),
+					anchor: new google.maps.Point(17, 34),
+					scaledSize: new google.maps.Size(35, 35)
+				}));
+				marker.setPosition(place.geometry.location);
+				marker.setVisible(true);
+			
+				var address = '';
+				if (place.address_components) {
+					address = [
+					  (place.address_components[0] && place.address_components[0].short_name || ''),
+					  (place.address_components[1] && place.address_components[1].short_name || ''),
+					  (place.address_components[2] && place.address_components[2].short_name || '')
+					].join(' ');
+				}
+			
+				infowindow.setContent('<div class="mi-texto-naranja"><strong>' + place.name + '</strong><br>' + address);
+				infowindow.open(map, marker);
+			  
+				// Location details
+				for (var i = 0; i < place.address_components.length; i++) {
+					if(place.address_components[i].types[0] == 'postal_code'){
+						document.getElementById('postal_code').innerHTML = place.address_components[i].long_name;
+					}
+					if(place.address_components[i].types[0] == 'country'){
+						document.getElementById('country').innerHTML = place.address_components[i].long_name;
+					}
+				}
+				document.getElementById('location').innerHTML = place.formatted_address;
+				document.getElementById('lat').innerHTML = place.geometry.location.lat();
+				document.getElementById('lon').innerHTML = place.geometry.location.lng();
+				//querySelector('coordenadas').value=place.geometry.location.lat() + '-' place.geometry.location.lng();
+				document.querySelector('#coordenadas').value='['+place.geometry.location.lat() + ',' + place.geometry.location.lng()+']';
+			});
+		}
+	</script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=<?= $gkey ?>&callback=initMap&libraries=places&v=weekly" async defer>
-</script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=<?= $gkey ?>&callback=initMapResponderEncuesta&libraries=places&v=weekly" async defer>
+	</script>
 
+<?php } ?>
 
 
 <script>
@@ -1594,3 +1619,231 @@ $(function() {
 	});
 });
 </script>
+
+<?php if ($s5active == 'active' ) { ?>
+<script src="https://maps.googleapis.com/maps/api/js?key=<?= $gkey; ?>&callback=initMapResultados"></script>
+
+<script>
+
+$(function() {
+
+	function initMapResultados() {
+		var map;
+		var bounds = new google.maps.LatLngBounds();
+		var mapOptions = {
+			mapTypeId: 'roadmap',
+			center: {lat: 19.040513592328864, lng: -98.19399714573103 },
+			zoom: 13
+		};
+						
+		// Display a map on the web page
+		map = new google.maps.Map(document.getElementById("mapa_coordenadas"), mapOptions);
+		map.setTilt(50);
+			
+		// Multiple markers location, latitude, and longitude
+		var markers = [
+			<?php
+			foreach($coordenadasQuery as $fila){
+				$c= $fila->coordenadas;
+				$c = str_replace("[","[' ',",$c);
+				$c = str_replace("]","],",$c);
+				echo $c;
+			}
+			?>	
+		];
+							
+		// Info window content
+		var infoWindowContent = [
+		  
+		];
+			
+		// Add multiple markers to map
+		var infoWindow = new google.maps.InfoWindow(), marker, i;
+		
+		// Place each marker on the map  
+		for( i = 0; i < markers.length; i++ ) {
+			var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
+			bounds.extend(position);
+			marker = new google.maps.Marker({
+				position: position,
+				map: map,
+				title: markers[i][0]
+			});
+			
+			// Add info window to marker    
+			google.maps.event.addListener(marker, 'click', (function(marker, i) {
+				return function() {
+					infoWindow.setContent(infoWindowContent[i][0]);
+					infoWindow.open(map, marker);
+				}
+			})(marker, i));
+
+			// Center the map to fit all markers on the screen
+			// map.fitBounds(bounds);
+		}
+
+		// Set zoom level
+		var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
+			this.setZoom(14);
+			google.maps.event.removeListener(boundsListener);
+		});
+		
+	}
+	// Load initialize function
+	google.maps.event.addDomListener(window, 'load', initMapResultados);
+
+
+	  
+	function drawColumnChart() {
+        var data = google.visualization.arrayToDataTable(<?=$str;?>);
+
+        var options = {
+          title: 'USO DE LA BIBICLETA',
+		  titleTextStyle: {color: 'black', fontSize: 16, bold: true},
+		  width: 800,
+          height: 500,
+		  colors:['#633729','#CB6E2D', '#FEB346'],
+	      legend: {position: 'top', textStyle: {color: '#633729', fontSize: 11}},
+		  vAxis: {title: '%', titleTextStyle: {color: 'black', fontSize: 11, bold: true}},
+        };
+
+		var view = new google.visualization.DataView(data);
+		view.setColumns([0,{ 
+						 calc: "stringify",
+                         sourceColumn: 0,
+                         type: "string",
+                         role: "none" 
+					    },1,
+						{ 
+						 calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" 
+						},2,
+						{ 
+						 calc: "stringify",
+                         sourceColumn: 2,
+                         type: "string",
+                         role: "annotation" 
+						},
+						3,
+						{ 
+						 calc: "stringify",
+                         sourceColumn: 3,
+                         type: "string",
+                         role: "annotation" 
+						}	]);
+
+		var chart = new google.visualization.ColumnChart(document.getElementById('grafica_utiliza_bicicleta'));
+
+        chart.draw(view, options);
+	}	
+
+	function drawGraficaUtilizaBicicleta() {
+        
+		var data = new google.visualization.arrayToDataTable(<?=$strTieneBicicleta?>);
+		var options = {
+			width: 950,
+			height: 900,
+			fontSize: 12,
+			title: 'Indique la importancia que tienen las cuestiones siguientes en cuanto suponene dificultdes para desplazarte por este medio.',
+			titleTextStyle: {color: 'black', fontSize: 16, bold: true},
+			chartArea: {left:350},
+			isStacked: 'percent',
+			colors:['#633729','#CB6E2D', '#FEB346'],
+			legend: {position: 'top'},
+			annotations: { textStyle: {
+				fontSize: 11}
+			}
+        };
+
+		var view = new google.visualization.DataView(data);
+		view.setColumns([0,{ 
+						 calc: "stringify",
+                         sourceColumn: 0,
+                         type: "string",
+                         role: "none" 
+					    },1,
+						{ 
+						 calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" 
+						},2,
+						{ 
+						 calc: "stringify",
+                         sourceColumn: 2,
+                         type: "string",
+                         role: "annotation" 
+						},
+						3,
+						{ 
+						 calc: "stringify",
+                         sourceColumn: 3,
+                         type: "string",
+                         role: "annotation" 
+						}	]);
+		var chart = new google.visualization.BarChart(document.getElementById('grafica_importancia_uitiliza_bicicleta'));
+		chart.draw(view, options);
+        
+	}	
+
+
+	function drawGraficaSinBicicleta() {
+        var data = google.visualization.arrayToDataTable(<?=$strSinBicicleta;?>);
+
+		var options = {
+			width: 950,
+			height: 900,
+			fontSize: 12,
+			title: 'Si no eres usuario de bicleta, indica la importancia que para ti tienen las cuestiones siguientes en cuanto suponen dificultades para desplazarse por este medio.',
+			titleTextStyle: {color: 'black', fontSize: 16, bold: true},
+			chartArea: {left:350},
+			isStacked: 'percent',
+			colors:['#633729','#CB6E2D', '#FEB346'],
+			legend: {position: 'top'},
+			annotations: { textStyle: {
+				fontSize: 11}
+			}
+        };
+
+		var view = new google.visualization.DataView(data);
+		view.setColumns([0,{ 
+						 calc: "stringify",
+                         sourceColumn: 0,
+                         type: "string",
+                         role: "none" 
+					    },1,
+						{ 
+						 calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" 
+						},2,
+						{ 
+						 calc: "stringify",
+                         sourceColumn: 2,
+                         type: "string",
+                         role: "annotation" 
+						},
+						3,
+						{ 
+						 calc: "stringify",
+                         sourceColumn: 3,
+                         type: "string",
+                         role: "annotation" 
+						}	]);
+
+		var chart = new google.visualization.BarChart(document.getElementById('strSinBicicleta'));
+		chart.draw(view, options);
+	}
+	google.charts.setOnLoadCallback(function() { drawColumnChart();});
+	google.charts.setOnLoadCallback(function() { drawGraficaUtilizaBicicleta();});
+	google.charts.setOnLoadCallback(function() { drawGraficaSinBicicleta();});
+	
+		
+		 
+});
+</script>
+
+<?php } ?>

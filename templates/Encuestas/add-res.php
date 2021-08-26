@@ -9,7 +9,7 @@
 
 
 <div class="row">
-    <div class="column-responsive column-80">
+    <div class="col-12">
         <div class="encuestas form content form-control">
 			<div class="container">
 				<div class="row">
@@ -105,7 +105,7 @@
 								</td>
 
 								<td>
-									<input type="radio" name="fub_transporte" id="fub_transporte4" value="nunca" required='required' class="form-check-input" <?= $encuesta->fub_transporte == 'nunca' ? 'checked' : ''; ?>>
+									<input type="radio" name="fub_transporte" id="fub_transporte4" value="nunca" disabled class="form-check-input" <?= $encuesta->fub_transporte == 'nunca' ? 'checked' : ''; ?>>
 								</td>
 							</tr>
 
@@ -262,7 +262,7 @@
 							<tr>
 								<td>Conflictos con los conductores de los automoviles,motos o autobuses, que no respetan a los ciclistas</td>
 								<td>
-									<input type="radio" name="idd_conflictos_conductores_automoviles_motos_autobuses" id="idd_conflictos_conductores_automoviles_motos_autobuses" value="problema" disabled class="form-check-input" <?= $encuesta->idd_conflictos_conductores_automoviles_motos_autobuses == 'nunca' ? 'problema' : ''; ?>>
+									<input type="radio" name="idd_conflictos_conductores_automoviles_motos_autobuses" id="idd_conflictos_conductores_automoviles_motos_autobuses" value="problema" disabled class="form-check-input" <?= $encuesta->idd_conflictos_conductores_automoviles_motos_autobuses == 'problema' ? 'checked' : ''; ?>>
 								</td>
 
 								<td>
@@ -531,7 +531,7 @@
 
 				<div class="row">
 					<div class="col-12">
-						<div id="mapa_coordenadas"></div>
+						<div id="mapa_coordenadas" style="height: 450px"></div>
 					</div>
 				</div>
 			</div>

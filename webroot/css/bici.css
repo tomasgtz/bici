@@ -710,4 +710,8 @@ a.link-caja, a.link-caja:focus, a.link-caja:active a.link-caja:hover, a.link-caj
 }
 .modal-backdrop{
     z-index: 10 !important;
-}​
+}
+
+.geo-data {
+	font-size: 12px !important;
+}

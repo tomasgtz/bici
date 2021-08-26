@@ -48,8 +48,10 @@ class EncuestasController extends AppController
     {
 
         $encuesta = $this->Encuestas->newEmptyEntity();
-        if ($this->request->is('post')) {
-            //$encuesta = $this->Encuestas->patchEntity($encuesta, $this->request->getData());
+		$gkey = env('GOOGLE_MAP_KEY', '');
+
+        if ($this->request->is('post')) 
+		{
             $enc['utiliza_bicileta']				        = $this->request->getData('utiliza_bicileta');
             $enc['beneficios_considera']				    = $this->request->getData('beneficios_considera');
             $enc['fub_ocio_deportiva']				        = $this->request->getData('fub_ocio_deportiva');
@@ -99,7 +101,7 @@ class EncuestasController extends AppController
                 $s1active = $s2active = $s3active = $s4active = $s5active = '';
                 $id=5;
                 
-                $gkey = env('GOOGLE_MAP_KEY', '');
+                
                 $enc  = $this->request->getData('param');
 
                 if ($id == 1) 
@@ -129,7 +131,24 @@ class EncuestasController extends AppController
                 $coordenadasQuery->select(['coordenadas']);
 
                 $utiliza_biciletaSql = $this->Encuestas->find();
-                $utiliza_biciletaSql = $utiliza_biciletaSql->select(['count' => $utiliza_biciletaSql->func()->count('*'),'utiliza_bicileta'])->group(['utiliza_bicileta'])->toArray();
+                $utiliza_biciletaSql = $utiliza_biciletaSql->select(
+															['count' => $utiliza_biciletaSql->func()->count('*'),'utiliza_bicileta'])
+															->group(['utiliza_bicileta'])
+															->toArray();
+
+				$total_si = $total_no = 0;
+
+				foreach($utiliza_biciletaSql as $record)
+				{
+					if ($record->utiliza_bicileta == 'si')
+					{
+						$total_si = $record->count;	
+					} 
+					else if ($record->utiliza_bicileta == 'no')
+					{
+						$total_no = $record->count;	
+					}
+				}
 
                 $fub_ocio_deportivaSql = $this->Encuestas->find();
                 $fub_ocio_deportivaSql->select(['count' => $fub_ocio_deportivaSql->func()->count('*'),'fub_ocio_deportiva'])->group(['fub_ocio_deportiva']);
@@ -266,52 +285,52 @@ class EncuestasController extends AppController
                 $idd_peligro_circulacion_ciudad['no_problema'] = 0;
 
                 foreach($idd_sacar_meter_domicilioSql as $fila){
-                    $idd_sacar_meter_domicilio[$fila->idd_sacar_meter_domicilio] = round(($fila->count/$registros)*100,2);
+                    $idd_sacar_meter_domicilio[$fila->idd_sacar_meter_domicilio] = round(($fila->count/$total_si)*100,2);
                 }
 
                 foreach($idd_no_transporte_publicoSql as $fila){
-                    $idd_no_transporte_publico[$fila->idd_no_transporte_publico] = round(($fila->count/$registros)*100,2);
+                    $idd_no_transporte_publico[$fila->idd_no_transporte_publico] = round(($fila->count/$total_si)*100,2);
                 }
 
                 foreach($idd_robo_estacionadaSql as $fila){
-                    $idd_robo_estacionada[$fila->idd_robo_estacionada] = round(($fila->count/$registros)*100,2);
+                    $idd_robo_estacionada[$fila->idd_robo_estacionada] = round(($fila->count/$total_si)*100,2);
                 }
 
                 foreach($idd_dificultad_estacionada_seguroSql as $fila){
-                    $idd_dificultad_estacionada_seguro[$fila->idd_dificultad_estacionada_seguro] = round(($fila->count/$registros)*100,2);
+                    $idd_dificultad_estacionada_seguro[$fila->idd_dificultad_estacionada_seguro] = round(($fila->count/$total_si)*100,2);
                 }
 
                 foreach($idd_falta_cicloviaSql as $fila){
-                    $idd_falta_ciclovia[$fila->idd_falta_ciclovia] = round(($fila->count/$registros)*100,2);
+                    $idd_falta_ciclovia[$fila->idd_falta_ciclovia] = round(($fila->count/$total_si)*100,2);
                 }
 
                 foreach($idd_vias_alto_flujoSql as $fila){
-                    $idd_vias_alto_flujo[$fila->idd_vias_alto_flujo] = round(($fila->count/$registros)*100,2);
+                    $idd_vias_alto_flujo[$fila->idd_vias_alto_flujo] = round(($fila->count/$total_si)*100,2);
                 }
 
                 foreach($idd_invacion_ciclovias_peatones_cochesSql as $fila){
-                    $idd_invacion_ciclovias_peatones_coches[$fila->idd_invacion_ciclovias_peatones_coches] = round(($fila->count/$registros)*100,2);
+                    $idd_invacion_ciclovias_peatones_coches[$fila->idd_invacion_ciclovias_peatones_coches] = round(($fila->count/$total_si)*100,2);
                 }
 
                 foreach($idd_conflictos_conductores_automoviles_motos_autobusesSql as $fila){
-                    $idd_conflictos_conductores_automoviles_motos_autobuses[$fila->idd_conflictos_conductores_automoviles_motos_autobuses] = round(($fila->count/$registros)*100,2);
+                    $idd_conflictos_conductores_automoviles_motos_autobuses[$fila->idd_conflictos_conductores_automoviles_motos_autobuses] = round(($fila->count/$total_si)*100,2);
                 }
 
                 foreach($idd_conflictos_peatones_no_respetanSql as $fila){
-                    $idd_conflictos_peatones_no_respetan[$fila->idd_conflictos_peatones_no_respetan] = round(($fila->count/$registros)*100,2);
+                    $idd_conflictos_peatones_no_respetan[$fila->idd_conflictos_peatones_no_respetan] = round(($fila->count/$total_si)*100,2);
                 }
 
                 foreach($idd_no_conocer_normasSql as $fila){
-                    $idd_no_conocer_normas[$fila->idd_no_conocer_normas] = round(($fila->count/$registros)*100,2);
+                    $idd_no_conocer_normas[$fila->idd_no_conocer_normas] = round(($fila->count/$total_si)*100,2);
                 }
 
 
                 foreach($idd_conflictos_otros_ciclistasSql as $fila){
-                    $idd_conflictos_otros_ciclistas[$fila->idd_conflictos_otros_ciclistas] = round(($fila->count/$registros)*100,2);
+                    $idd_conflictos_otros_ciclistas[$fila->idd_conflictos_otros_ciclistas] = round(($fila->count/$total_si)*100,2);
                 }
 
                 foreach($idd_peligro_circulacion_ciudadSql as $fila){
-                    $idd_peligro_circulacion_ciudad[$fila->idd_peligro_circulacion_ciudad] = round(($fila->count/$registros)*100,2);
+                    $idd_peligro_circulacion_ciudad[$fila->idd_peligro_circulacion_ciudad] = round(($fila->count/$total_si)*100,2);
                 }
 
 				$strTieneBicicleta = "[
@@ -443,39 +462,39 @@ class EncuestasController extends AppController
                 $nub_peligro_circulacion_ciudad['no_problema']=0;
                 
                 foreach($nub_no_disponer_bicicletaSql as $fila){
-                    $nub_no_disponer_bicicleta[$fila->nub_no_disponer_bicicleta] = round(($fila->count/$registros)*100,2);
+                    $nub_no_disponer_bicicleta[$fila->nub_no_disponer_bicicleta] = round(($fila->count/$total_no)*100,2);
                 }
 
                 foreach($nub_no_condicion_fisicaSql as $fila){
-                    $nub_no_condicion_fisica[$fila->nub_no_condicion_fisica] = round(($fila->count/$registros)*100,2);
+                    $nub_no_condicion_fisica[$fila->nub_no_condicion_fisica] = round(($fila->count/$total_no)*100,2);
                 }
 
                 foreach($nub_sacar_meter_biciletaSql as $fila){
-                    $nub_sacar_meter_bicileta[$fila->nub_sacar_meter_bicileta] = round(($fila->count/$registros)*100,2);
+                    $nub_sacar_meter_bicileta[$fila->nub_sacar_meter_bicileta] = round(($fila->count/$total_no)*100,2);
                 }
 
                 foreach($nub_imagen_socialSql as $fila){
-                    $nub_imagen_social[$fila->nub_imagen_social] = round(($fila->count/$registros)*100,2);
+                    $nub_imagen_social[$fila->nub_imagen_social] = round(($fila->count/$total_no)*100,2);
                 }
 
                 foreach($nub_no_poder_llevar_bici_transporteSql as $fila){
-                    $nub_no_poder_llevar_bici_transporte[$fila->nub_no_poder_llevar_bici_transporte] = round(($fila->count/$registros)*100,2);
+                    $nub_no_poder_llevar_bici_transporte[$fila->nub_no_poder_llevar_bici_transporte] = round(($fila->count/$total_no)*100,2);
                 }
 
                 foreach($nub_conflictos_conductores_autobusesSql as $fila){
-                    $nub_conflictos_conductores_autobuses[$fila->nub_conflictos_conductores_autobuses] = round(($fila->count/$registros)*100,2);
+                    $nub_conflictos_conductores_autobuses[$fila->nub_conflictos_conductores_autobuses] = round(($fila->count/$total_no)*100,2);
                 }
 
                 foreach($nub_conflictos_peatonesSql as $fila){
-                    $nub_conflictos_peatones[$fila->nub_conflictos_peatones] = round(($fila->count/$registros)*100,2);
+                    $nub_conflictos_peatones[$fila->nub_conflictos_peatones] = round(($fila->count/$total_no)*100,2);
                 }
 
                 foreach($nub_conflictos_otros_ciclistasSql as $fila){
-                    $nub_conflictos_otros_ciclistas[$fila->nub_conflictos_otros_ciclistas] = round(($fila->count/$registros)*100,2);
+                    $nub_conflictos_otros_ciclistas[$fila->nub_conflictos_otros_ciclistas] = round(($fila->count/$total_no)*100,2);
                 }
 
                 foreach($nub_peligro_circulacion_ciudadSql as $fila){
-                    $nub_peligro_circulacion_ciudad[$fila->nub_peligro_circulacion_ciudad] = round(($fila->count/$registros)*100,2);
+                    $nub_peligro_circulacion_ciudad[$fila->nub_peligro_circulacion_ciudad] = round(($fila->count/$total_no)*100,2);
                 }
                 
 				$strSinBicicleta = "[
@@ -528,13 +547,12 @@ class EncuestasController extends AppController
 				]";
 
                 $this->set(compact(['id', 's1active', 's2active', 's3active', 's4active', 's5active','gkey','enc','encuesta','utiliza_biciletaSql','frecuencia_utiliza_bicicleta','str','strTieneBicicleta','strSinBicicleta','coordenadasQuery']));
-
                 
-                return $this->render('visualizacion');
+                return $this->render('/Pages/procesoparticipativo');
             }
             $this->Flash->error(__('La encuesta no se pudo guardar, Por favor intentelo de nuevo.'));
         }
-        $this->set(compact('encuesta'));
+        $this->set(compact('encuesta', 'gkey'));
     }
 
     /**
@@ -581,17 +599,7 @@ class EncuestasController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-    // Se hace en el controller y se regresan los resultados en un array con la instruccion compact
-
-    //Solo es hacer la consulta en el controller y lo que te regresa se acomoda a como lo necesitas en la vista, 
-    //se guarda en una o mas variables y se ponen en el compact, 
-    //de esa forma la vista lo puede manipular con un for o while o lo que sea
-
-    //Mas bien se llama la variable en la que enviaste los datos
-    
-    //Por ej echo $myVar
-    
-    //Y si en el controller enviaste esa variable en el compact, la vista si la puede ver
+  
 
     public function queryEncuestas(){
         //$encuestaSql = $this->Encuestas->find('all');
@@ -628,6 +636,13 @@ class EncuestasController extends AppController
 		}
 		
 		return $ipaddr;
+	}
+
+
+	public function descargadeinformacion() 
+	{
+	
+		
 	}
 
 }

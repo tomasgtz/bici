@@ -16,7 +16,7 @@
          <?= $this->Form->create($encuesta,['id'=> 'forma_encuesta', 'url' => '/Encuestas/add', 'class' => 'form-control']) ?>
         
                 <legend><?= __('Encuesta de seguimiento') ?></legend>
-                <table width='80%' border=1>
+                <table border="1">
                     <tr> 
 						<th>¿Utiliza bicileta?(propia, prestada, rentada)?* </th>
 						<td>
@@ -29,7 +29,7 @@
 					</tr>
                 </table>
                 <br/><br/>
-                <table width='80%' border=1>
+                <table border="1" class="text-izq">
 					<tr>
 						<th colspan="5">¿Con que frecuencia utilizas la bicicleta?</th>
 					</tr>
@@ -108,372 +108,373 @@
                 </table>
 
                 <br/><br/>
+				
+				<div id="si-bici">
+					<table border="1" class="text-izq">
+						<tr>
+							<th colspan="4">Indique la importancia que tienen las cuestiones siguientes en cuanto suponene dificultdes para desplazarte por este medio.</th>
+						</tr>
+			   
+						<tr>
+							<th>&nbsp; </th>
+							<th>Es un problema </th>
+							<th>Es un problema pero no importante </th>
+							<th>No es un problema </th>
+						</tr>
+			   
+						<tr>
+							<td>Sacar y meter la bicileta de mi domicilio</td>
+							<td>
+								<input type="radio" name="idd_sacar_meter_domicilio" id="idd_sacar_meter_domicilio" value="problema" required='required' class="form-check-input">
+							</td>
 
-				<table width='80%' border=1>
-					<tr>
-						<th colspan="4">Indique la importancia que tienen las cuestiones siguientes en cuanto suponene dificultdes para desplazarte por este medio.</th>
-					</tr>
-		   
-					<tr>
-						<th>&nbsp; </th>
-						<th>Es un problema </th>
-						<th>Es un problema pero no importante </th>
-						<th>No es un problema </th>
-					</tr>
-		   
-					<tr>
-						<td>Sacar y meter la bicileta de mi domicilio</td>
-						<td>
-							<input type="radio" name="idd_sacar_meter_domicilio" id="idd_sacar_meter_domicilio" value="problema" required='required' class="form-check-input">
-						</td>
+							<td>
+								<input type="radio" name="idd_sacar_meter_domicilio" id="idd_sacar_meter_domicilio2" value="problema_no_importante" required='required' class="form-check-input">
+							</td>
 
-						<td>
-							<input type="radio" name="idd_sacar_meter_domicilio" id="idd_sacar_meter_domicilio2" value="problema_no_importante" required='required' class="form-check-input">
-						</td>
+							<td>
+								<input type="radio" name="idd_sacar_meter_domicilio" id="idd_sacar_meter_domicilio3" value="no_problema" required='required' class="form-check-input">
+								<div id="error_idd_sacar_meter_domicilio">Seleccione una opción</div>
+							</td>
+						</tr>
 
-						<td>
-							<input type="radio" name="idd_sacar_meter_domicilio" id="idd_sacar_meter_domicilio3" value="no_problema" required='required' class="form-check-input">
-							<div id="error_idd_sacar_meter_domicilio">Seleccione una opción</div>
-						</td>
-					</tr>
+						<tr>
+							<td>No poder llevar la bicileta en los transportes públicos(Ruta,autobús,etc.)</td>
+							<td>
+								<input type="radio" name="idd_no_transporte_publico" id="idd_no_transporte_publico" value="problema" required='required' class="form-check-input">
+							</td>
 
-					<tr>
-						<td>No poder llevar la bicileta en los transportes públicos(Ruta,autobús,etc.)</td>
-						<td>
-							<input type="radio" name="idd_no_transporte_publico" id="idd_no_transporte_publico" value="problema" required='required' class="form-check-input">
-						</td>
+							<td>
+								<input type="radio" name="idd_no_transporte_publico" id="idd_no_transporte_publico2" value="problema_no_importante" required='required' class="form-check-input">
+							</td>
 
-						<td>
-							<input type="radio" name="idd_no_transporte_publico" id="idd_no_transporte_publico2" value="problema_no_importante" required='required' class="form-check-input">
-						</td>
+							<td>
+								<input type="radio" name="idd_no_transporte_publico" id="idd_no_transporte_publico3" value="no_problema" required='required' class="form-check-input">
+								<div id="error_idd_no_transporte_publico">Seleccione una opción</div>
+							</td>
+						</tr>
 
-						<td>
-							<input type="radio" name="idd_no_transporte_publico" id="idd_no_transporte_publico3" value="no_problema" required='required' class="form-check-input">
-							<div id="error_idd_no_transporte_publico">Seleccione una opción</div>
-						</td>
-					</tr>
+						<tr>
+							<td>Peligro de robos cuando la dejo estacionada.</td>
+							<td>
+								<input type="radio" name="idd_robo_estacionada" id="idd_robo_estacionada" value="problema" required='required' class="form-check-input">
+							</td>
 
-					<tr>
-						<td>Peligro de robos cuando la dejo estacionada.</td>
-						<td>
-							<input type="radio" name="idd_robo_estacionada" id="idd_robo_estacionada" value="problema" required='required' class="form-check-input">
-						</td>
+							<td>
+								<input type="radio" name="idd_robo_estacionada" id="idd_robo_estacionada2" value="problema_no_importante" required='required' class="form-check-input">
+							</td>
 
-						<td>
-							<input type="radio" name="idd_robo_estacionada" id="idd_robo_estacionada2" value="problema_no_importante" required='required' class="form-check-input">
-						</td>
+							<td>
+								<input type="radio" name="idd_robo_estacionada" id="idd_robo_estacionada3" value="no_problema" required='required' class="form-check-input">
+								<div id="error_idd_robo_estacionada">Seleccione una opción</div>
+							</td>
+						</tr>
 
-						<td>
-							<input type="radio" name="idd_robo_estacionada" id="idd_robo_estacionada3" value="no_problema" required='required' class="form-check-input">
-							<div id="error_idd_robo_estacionada">Seleccione una opción</div>
-						</td>
-					</tr>
+						<tr>
+							<td>Dificultad para dejarla estacionada en un lugar seguro fuera de casa</td>
+							<td>
+								<input type="radio" name="idd_dificultad_estacionada_seguro" id="idd_dificultad_estacionada_seguro" value="problema" required='required' class="form-check-input">
+							</td>
 
-					<tr>
-						<td>Dificultad para dejarla estacionada en un lugar seguro fuera de casa</td>
-						<td>
-							<input type="radio" name="idd_dificultad_estacionada_seguro" id="idd_dificultad_estacionada_seguro" value="problema" required='required' class="form-check-input">
-						</td>
+							<td>
+								<input type="radio" name="idd_dificultad_estacionada_seguro" id="idd_dificultad_estacionada_seguro2" value="problema_no_importante" required='required' class="form-check-input">
+							</td>
 
-						<td>
-							<input type="radio" name="idd_dificultad_estacionada_seguro" id="idd_dificultad_estacionada_seguro2" value="problema_no_importante" required='required' class="form-check-input">
-						</td>
+							<td>
+								<input type="radio" name="idd_dificultad_estacionada_seguro" id="idd_dificultad_estacionada_seguro3" value="no_problema" required='required' class="form-check-input">
+								<div id="error_idd_dificultad_estacionada_seguro">Seleccione una opción</div>
+							</td>
+						</tr>
+						
+						<tr>
+							<td>Falta de ciclovía (Calles mal diseñadas)</td>
+							<td>
+								<input type="radio" name="idd_falta_ciclovia" id="idd_falta_ciclovia" value="problema" required='required' class="form-check-input">
+							</td>
 
-						<td>
-							<input type="radio" name="idd_dificultad_estacionada_seguro" id="idd_dificultad_estacionada_seguro3" value="no_problema" required='required' class="form-check-input">
-							<div id="error_idd_dificultad_estacionada_seguro">Seleccione una opción</div>
-						</td>
-					</tr>
-					
-					<tr>
-						<td>Falta de ciclovía (Calles mal diseñadas)</td>
-						<td>
-							<input type="radio" name="idd_falta_ciclovia" id="idd_falta_ciclovia" value="problema" required='required' class="form-check-input">
-						</td>
+							<td>
+								<input type="radio" name="idd_falta_ciclovia" id="idd_falta_ciclovia2" value="problema_no_importante" required='required' class="form-check-input">
+							</td>
 
-						<td>
-							<input type="radio" name="idd_falta_ciclovia" id="idd_falta_ciclovia2" value="problema_no_importante" required='required' class="form-check-input">
-						</td>
+							<td>
+								<input type="radio" name="idd_falta_ciclovia" id="idd_falta_ciclovia3" value="no_problema" required='required' class="form-check-input">
+								<div id="error_idd_falta_ciclovia">Seleccione una opción</div>
+							</td>
+						</tr>
 
-						<td>
-							<input type="radio" name="idd_falta_ciclovia" id="idd_falta_ciclovia3" value="no_problema" required='required' class="form-check-input">
-							<div id="error_idd_falta_ciclovia">Seleccione una opción</div>
-						</td>
-					</tr>
+						<tr>
+							<td>Vías con alto flujo vehicular</td>
+							<td>
+								<input type="radio" name="idd_vias_alto_flujo" id="idd_vias_alto_flujo" value="problema" required='required' class="form-check-input">
+							</td>
 
-					<tr>
-						<td>Vías con alto flujo vehicular</td>
-						<td>
-							<input type="radio" name="idd_vias_alto_flujo" id="idd_vias_alto_flujo" value="problema" required='required' class="form-check-input">
-						</td>
+							<td>
+								<input type="radio" name="idd_vias_alto_flujo" id="idd_vias_alto_flujo2" value="problema_no_importante" required='required' class="form-check-input">
+							</td>
 
-						<td>
-							<input type="radio" name="idd_vias_alto_flujo" id="idd_vias_alto_flujo2" value="problema_no_importante" required='required' class="form-check-input">
-						</td>
+							<td>
+								<input type="radio" name="idd_vias_alto_flujo" id="idd_vias_alto_flujo3" value="no_problema" required='required' class="form-check-input">
+								<div id="error_idd_vias_alto_flujo">Seleccione una opción</div>
+							</td>
+						</tr>
 
-						<td>
-							<input type="radio" name="idd_vias_alto_flujo" id="idd_vias_alto_flujo3" value="no_problema" required='required' class="form-check-input">
-							<div id="error_idd_vias_alto_flujo">Seleccione una opción</div>
-						</td>
-					</tr>
+						<tr>
+							<td>La invasión de ciclovías por peatones y coches</td>
+							<td>
+								<input type="radio" name="idd_invacion_ciclovias_peatones_coches" id="idd_invacion_ciclovias_peatones_coches" value="problema" required='required' class="form-check-input">
+							</td>
 
-					<tr>
-						<td>La invasión de ciclovías por peatones y coches</td>
-						<td>
-							<input type="radio" name="idd_invacion_ciclovias_peatones_coches" id="idd_invacion_ciclovias_peatones_coches" value="problema" required='required' class="form-check-input">
-						</td>
+							<td>
+								<input type="radio" name="idd_invacion_ciclovias_peatones_coches" id="idd_invacion_ciclovias_peatones_coches2" value="problema_no_importante" required='required' class="form-check-input">
+							</td>
 
-						<td>
-							<input type="radio" name="idd_invacion_ciclovias_peatones_coches" id="idd_invacion_ciclovias_peatones_coches2" value="problema_no_importante" required='required' class="form-check-input">
-						</td>
+							<td>
+								<input type="radio" name="idd_invacion_ciclovias_peatones_coches" id="idd_invacion_ciclovias_peatones_coches3" value="no_problema" required='required' class="form-check-input">
+								<div id="error_idd_invacion_ciclovias_peatones_coches">Seleccione una opción</div>
+							</td>
+						</tr>
 
-						<td>
-							<input type="radio" name="idd_invacion_ciclovias_peatones_coches" id="idd_invacion_ciclovias_peatones_coches3" value="no_problema" required='required' class="form-check-input">
-							<div id="error_idd_invacion_ciclovias_peatones_coches">Seleccione una opción</div>
-						</td>
-					</tr>
+						<tr>
+							<td>Conflictos con los conductores de los automoviles,motos o autobuses, que no respetan a los ciclistas</td>
+							<td>
+								<input type="radio" name="idd_conflictos_conductores_automoviles_motos_autobuses" id="idd_conflictos_conductores_automoviles_motos_autobuses" value="problema" required='required' class="form-check-input">
+							</td>
 
-					<tr>
-						<td>Conflictos con los conductores de los automoviles,motos o autobuses, que no respetan a los ciclistas</td>
-						<td>
-							<input type="radio" name="idd_conflictos_conductores_automoviles_motos_autobuses" id="idd_conflictos_conductores_automoviles_motos_autobuses" value="problema" required='required' class="form-check-input">
-						</td>
+							<td>
+								<input type="radio" name="idd_conflictos_conductores_automoviles_motos_autobuses" id="idd_conflictos_conductores_automoviles_motos_autobuses2" value="problema_no_importante" required='required' class="form-check-input">
+							</td>
 
-						<td>
-							<input type="radio" name="idd_conflictos_conductores_automoviles_motos_autobuses" id="idd_conflictos_conductores_automoviles_motos_autobuses2" value="problema_no_importante" required='required' class="form-check-input">
-						</td>
+							<td>
+								<input type="radio" name="idd_conflictos_conductores_automoviles_motos_autobuses" id="idd_conflictos_conductores_automoviles_motos_autobuses3" value="no_problema" required='required' class="form-check-input">
+								<div id="error_idd_conflictos_conductores_automoviles_motos_autobuses">Seleccione una opción</div>
+							</td>
+						</tr>
 
-						<td>
-							<input type="radio" name="idd_conflictos_conductores_automoviles_motos_autobuses" id="idd_conflictos_conductores_automoviles_motos_autobuses3" value="no_problema" required='required' class="form-check-input">
-							<div id="error_idd_conflictos_conductores_automoviles_motos_autobuses">Seleccione una opción</div>
-						</td>
-					</tr>
+						<tr>
+							<td>Conflicto con los peatones, que no respetan a los ciclistas</td>
+							<td>
+								<input type="radio" name="idd_conflictos_peatones_no_respetan" id="idd_conflictos_peatones_no_respetan" value="problema" required='required' class="form-check-input">
+							</td>
 
-					<tr>
-						<td>Conflicto con los peatones, que no respetan a los ciclistas</td>
-						<td>
-							<input type="radio" name="idd_conflictos_peatones_no_respetan" id="idd_conflictos_peatones_no_respetan" value="problema" required='required' class="form-check-input">
-						</td>
+							<td>
+								<input type="radio" name="idd_conflictos_peatones_no_respetan" id="idd_conflictos_peatones_no_respetan2" value="problema_no_importante" required='required' class="form-check-input">
+							</td>
 
-						<td>
-							<input type="radio" name="idd_conflictos_peatones_no_respetan" id="idd_conflictos_peatones_no_respetan2" value="problema_no_importante" required='required' class="form-check-input">
-						</td>
+							<td>
+								<input type="radio" name="idd_conflictos_peatones_no_respetan" id="idd_conflictos_peatones_no_respetan3" value="no_problema" required='required' class="form-check-input">
+								<div id="error_idd_conflictos_peatones_no_respetan">Seleccione una opción</div>
+							</td>
+						</tr>
 
-						<td>
-							<input type="radio" name="idd_conflictos_peatones_no_respetan" id="idd_conflictos_peatones_no_respetan3" value="no_problema" required='required' class="form-check-input">
-							<div id="error_idd_conflictos_peatones_no_respetan">Seleccione una opción</div>
-						</td>
-					</tr>
+						<tr>
+							<td>No conocer bien las normas para circular, las señales, direcciones de las calzadas, etc</td>
+							<td>
+								<input type="radio" name="idd_no_conocer_normas" id="idd_no_conocer_normas" value="problema" required='required' class="form-check-input">
+							</td>
 
-					<tr>
-						<td>No conocer bien las normas para circular, las señales, direcciones de las calzadas, etc</td>
-						<td>
-							<input type="radio" name="idd_no_conocer_normas" id="idd_no_conocer_normas" value="problema" required='required' class="form-check-input">
-						</td>
+							<td>
+								<input type="radio" name="idd_no_conocer_normas" id="idd_no_conocer_normas2" value="problema_no_importante" required='required' class="form-check-input">
+							</td>
 
-						<td>
-							<input type="radio" name="idd_no_conocer_normas" id="idd_no_conocer_normas2" value="problema_no_importante" required='required' class="form-check-input">
-						</td>
+							<td>
+								<input type="radio" name="idd_no_conocer_normas" id="idd_no_conocer_normas3" value="no_problema" required='required' class="form-check-input">
+								<div id="error_idd_no_conocer_normas">Seleccione una opción</div>
+							</td>
+						</tr>
 
-						<td>
-							<input type="radio" name="idd_no_conocer_normas" id="idd_no_conocer_normas3" value="no_problema" required='required' class="form-check-input">
-							<div id="error_idd_no_conocer_normas">Seleccione una opción</div>
-						</td>
-					</tr>
+						<tr>
+							<td>Conflictos con otros ciclistas.</td>
+							<td>
+								<input type="radio" name="idd_conflictos_otros_ciclistas" id="idd_conflictos_otros_ciclistas" value="problema" required='required' class="form-check-input">
+							</td>
 
-					<tr>
-						<td>Conflictos con otros ciclistas.</td>
-						<td>
-							<input type="radio" name="idd_conflictos_otros_ciclistas" id="idd_conflictos_otros_ciclistas" value="problema" required='required' class="form-check-input">
-						</td>
+							<td>
+								<input type="radio" name="idd_conflictos_otros_ciclistas" id="idd_conflictos_otros_ciclistas2" value="problema_no_importante" required='required' class="form-check-input">
+							</td>
 
-						<td>
-							<input type="radio" name="idd_conflictos_otros_ciclistas" id="idd_conflictos_otros_ciclistas2" value="problema_no_importante" required='required' class="form-check-input">
-						</td>
+							<td>
+								<input type="radio" name="idd_conflictos_otros_ciclistas" id="idd_conflictos_otros_ciclistas3" value="no_problema" required='required' class="form-check-input">
+								<div id="error_idd_conflictos_otros_ciclistas">Seleccione una opción</div>
+							</td>
+						</tr>
 
-						<td>
-							<input type="radio" name="idd_conflictos_otros_ciclistas" id="idd_conflictos_otros_ciclistas3" value="no_problema" required='required' class="form-check-input">
-							<div id="error_idd_conflictos_otros_ciclistas">Seleccione una opción</div>
-						</td>
-					</tr>
+						<tr>
+							<td>El peligro que supone la circulación en la ciudad.</td>
+							<td>
+								<input type="radio" name="idd_peligro_circulacion_ciudad" id="idd_peligro_circulacion_ciudad" value="problema" required='required' class="form-check-input">
+							</td>
 
-					<tr>
-						<td>El peligro que supone la circulación en la ciudad.</td>
-						<td>
-							<input type="radio" name="idd_peligro_circulacion_ciudad" id="idd_peligro_circulacion_ciudad" value="problema" required='required' class="form-check-input">
-						</td>
+							<td>
+								<input type="radio" name="idd_peligro_circulacion_ciudad" id="idd_peligro_circulacion_ciudad2" value="problema_no_importante" required='required' class="form-check-input">
+							</td>
 
-						<td>
-							<input type="radio" name="idd_peligro_circulacion_ciudad" id="idd_peligro_circulacion_ciudad2" value="problema_no_importante" required='required' class="form-check-input">
-						</td>
-
-						<td>
-							<input type="radio" name="idd_peligro_circulacion_ciudad" id="idd_peligro_circulacion_ciudad3" value="no_problema" required='required' class="form-check-input">
-							<div id="error_idd_peligro_circulacion_ciudad">Seleccione una opción</div>
-						</td>
-					</tr>
-                </table>
-
+							<td>
+								<input type="radio" name="idd_peligro_circulacion_ciudad" id="idd_peligro_circulacion_ciudad3" value="no_problema" required='required' class="form-check-input">
+								<div id="error_idd_peligro_circulacion_ciudad">Seleccione una opción</div>
+							</td>
+						</tr>
+					</table>
+				</div>
                 <br/><br/>
 
+				<div id="no-bici">
+					<table border="1" class="text-izq">
+						<tr>
+							<th colspan="4">Si no eres usuario de bicleta, indica la importancia que para ti tienen las cuestiones siguientes en cuanto suponen dificultades para desplazarse por este medio.</th>
+						</tr>
+			   
+						<tr>
+							<th>&nbsp; </th>
+							<th>Es un problema </th>
+							<th>Es un problema pero no importante </th>
+							<th>No es un problema </th>
+						</tr>
+			   
+						<tr>
+							<td>No disponer de bicicleta.</td>
+							<td>
+								<input type="radio" name="nub_no_disponer_bicicleta" id="nub_no_disponer_bicicleta" value="problema" required='required' class="form-check-input">
+							</td>
 
-				<table width='80%' border=1>
-					<tr>
-						<th colspan="4">Si no eres usuario de bicleta, indica la importancia que para ti tienen las cuestiones siguientes en cuanto suponen dificultades para desplazarse por este medio.</th>
-					</tr>
-		   
-					<tr>
-						<th>&nbsp; </th>
-						<th>Es un problema </th>
-						<th>Es un problema pero no importante </th>
-						<th>No es un problema </th>
-					</tr>
-		   
-					<tr>
-						<td>No disponer de bicicleta.</td>
-						<td>
-							<input type="radio" name="nub_no_disponer_bicicleta" id="nub_no_disponer_bicicleta" value="problema" required='required' class="form-check-input">
-						</td>
+							<td>
+								<input type="radio" name="nub_no_disponer_bicicleta" id="nub_no_disponer_bicicleta2" value="problema_no_importante" required='required' class="form-check-input">
+							</td>
 
-						<td>
-							<input type="radio" name="nub_no_disponer_bicicleta" id="nub_no_disponer_bicicleta2" value="problema_no_importante" required='required' class="form-check-input">
-						</td>
+							<td>
+								<input type="radio" name="nub_no_disponer_bicicleta" id="nub_no_disponer_bicicleta3" value="no_problema" required='required' class="form-check-input">
+								<div id="error_nub_no_disponer_bicicleta">Seleccione una opción</div>
+							</td>
+						</tr>
 
-						<td>
-							<input type="radio" name="nub_no_disponer_bicicleta" id="nub_no_disponer_bicicleta3" value="no_problema" required='required' class="form-check-input">
-							<div id="error_nub_no_disponer_bicicleta">Seleccione una opción</div>
-						</td>
-					</tr>
+						<tr>
+							<td>No tener condición fisica adecuada para rodar en bicicleta</td>
+							<td>
+								<input type="radio" name="nub_no_condicion_fisica" id="nub_no_condicion_fisica" value="problema" required='required' class="form-check-input">
+							</td>
 
-					<tr>
-						<td>No tener condición fisica adecuada para rodar en bicicleta</td>
-						<td>
-							<input type="radio" name="nub_no_condicion_fisica" id="nub_no_condicion_fisica" value="problema" required='required' class="form-check-input">
-						</td>
+							<td>
+								<input type="radio" name="nub_no_condicion_fisica" id="nub_no_condicion_fisica2" value="problema_no_importante" required='required' class="form-check-input">
+							</td>
 
-						<td>
-							<input type="radio" name="nub_no_condicion_fisica" id="nub_no_condicion_fisica2" value="problema_no_importante" required='required' class="form-check-input">
-						</td>
+							<td>
+								<input type="radio" name="nub_no_condicion_fisica" id="nub_no_condicion_fisica3" value="no_problema" required='required' class="form-check-input">
+								<div id="error_nub_no_condicion_fisica">Seleccione una opción</div>
+							</td>
+						</tr>
 
-						<td>
-							<input type="radio" name="nub_no_condicion_fisica" id="nub_no_condicion_fisica3" value="no_problema" required='required' class="form-check-input">
-							<div id="error_nub_no_condicion_fisica">Seleccione una opción</div>
-						</td>
-					</tr>
+						<tr>
+							<td>Sacar y meter la bicicleta de mi domicilio</td>
+							<td>
+								<input type="radio" name="nub_sacar_meter_bicileta" id="nub_sacar_meter_bicileta" value="problema" required='required' class="form-check-input">
+							</td>
 
-					<tr>
-						<td>Sacar y meter la bicicleta de mi domicilio</td>
-						<td>
-							<input type="radio" name="nub_sacar_meter_bicileta" id="nub_sacar_meter_bicileta" value="problema" required='required' class="form-check-input">
-						</td>
+							<td>
+								<input type="radio" name="nub_sacar_meter_bicileta" id="nub_sacar_meter_bicileta2" value="problema_no_importante" required='required' class="form-check-input">
+							</td>
 
-						<td>
-							<input type="radio" name="nub_sacar_meter_bicileta" id="nub_sacar_meter_bicileta2" value="problema_no_importante" required='required' class="form-check-input">
-						</td>
+							<td>
+								<input type="radio" name="nub_sacar_meter_bicileta" id="nub_sacar_meter_bicileta3" value="no_problema" required='required' class="form-check-input">
+								<div id="error_nub_sacar_meter_bicileta">Seleccione una opción</div>
+							</td>
+						</tr>
 
-						<td>
-							<input type="radio" name="nub_sacar_meter_bicileta" id="nub_sacar_meter_bicileta3" value="no_problema" required='required' class="form-check-input">
-							<div id="error_nub_sacar_meter_bicileta">Seleccione una opción</div>
-						</td>
-					</tr>
+						<tr>
+							<td>La imagen social poco adecuada que daria desplazarme en bicicleta, teniendo en cuenta mi edad o situación.</td>
+							<td>
+								<input type="radio" name="nub_imagen_social" id="nub_imagen_social" value="problema" required='required' class="form-check-input">
+							</td>
 
-					<tr>
-						<td>La imagen social poco adecuada que daria desplazarme en bicicleta, teniendo en cuenta mi edad o situación.</td>
-						<td>
-							<input type="radio" name="nub_imagen_social" id="nub_imagen_social" value="problema" required='required' class="form-check-input">
-						</td>
+							<td>
+								<input type="radio" name="nub_imagen_social" id="nub_imagen_social2" value="problema_no_importante" required='required' class="form-check-input">
+							</td>
 
-						<td>
-							<input type="radio" name="nub_imagen_social" id="nub_imagen_social2" value="problema_no_importante" required='required' class="form-check-input">
-						</td>
+							<td>
+								<input type="radio" name="nub_imagen_social" id="nub_imagen_social3" value="no_problema" required='required' class="form-check-input">
+								<div id="error_nub_imagen_social">Seleccione una opción</div>
+							</td>
+						</tr>
 
-						<td>
-							<input type="radio" name="nub_imagen_social" id="nub_imagen_social3" value="no_problema" required='required' class="form-check-input">
-							<div id="error_nub_imagen_social">Seleccione una opción</div>
-						</td>
-					</tr>
+						<tr>
+							<td>No poder llevar la bicleta en los transportes publicos(metrobus, autobus,etc)</td>
+							<td>
+								<input type="radio" name="nub_no_poder_llevar_bici_transporte" id="nub_no_poder_llevar_bici_transporte" value="problema" required='required' class="form-check-input">
+							</td>
 
-					<tr>
-						<td>No poder llevar la bicleta en los transportes publicos(metrobus, autobus,etc)</td>
-						<td>
-							<input type="radio" name="nub_no_poder_llevar_bici_transporte" id="nub_no_poder_llevar_bici_transporte" value="problema" required='required' class="form-check-input">
-						</td>
+							<td>
+								<input type="radio" name="nub_no_poder_llevar_bici_transporte" id="nub_no_poder_llevar_bici_transporte2" value="problema_no_importante" required='required' class="form-check-input">
+							</td>
 
-						<td>
-							<input type="radio" name="nub_no_poder_llevar_bici_transporte" id="nub_no_poder_llevar_bici_transporte2" value="problema_no_importante" required='required' class="form-check-input">
-						</td>
+							<td>
+								<input type="radio" name="nub_no_poder_llevar_bici_transporte" id="nub_no_poder_llevar_bici_transporte3" value="no_problema" required='required' class="form-check-input">
+								<div id="error_nub_no_poder_llevar_bici_transporte">Seleccione una opción</div>
+							</td>
+						</tr>
 
-						<td>
-							<input type="radio" name="nub_no_poder_llevar_bici_transporte" id="nub_no_poder_llevar_bici_transporte3" value="no_problema" required='required' class="form-check-input">
-							<div id="error_nub_no_poder_llevar_bici_transporte">Seleccione una opción</div>
-						</td>
-					</tr>
+						<tr>
+							<td>Conflictos con los conductores de los automoviles, motos o autobuses que no respetan a los ciclistas</td>
+							<td>
+								<input type="radio" name="nub_conflictos_conductores_autobuses" id="nub_conflictos_conductores_autobuses" value="problema" required='required' class="form-check-input">
+							</td>
 
-					<tr>
-						<td>Conflictos con los conductores de los automoviles, motos o autobuses que no respetan a los ciclistas</td>
-						<td>
-							<input type="radio" name="nub_conflictos_conductores_autobuses" id="nub_conflictos_conductores_autobuses" value="problema" required='required' class="form-check-input">
-						</td>
+							<td>
+								<input type="radio" name="nub_conflictos_conductores_autobuses" id="nub_conflictos_conductores_autobuses2" value="problema_no_importante" required='required' class="form-check-input">
+							</td>
 
-						<td>
-							<input type="radio" name="nub_conflictos_conductores_autobuses" id="nub_conflictos_conductores_autobuses2" value="problema_no_importante" required='required' class="form-check-input">
-						</td>
+							<td>
+								<input type="radio" name="nub_conflictos_conductores_autobuses" id="nub_conflictos_conductores_autobuses3" value="no_problema" required='required' class="form-check-input">
+								<div id="error_nub_conflictos_conductores_autobuses">Seleccione una opción</div>
+							</td>
+						</tr>
 
-						<td>
-							<input type="radio" name="nub_conflictos_conductores_autobuses" id="nub_conflictos_conductores_autobuses3" value="no_problema" required='required' class="form-check-input">
-							<div id="error_nub_conflictos_conductores_autobuses">Seleccione una opción</div>
-						</td>
-					</tr>
+						<tr>
+							<td>Conflictos con los peatones que no respetan a los ciclistas</td>
+							<td>
+								<input type="radio" name="nub_conflictos_peatones" id="nub_conflictos_peatones" value="problema" required='required' class="form-check-input">
+							</td>
 
-					<tr>
-						<td>Conflictos con los peatones que no respetan a los ciclistas</td>
-						<td>
-							<input type="radio" name="nub_conflictos_peatones" id="nub_conflictos_peatones" value="problema" required='required' class="form-check-input">
-						</td>
+							<td>
+								<input type="radio" name="nub_conflictos_peatones" id="nub_conflictos_peatones2" value="problema_no_importante" required='required' class="form-check-input">
+							</td>
 
-						<td>
-							<input type="radio" name="nub_conflictos_peatones" id="nub_conflictos_peatones2" value="problema_no_importante" required='required' class="form-check-input">
-						</td>
+							<td>
+								<input type="radio" name="nub_conflictos_peatones" id="nub_conflictos_peatones3" value="no_problema" required='required' class="form-check-input">
+								<div id="error_nub_conflictos_peatones">Seleccione una opción</div>
+							</td>
+						</tr>
 
-						<td>
-							<input type="radio" name="nub_conflictos_peatones" id="nub_conflictos_peatones3" value="no_problema" required='required' class="form-check-input">
-							<div id="error_nub_conflictos_peatones">Seleccione una opción</div>
-						</td>
-					</tr>
+						<tr>
+							<td>Conflictos con otros ciclistas</td>
+							<td>
+								<input type="radio" name="nub_conflictos_otros_ciclistas" id="nub_conflictos_otros_ciclistas" value="problema" required='required' class="form-check-input">
+							</td>
 
-					<tr>
-						<td>Conflictos con otros ciclistas</td>
-						<td>
-							<input type="radio" name="nub_conflictos_otros_ciclistas" id="nub_conflictos_otros_ciclistas" value="problema" required='required' class="form-check-input">
-						</td>
+							<td>
+								<input type="radio" name="nub_conflictos_otros_ciclistas" id="nub_conflictos_otros_ciclistas2" value="problema_no_importante" required='required' class="form-check-input">
+							</td>
 
-						<td>
-							<input type="radio" name="nub_conflictos_otros_ciclistas" id="nub_conflictos_otros_ciclistas2" value="problema_no_importante" required='required' class="form-check-input">
-						</td>
+							<td>
+								<input type="radio" name="nub_conflictos_otros_ciclistas" id="nub_conflictos_otros_ciclistas3" value="no_problema" required='required' class="form-check-input">
+								<div id="error_nub_conflictos_otros_ciclistas">Seleccione una opción</div>
+							</td>
+						</tr>
 
-						<td>
-							<input type="radio" name="nub_conflictos_otros_ciclistas" id="nub_conflictos_otros_ciclistas3" value="no_problema" required='required' class="form-check-input">
-							<div id="error_nub_conflictos_otros_ciclistas">Seleccione una opción</div>
-						</td>
-					</tr>
+						<tr>
+							<td>El peligro que supone la circulación en la ciudad.</td>
+							<td>
+								<input type="radio" name="nub_peligro_circulacion_ciudad" id="nub_peligro_circulacion_ciudad" value="problema" required='required' class="form-check-input">
+							</td>
 
-					<tr>
-						<td>El peligro que supone la circulación en la ciudad.</td>
-						<td>
-							<input type="radio" name="nub_peligro_circulacion_ciudad" id="nub_peligro_circulacion_ciudad" value="problema" required='required' class="form-check-input">
-						</td>
+							<td>
+								<input type="radio" name="nub_peligro_circulacion_ciudad" id="nub_peligro_circulacion_ciudad2" value="problema_no_importante" required='required' class="form-check-input">
+							</td>
 
-						<td>
-							<input type="radio" name="nub_peligro_circulacion_ciudad" id="nub_peligro_circulacion_ciudad2" value="problema_no_importante" required='required' class="form-check-input">
-						</td>
-
-						<td>
-							<input type="radio" name="nub_peligro_circulacion_ciudad" id="nub_peligro_circulacion_ciudad3" value="no_problema" required='required' class="form-check-input">
-							<div id="error_nub_peligro_circulacion_ciudad">Seleccione una opción</div>
-						</td>
-					</tr>
-                </table>
-
+							<td>
+								<input type="radio" name="nub_peligro_circulacion_ciudad" id="nub_peligro_circulacion_ciudad3" value="no_problema" required='required' class="form-check-input">
+								<div id="error_nub_peligro_circulacion_ciudad">Seleccione una opción</div>
+							</td>
+						</tr>
+					</table>
+				</div>
                 <br/><br/>
 
                     <table width="80%">
@@ -525,14 +526,14 @@
 					<div class="row">
 						<div class="col-md-2 col-lg-2 col-xl-2 col-xxl-2"> </div>
 						<div class="col-md-8 col-lg-8 col-xl-8 col-xxl-8">
-							<div id="maps"></div>
-							<div class="col-md-12">
+							<div id="maps" style="height: 400px"></div>
+							<div class="col-md-12 text-izq">
 								<ul id="geoData">
-									<li>Direccion: <span id="location"></span></li>
-									<li>CP: <span id="postal_code"></span></li>
-									<li>Pais: <span id="country"></span></li>
-									<li>Latitud: <span id="lat"></span></li>
-									<li>Longitud: <span id="lon"></span></li>
+									<li class="geo-data">Direcci&oacute;n: <span id="location"></span></li>
+									<li class="geo-data">CP: <span id="postal_code"></span></li>
+									<li class="geo-data">Pa&iacute;s: <span id="country"></span></li>
+									<li class="geo-data">Latitud: <span id="lat"></span></li>
+									<li class="geo-data">Longitud: <span id="lon"></span></li>
 								</ul>
 							</div>
 						</div>
@@ -553,17 +554,38 @@
 
 
 <script>
-$('#forma_encuesta').on('submit', function() {
-   
-    let coordenadas  = document.querySelector("#coordenadas");
 
-    if( coordenadas.value == '' ){
-        document.querySelector("#error_coordenadas").style.display='block';  
-        document.querySelector("#error_coordenadas").onfocus;
-          return false;
-    }else{
-        document.querySelector("#error_coordenadas").style.display='none'; 
-    }
+$(function() {
+	$('#utiliza_bicileta-si').on('click', function() {
+		$('#si-bici').show();
+		$('#no-bici').hide();
+		
+		$('#si-bici input').prop('required',true);
+		$('#no-bici input').prop('required',false);
+		
+	});
+
+	$('#utiliza_bicileta-no').on('click', function() {
+		$('#si-bici').hide();
+		$('#no-bici').show();
+
+		$('#si-bici input').prop('required',false);
+		$('#no-bici input').prop('required',true);
+	});
+
+
+	$('#forma_encuesta').on('submit', function() {
+	   
+		let coordenadas  = document.querySelector("#coordenadas");
+
+		if( coordenadas.value == '' ){
+			document.querySelector("#error_coordenadas").style.display='block';  
+			document.querySelector("#error_coordenadas").onfocus;
+			  return false;
+		}else{
+			document.querySelector("#error_coordenadas").style.display='none'; 
+		}
+	});
+
 });
-
 </script>

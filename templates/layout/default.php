@@ -85,7 +85,10 @@
 
 				</li>
 				<li class="nav-item">					
-					<a href="#usuarios" class='nav-link nav-active'>Usuarios</a>
+					<?php echo $this->Html->link('Usuarios', [
+						'controller' => 'Pages',
+						'action' => 'home#usuarios'
+					], ['class' => 'nav-link nav-active']); ?>
 
 				</li>
 				<li class="nav-item dropdown" id="myDropdown">
@@ -131,7 +134,7 @@
 						<li><a class="dropdown-item" href="#">
 							
 							<?php echo $this->Html->link('Descarga de información', [
-								'controller' => 'Pages',
+								'controller' => 'Encuestas',
 								'action' => 'descargadeinformacion'
 							], ['class' => 'dropdown-item']); ?>
 

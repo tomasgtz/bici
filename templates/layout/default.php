@@ -134,7 +134,7 @@
 						<li><a class="dropdown-item" href="#">
 							
 							<?php echo $this->Html->link('Descarga de información', [
-								'controller' => 'Encuestas',
+								'controller' => 'Pages',
 								'action' => 'descargadeinformacion'
 							], ['class' => 'dropdown-item']); ?>
 
@@ -171,9 +171,7 @@
 		</div>
     </main>
 
-	<footer class="my-footer align-bottom mt-auto">
-		<div class="mt-2 mb-2">&copy;Copyright 2021 Copyright.mx - Todos los derechos reservados | Aviso de privacidad</div>
-	</footer>
+	
 
  <script>
 	 document.addEventListener("DOMContentLoaded", function(){
@@ -209,5 +207,10 @@
 
 }); 
  </script>
+
+	<footer class="my-footer align-bottom mt-auto">
+		<div class="mt-2 mb-2">&copy;Copyright 2021 Copyright.mx - Todos los derechos reservados | Aviso de privacidad</div>
+	</footer>
+
 </body>
 </html>

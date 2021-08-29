@@ -641,8 +641,81 @@ class EncuestasController extends AppController
 
 	public function descargadeinformacion() 
 	{
-	
+		$registros = $this->Encuestas->find()->select([
+		'utiliza_bicileta',
+		'beneficios_considera',
+		'fub_ocio_deportiva',
+		'fub_transporte',
+		'fub_ir_trabajar',
+		'idd_sacar_meter_domicilio',
+		'idd_no_transporte_publico',
+		'idd_robo_estacionada',
+		'idd_dificultad_estacionada_seguro',
+		'idd_falta_ciclovia',
+		'idd_vias_alto_flujo',
+		'idd_invacion_ciclovias_peatones_coches',
+		'idd_conflictos_conductores_automoviles_motos_autobuses',
+		'idd_conflictos_peatones_no_respetan',
+		'idd_no_conocer_normas',
+		'idd_conflictos_otros_ciclistas',
+		'idd_peligro_circulacion_ciudad',
+		'nub_no_disponer_bicicleta',
+		'nub_no_condicion_fisica',
+		'nub_sacar_meter_bicileta',
+		'nub_imagen_social',
+		'nub_no_poder_llevar_bici_transporte',
+		'nub_conflictos_conductores_autobuses',
+		'nub_conflictos_peatones',
+		'nub_conflictos_otros_ciclistas',
+		'nub_peligro_circulacion_ciudad',
+		'created',
+		'coordenadas'
 		
+		]);
+		$registros->enableHydration(false);
+		$registros = $registros->toArray();
+		
+		$header = [	'Utiliza bicicleta', 
+					'Beneficios',
+					'Freq Uso Ocio', 
+					'Freq Uso Transporte',
+					'Freq Uso Trabajar',
+					'Imp. Sacar Meter domicilio',
+					'Imp. No llevar en t. publico',
+					'Imp. Robo estacionada',
+					'Imp. Dif estacionada seguro',
+					'Imp. Falta ciclovia',
+					'Imp. Vias Alto Flujo',
+					'Imp. Invasion ciclovias',
+					'Imp. Conflictos conductores',
+					'Imp. Conflictos peatones',
+					'Imp. No conocer normas',
+					'Imp. Conflictos ciclistas',
+					'Imp. Peligro cricular',
+					'No usa. disponer bicicleta',
+					'No usa. condicion fisica',
+					'No usa. Sacar Meter bicicleta',
+					'No usa. Imagen social',
+					'No usa. poder llevar',
+					'No usa. conflictos conductores',
+					'No usa. conflictos peatones',
+					'No usa. conflictos ciclistas',
+					'No usa. peligro circulacion',
+					'Fecha',
+					'Coordenadas'];
+
+		foreach($registros as $registro)
+		{
+			$data[] = $registro;
+		}
+		
+		$this->setResponse($this->getResponse()->withDownload('resultados_encuesta.csv'));
+		$this->set(compact('data'));
+		$this->viewBuilder()
+			->setClassName('CsvView.Csv')
+			->setOptions(['serialize' => 'data',
+						  'header' => $header]);
+
 	}
 
 }

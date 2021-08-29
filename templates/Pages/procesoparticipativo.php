@@ -156,9 +156,9 @@ use Cake\Http\Exception\NotFoundException;
 							</div>
 						</nav>
 						<div class="tab-content tabcontents" id="nav-tabContent">
-							<div class="tab-pane fade show scroll-section <?= $s1active; ?>" id="nav-resinfo" role="tabpanel" aria-labelledby="nav-resinfo-tab">
+							<div class="tab-pane fade show <?= $s1active; ?>" id="nav-resinfo" role="tabpanel" aria-labelledby="nav-resinfo-tab">
 								<div class="container-fluid">
-									<div class="scroll-section-in row">
+									<div class="row">
 										<div class="col-12 text-center">
 
 											<p class="tabcontentsheader"><i>&iquest;Cu&aacute;les fueron los principales resultados del proceso participativo?</i></p>

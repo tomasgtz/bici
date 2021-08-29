@@ -73,16 +73,16 @@ use Cake\Http\Exception\NotFoundException;
 <section id="como-funciona">
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-md-2 col-lg-3 col-xl-3 col-xxl-3"></div>
+			<div class="col-xl-2 col-xxl-2"></div>
 
-			<div class="col-xs-12 col-sm-12 col-md-8 col-lg-6 col-xl-6 col-xxl-6 espacio-izq espacio-arr text-center">
-				<p class="mi-titulo-blanco espacio-arr"><i>&iquest;C&oacute;mo funciona el Biciestacionamiento Masivo?</i></p>
-				<input class="btn btn-warning2" value="Paso 1"> <input class="btn btn-warning2" value="Paso 2"> <input class="btn btn-warning2" value="Paso 3">		
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-8 col-xxl-8 espacio-izq espacio-arr text-center">
+				<p class="mi-titulo-blanco espacio-arr"><i>&iquest;C&oacute;mo funciona el<br>Biciestacionamiento Masivo?</i></p>
+				<button class="btn btn-warning2">Paso 1</button> <button class="btn btn-warning2">Paso 2</button> <button class="btn btn-warning2">Paso 3</button>	
 				<br><br><br><br><br><br><br><br><br><br><br><br>
 				<input type="button" class="btn btn-warning2" name="" value="Registrarme" data-bs-toggle="modal" data-bs-target="#usuario-modal">
 			</div>
 
-			<div class="col-md-2 col-lg-3 col-xl-3 col-xxl-3"></div>
+			<div class="col-xl-2 col-xxl-2"></div>
 		</div>
 				
 		
@@ -173,7 +173,7 @@ use Cake\Http\Exception\NotFoundException;
 			<div class="col-md-2 col-lg-4 col-xl-4 col-xxl-4"></div>
 
 			<div class="col-xs-12 col-sm-12 col-md-8 col-lg-4 col-xl-4 col-xxl-4 espacio-izq espacio-arr text-center">
-				<p class="mi-titulo-blanco espacio-arr"><i>Vajes realizados</i></p>
+				<p class="mi-titulo-blanco espacio-arr"><i>Viajes realizados</i></p>
 
 				<div class="my-yellow-col">
 					<div class="numero-azul"> 0 </div>

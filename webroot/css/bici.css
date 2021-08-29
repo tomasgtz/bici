@@ -4,7 +4,11 @@ body {
 	background-image: url("../img/fondo_be.png") !important;
 	background-repeat: no-repeat !important;
 	background-position: right top !important;
+	margin: 0;
+	margin-bottom: 40px;
+	height:100%;
 }
+
 
 .top-nav-links,
 .side-nav,
@@ -98,8 +102,8 @@ th {
 
 a.nav-link {
 	color: #E0DD00;
-	font-size: 24px;
-	font-family: "Gotham Medium", Helvetica, Arial, sans-serif;
+	font-size: 20px;
+	font-family: Gotham, Helvetica, Arial, sans-serif;
 	padding:1rem !important;
 }
 
@@ -118,13 +122,18 @@ a.nav-link {
 
 }
 
+
 .my-footer {
-	background-color: #E0DD00;
+    background-color: #E0DD00;
 	text-align:center;
-	font-size: 14px;
-    bottom: 10;
+    text-almy-footergn: center;
+    font-size: 14px;
     width: 100%;
     height: 40px !important;
+    font-family: "AvenirBook" !important;
+	position: relative !important;
+	bottom: 0 !important;
+
 }
 
 
@@ -466,7 +475,7 @@ a.dropdown-item:hover {
 }
 
 .tabcontents {
-	height: 500px;
+	/* height: 500px; */
 	background-color: #F18627 !important;
 	color: white;
 	font-size: 22px;
@@ -527,9 +536,18 @@ a.link-caja, a.link-caja:focus, a.link-caja:active a.link-caja:hover, a.link-caj
        url("../font/Avenir Book.ttf") format('truetype');
 }
 
+@font-face {
+  font-family: 'Gotham';
+  src: local('GothamBook'),
+	   url('../font/GothamBook2.woff') format('woff'),
+       url('../font/GothamBook2.woff2') format('woff2'),
+       url('../font/GothamBook2.ttf') format('truetype');
+}
+
 .mi-texto {
-	color: white;
-	font-family: "AvenirBook" !important;
+    color: white;
+    font-family: "AvenirBook" !important;
+    font-size: 14px;
 }
 
 .mi-texto-naranja {
@@ -537,24 +555,26 @@ a.link-caja, a.link-caja:focus, a.link-caja:active a.link-caja:hover, a.link-caj
 	font-family: "AvenirBook" !important;
 }
 
+
 .mi-titulo {
-	color: #F18627;
-	font-size: 48px;
-	font-weight: bolder;
-	font-family: "AvenirBook" !important;
+    color: #F18627;
+    font-size: 35px;
+    font-weight: bolder;
+    font-family: "Gotham", AvenirBook !important;
 }
 
 .mi-titulo-blanco {
-	color: white;
-	font-size: 48px;
-	font-weight: bolder;
-	font-family: "AvenirBook" !important;
+    color: white;
+    font-size: 35px;
+    font-weight: bolder;
+    font-family: "Gotham" !important;
+    line-height: 35px;
 }
 
 .scroll-section {
-	height: 500px;
+	/* height: 500px; */
 	width: 100%;
-	overflow-y: scroll;
+	#overflow-y: scroll;
 }
 .scroll-section-in {
 	height: auto;
@@ -589,7 +609,7 @@ a.link-caja, a.link-caja:focus, a.link-caja:active a.link-caja:hover, a.link-caj
 	color: white !important;
 	font-style: italic;
 	font-weight: bolder;
-	font-size: 24px !important;
+	font-size: 20px !important;
 	margin: 2px;
 }
 
@@ -611,9 +631,10 @@ a.link-caja, a.link-caja:focus, a.link-caja:active a.link-caja:hover, a.link-caj
 	color: white !important;
 	font-style: italic;
 	font-weight: bolder;
-	font-size: 24px !important;
+	font-size: 20px !important;
 	background-color: #F18627 !important;
 	margin: 2px;
+	width: 240px !important;
 }
 
 .btn-warning2:hover {
@@ -638,6 +659,7 @@ a.link-caja, a.link-caja:focus, a.link-caja:active a.link-caja:hover, a.link-caj
 	font-family: "AvenirBook" !important;
 	font-size: 18px;
 	line-height: normal !important;
+	font-weight: bolder;
 }
 
 .center-1 {
@@ -715,3 +737,10 @@ a.link-caja, a.link-caja:focus, a.link-caja:active a.link-caja:hover, a.link-caj
 .geo-data {
 	font-size: 12px !important;
 }
+
+html {
+  min-height: 100%;
+  position: relative;
+  height:100%;
+}
+

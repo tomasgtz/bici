@@ -35,7 +35,7 @@ use Cake\Http\Exception\NotFoundException;
 
 				<?= $this->Html->link('Infografías', '/downloads/Infografias/Infografias_proceso_participativo.pptx') ?><br><br>
 
-				<?= $this->Html->link('Seguimiento', '/downloads/Seguimiento/base_de_datos_Seguimiento.rtf') ?><br><br>
+				<?= $this->Html->link('Seguimiento', '/Encuestas/descargadeinformacion') ?><br><br>
 				
 			</div>
 		</div>

@@ -16,11 +16,8 @@ declare(strict_types=1);
  */
 namespace App\Controller;
 
-use Cake\Core\Configure;
-use Cake\Http\Exception\ForbiddenException;
-use Cake\Http\Exception\NotFoundException;
-use Cake\Http\Response;
-use Cake\View\Exception\MissingTemplateException;
+use App\Model\Entity\Persona;
+
 
 /**
  * Static content controller
@@ -31,43 +28,82 @@ use Cake\View\Exception\MissingTemplateException;
  */
 class PagesController extends AppController
 {
-    /**
-     * Displays a view
-     *
-     * @param string ...$path Path segments.
-     * @return \Cake\Http\Response|null
-     * @throws \Cake\Http\Exception\ForbiddenException When a directory traversal attempt.
-     * @throws \Cake\View\Exception\MissingTemplateException When the view file could not
-     *   be found and in debug mode.
-     * @throws \Cake\Http\Exception\NotFoundException When the view file could not
-     *   be found and not in debug mode.
-     * @throws \Cake\View\Exception\MissingTemplateException In debug mode.
-     */
-    public function display(string ...$path): ?Response
+	public function initialize(): void {
+		
+		parent::initialize();
+
+	}
+
+    public function home()
     {
-        if (!$path) {
-            return $this->redirect('/');
-        }
-        if (in_array('..', $path, true) || in_array('.', $path, true)) {
-            throw new ForbiddenException();
-        }
-        $page = $subpage = null;
+		$persona = new Persona();
+		$personas = $this->loadModel('Personas');
+		
+		$query = $personas->find();
 
-        if (!empty($path[0])) {
-            $page = $path[0];
-        }
-        if (!empty($path[1])) {
-            $subpage = $path[1];
-        }
-        $this->set(compact('page', 'subpage'));
+		$query
+				->select(['sexo',
+						  'counter_sex' => $query->func()
+									->count('Personas.sexo')])
+				->group('sexo')
+				->order('sexo');
+        
+		$registered = $query->toArray();
+		$total_hombres = $total_mujeres = 0;
 
-        try {
-            return $this->render(implode('/', $path));
-        } catch (MissingTemplateException $exception) {
-            if (Configure::read('debug')) {
-                throw $exception;
-            }
-            throw new NotFoundException();
-        }
+		if ($registered[0]->counter_sex !== null)
+		{
+			if ($registered[0]->sexo == 'H')
+				$total_hombres = $registered[0]->counter_sex;
+			else
+				$total_mujeres = $registered[0]->counter_sex;
+		}
+
+		if ($registered[1]->counter_sex !== null)
+		{
+			if ($registered[1]->sexo == 'H')
+				$total_hombres = $registered[1]->counter_sex;
+			else
+				$total_mujeres = $registered[1]->counter_sex;
+		}
+
+        $this->set(compact('page', 'subpage', 'persona', 'total_hombres', 'total_mujeres'));
+
     }
+
+
+	public function procesoparticipativo($id)
+    {
+		$s1active = $s2active = $s3active = $s4active = '';
+
+		$gkey = env('GOOGLE_MAP_KEY', '');
+		
+		if ($id == 1) 
+		{
+			$s1active = 'active';
+		} 
+		else if ($id == 2) 
+		{
+			$s2active = 'active';
+		} 
+		else if ($id == 3) 
+		{
+			$s3active = 'active';
+		} 
+		else if ($id == 4) 
+		{
+			$s4active = 'active';
+		}
+
+		$this->set(compact(['id', 's1active', 's2active', 's3active', 's4active', 'gkey']));
+		return $this->render('procesoparticipativo');
+    }
+
+
+	public function descargadeinformacion()
+	{
+	
+		return $this->render('descargadeinformacion');
+	
+	}
 }

@@ -17,6 +17,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Model\Entity\Persona;
+use Cake\Filesystem\File;
 
 
 /**
@@ -38,6 +39,7 @@ class PagesController extends AppController
     {
 		$persona = new Persona();
 		$personas = $this->loadModel('Personas');
+		$viajes_realizados = 0;
 		
 		$query = $personas->find();
 
@@ -67,7 +69,9 @@ class PagesController extends AppController
 				$total_mujeres = $registered[1]->counter_sex;
 		}
 
-        $this->set(compact('page', 'subpage', 'persona', 'total_hombres', 'total_mujeres'));
+		$viajes_realizados = $this->leerdato('viajesrealizados');
+
+        $this->set(compact('page', 'subpage', 'persona', 'total_hombres', 'total_mujeres', 'viajes_realizados'));
 
     }
 
@@ -105,5 +109,46 @@ class PagesController extends AppController
 	
 		return $this->render('descargadeinformacion');
 	
+	}
+
+
+	public function usuario()
+	{
+		$total_disponibles = $total_ocupados = $total_lugares = 'no disponible';
+
+		$total_disponibles = $this->leerdato('disponibles');
+		$total_lugares = $this->leerdato('totales');
+
+		if ($total_disponibles != 'no disponible' && $total_lugares != 'no disponible' )
+			$total_ocupados = $total_lugares - $total_disponibles;
+		
+		$this->set(compact(['total_disponibles', 'total_ocupados', 'total_lugares']));
+		return $this->render('usuario');
+	}
+
+
+	private function leerdato($tipo)	
+	{
+		try {
+			if ($tipo == 'disponibles')
+			{
+				$file = new File("../webroot/integracion/lugaresdisponibles.txt", false);
+			} 
+			else if ($tipo == 'totales')
+			{
+				$file = new File("../webroot/integracion/lugarestotales.txt", false);
+			}
+			else if ($tipo == 'viajesrealizados')
+			{
+				$file = new File("../webroot/integracion/viajesrealizados.txt", false);
+			}
+		} catch(Exception $e) {
+			return "no disponible";
+		}
+
+		if(!$file->exists())
+			return "no disponible";
+
+		return $file->read();
 	}
 }

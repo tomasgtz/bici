@@ -77,8 +77,13 @@ use Cake\Http\Exception\NotFoundException;
 
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-8 col-xxl-8 espacio-izq espacio-arr text-center">
 				<p class="mi-titulo-blanco espacio-arr"><i>&iquest;C&oacute;mo funciona el<br>Biciestacionamiento Masivo?</i></p>
-				<button class="btn btn-warning2">Paso 1</button> <button class="btn btn-warning2">Paso 2</button> <button class="btn btn-warning2">Paso 3</button>	
-				<br><br><br><br><br><br><br><br><br><br><br><br>
+				<button class="btn btn-warning2" id="btn-paso1">Paso 1</button> 
+				<button class="btn btn-warning2" id="btn-paso2">Paso 2</button> 
+				<button class="btn btn-warning2" id="btn-paso3">Paso 3</button>	
+				<br><br>
+				<div id="imagenes_pasos">
+					<?php echo $this->Html->image('iniciopaso1.png', ['id' => 'img-pasos', 'alt'=>"Paso 1"]); ?>
+				</div><br>
 				<input type="button" class="btn btn-warning2" name="" value="Registrarme" data-bs-toggle="modal" data-bs-target="#usuario-modal">
 			</div>
 
@@ -176,7 +181,7 @@ use Cake\Http\Exception\NotFoundException;
 				<p class="mi-titulo-blanco espacio-arr"><i>Viajes realizados</i></p>
 
 				<div class="my-yellow-col">
-					<div class="numero-azul"> 0 </div>
+					<div class="numero-azul"> <?= $viajes_realizados ?> </div>
 						<span class="titulo-azul">&iexcl;Pr&oacute;ximamente!</span>
 					<br>
 					<?php echo $this->Html->image('icono-bici.png', [ 'width'=> '100px', 'alt'=>"Secretaria de Movilidad", 'class' => 'icon-bici']); ?>
@@ -274,6 +279,18 @@ use Cake\Http\Exception\NotFoundException;
 
 			$('#forma_registro')[0].reset();
 
+		});
+		
+		$('#btn-paso1').on('click', function() {
+			$('#img-pasos').attr('src', '<?= $this->Url->image("iniciopaso1.png") ?>');
+		});
+
+		$('#btn-paso2').on('click', function() {
+			$('#img-pasos').attr('src', '<?= $this->Url->image("iniciopaso2.png") ?>');
+		});
+
+		$('#btn-paso3').on('click', function() {
+			$('#img-pasos').attr('src', '<?= $this->Url->image("iniciopaso3.png") ?>');
 		});
 
 	});

@@ -84,10 +84,10 @@
 					], ['class' => 'nav-link nav-active']); ?>
 
 				</li>
-				<li class="nav-item">					
+				<li class="nav-item">
 					<?php echo $this->Html->link('Usuarios', [
 						'controller' => 'Pages',
-						'action' => 'home#usuarios'
+						'action' => 'usuario'
 					], ['class' => 'nav-link nav-active']); ?>
 
 				</li>

@@ -148,7 +148,7 @@ use Cake\Http\Exception\NotFoundException;
 						<nav>
 							<div class="nav nav-tabs tabtop" id="nav-tab" role="tablist">
 								<button class="nav-link <?= $s1active; ?> tabtitle" id="nav-resinfo-tab" data-bs-toggle="tab" data-bs-target="#nav-resinfo" type="button" role="tab" aria-controls="nav-resinfo" aria-selected="true">Resultados (Infograf&iacute;a)</button>
-								<button class="nav-link                   tabtitle" id="nav-resdata-tab" data-bs-toggle="tab" data-bs-target="#nav-resdata" type="button" role="tab" aria-controls="nav-resdata" aria-selected="true">Resultados Datos</button>
+								<button class="nav-link                   tabtitle" id="nav-resdata-tab" data-bs-toggle="tab" data-bs-target="#nav-resdata" type="button" role="tab" aria-controls="nav-resdata" aria-selected="true">Resultados (Datos)</button>
 								<button class="nav-link <?= $s2active; ?> tabtitle" id="nav-desarrollo-tab" data-bs-toggle="tab" data-bs-target="#nav-desarrollo" type="button" role="tab" aria-controls="nav-encuesta" aria-selected="false">Desarrollo</button>
 								<button class="nav-link <?= $s3active; ?> tabtitle" id="nav-met-tab" data-bs-toggle="tab" data-bs-target="#nav-met" type="button" role="tab" aria-controls="nav-met" aria-selected="false">Metodolog&iacute;a</button>
 								<?php if ($s5active == '') { ?> <button class="nav-link <?= $s4active; ?> tabtitle" id="nav-seg-tab" data-bs-toggle="tab" data-bs-target="#nav-seg" type="button" role="tab" aria-controls="nav-seg" aria-selected="false">Seguimiento</button> <?php } ?>
@@ -160,10 +160,8 @@ use Cake\Http\Exception\NotFoundException;
 								<div class="container-fluid">
 									<div class="row">
 										<div class="col-12 text-center">
-
-											<p class="tabcontentsheader"><i>&iquest;Cu&aacute;les fueron los principales resultados del proceso participativo?</i></p>
-											<?= $this->Html->image('proceso_participativo_resultados.png', ['class' => 'ppimg']) ?><br><br>
-											<?= $this->Html->image('proceso_participativo_resultados2.png', ['class' => 'ppimg']) ?>
+											<p class="mi-titulo-blanco espacio-arr"><i>&iquest;Cu&aacute;les fueron los principales resultados del proceso participativo?</i></p>
+											<?= $this->Html->image('infografiaresultados.gif', ['width' => '1000px', 'height' => '430px']) ?>
 										</div>
 									</div>
 								</div>
@@ -173,7 +171,7 @@ use Cake\Http\Exception\NotFoundException;
 								<div class="container-fluid">
 									<div class="scroll-section-in row">
 										<div class="col-12 text-center">
-											<p class="tabcontentsheader"><i>Resultados Datos</i></p>
+											<p class="mi-titulo-blanco espacio-arr"><i>Resultados (Datos)</i></p>
 											<p>Filtrar por sexo: 
 												<select name="filtro_sexo" id="filtro_sexo">
 													<option value="todos">Todos</option>
@@ -196,8 +194,8 @@ use Cake\Http\Exception\NotFoundException;
 								<div class="container-fluid">
 									<div class="scroll-section-in row">
 										<div class="col-12 text-center">
-											<p class="tabcontentsheader"><i>&iquest;C&oacute;mo se llev&oacute; a cabo el proceso participativo?</i></p>
-											<?= $this->Html->image('proceso_participativo_desarrollo.png', ['class' => 'ppimg']) ?>
+											<p class="mi-titulo-blanco espacio-arr"><i>&iquest;C&oacute;mo se llev&oacute; a cabo el proceso participativo?</i></p>
+											<?= $this->Html->image('infografiadesarrollo.gif', ['width' => '1000px', 'height' => '430px']) ?>
 										</div>
 									</div>
 								</div>
@@ -206,10 +204,10 @@ use Cake\Http\Exception\NotFoundException;
 								<div class="container-fluid">
 									<div class="scroll-section-in row">
 										<div class="col-12 text-center">
-											<p class="tabcontentsheader"><i>&iquest;Cu&aacute;les son las etapas del proceso participativo?</i></p>
-											<?= $this->Html->image('proceso_participativo_metodologia.png', ['class' => 'ppimg']) ?><br><br>
-											<p class="tabcontentsheader"><i>&iquest;C&oacute;mo se desarroll&oacute; el proceso participativo?</i></p>
-											<?= $this->Html->image('proceso_participativo_metodologia2.png', ['class' => 'ppimg']) ?><br><br>
+											<p class="mi-titulo-blanco espacio-arr"><i>&iquest;Cu&aacute;les son las etapas del proceso participativo?</i></p>
+											<?= $this->Html->image('metodologiaetapas.gif', ['width' => '1000px', 'height' => '430px']) ?><br><br>
+											<p class="mi-titulo-blanco espacio-arr"><i>&iquest;C&oacute;mo se desarroll&oacute; el proceso participativo?</i></p>
+											<?= $this->Html->image('metodologiadesarrollo.gif', ['width' => '1000px', 'height' => '430px']) ?><br><br>
 										</div>
 									</div>
 								</div>

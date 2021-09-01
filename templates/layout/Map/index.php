@@ -10,6 +10,7 @@
     <link href="webroot/css/bootstrap.min.css" rel="stylesheet">
     <link href="webroot/lib/leaflet/leaflet.css" rel="stylesheet">
     <link href="webroot/lib/fork-awesome/css/fork-awesome.min.css" rel="stylesheet">
+    <link href="webroot/lib/leaflet-sidebar-v2/css/leaflet-sidebar.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.css"/>
     <style>
         html, body {
@@ -59,13 +60,21 @@
     </style>
 </head>
 <body>
+<div id="sidebar" class="leaflet-sidebar collapsed">
+    <!-- Tabs categorias -->
+    <div class="leaflet-sidebar-tabs">
+        <ul role="tablist" id="tabSidebar"></ul>
+    </div>
+    <div class="leaflet-sidebar-content" id="contentSidebar">
+    </div>
+</div>
 <div id="map"></div>
 <!--<button id="convert" type="button">
     Get all features to GeoJSON string
 </button>-->
-<button type="button" class="btn btn-success btn-circle btn-lg" id="convert">
+<!--<button type="button" class="btn btn-success btn-circle btn-lg" id="convert">
     <i class="fa fa-floppy-o"></i>
-</button>
+</button>-->
 <div class="modal" id="attributes">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -90,7 +99,8 @@
 <script src="webroot/js/bootstrap.min.js"></script>
 <script src="webroot/lib/leaflet/leaflet.js"></script>
 <script src="webroot/lib/mustache/mustache.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.js"></script>
+<script src="webroot/lib/leaflet-sidebar-v2/js/leaflet-sidebar.min.js"></script>
+<script src="webroot/lib/geojson/geojson.min.js"></script>
 <script id="template" type="x-tmpl-mustache">
         <form action="" id="formGeometry">
             <input type="hidden" name="uuid" id="uuid" value="{{ uuid }}">
@@ -218,97 +228,426 @@
 </script>
 <script>
 
-    var osmUrl      = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-        osmAttrib   = '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        osm         = L.tileLayer(osmUrl, {
-            maxZoom: 18,
-            attribution: osmAttrib
-        }),
-        map         = L.map('map', {
-            layers: [osm],
-            center: [19.042630302101365, -98.20635704789369],
-            zoom: 12
-        }),
-        editableLayers = L.geoJson().addTo(map);
-
-    map.addControl(new L.Control.Draw({
-        position:'topright',
-        edit: {
-            featureGroup: editableLayers
-        }
-    }));
-
-    map.on('draw:created', function (e) {
-
-        var layer = e.layer,
-            feature = layer.feature = layer.feature || {},
-            props = feature.properties = feature.properties || {};
-
-        feature.type    = feature.type || "Feature";
-        feature.id      = uuid();
-
-        editableLayers.addLayer(layer);
-        addPopup(layer);
-    });
-
-
     $(document).ready(function () {
 
-        $.getJSON("webroot/gis/paraderos_ruta_1.geojson", function(data) {
-            console.log(data);
-            L.geoJson(data, {
+        var defaultLayer;
+        var baseMaps = {},
+            overlayMaps = {};
 
-            }).addTo(map);
-        });
+        const folder_gis = 'webroot/gis/';
 
-        $.getJSON("webroot/gis/alimentadoras_ruta_5.geojson", function(data) {
-            console.log(data);
-            L.geoJson(data, {
-                style: {
-                    "color": "#19ff00",
-                    "weight": 5
+        const layersReponse = {
+            "layers": [
+                {
+                    "title_layer": "alimentadoras_ruta_3",
+                    "url": `${folder_gis}hechos_de_transito_enero_2021.geojson`,
+                    "transparent": true,
+                    "base_map": false,
+                    "default": true,
+                    "id": 1,
+                    "category": 1,
+                    "legend": true,
+                    "view_panel": true,
+                },
+                {
+                    "title_layer": "alimentadoras_ruta_5.geojson",
+                    "url":folder_gis+'alimentadoras_ruta_5.geojson',
+                    "transparent": true,
+                    "base_map": false,
+                    "default": false,
+                    "id": 1,
+                    "category": 1,
+                    "legend": true,
+                    "view_panel": true,
+                },
+                {
+                    "title_layer": "hechos_de_transito_enero_2021.geojson",
+                    "url":folder_gis+'hechos_de_transito_enero_2021.geojson',
+                    "transparent": true,
+                    "base_map": false,
+                    "default": false,
+                    "id": 1,
+                    "category": 1,
+                    "legend": true,
+                    "view_panel": true,
+                },
+                {
+                    "title_layer": "hechos_de_transito_febrero_2021.geojson",
+                    "url":folder_gis+'hechos_de_transito_febrero_2021.geojson',
+                    "transparent": true,
+                    "base_map": false,
+                    "default": false,
+                    "id": 1,
+                    "category": 1,
+                    "legend": true,
+                    "view_panel": true,
+                },
+                {
+                    "title_layer": "hechos_de_transito_marzo_2021.geojson",
+                    "url":folder_gis+'hechos_de_transito_marzo_2021.geojson',
+                    "transparent": true,
+                    "base_map": false,
+                    "default": false,
+                    "id": 1,
+                    "category": 1,
+                    "legend": true,
+                    "view_panel": true,
+                },
+                {
+                    "title_layer": "incidentes_agosto_2020.geojson",
+                    "url":folder_gis+'incidentes_agosto_2020.geojson',
+                    "transparent": true,
+                    "base_map": false,
+                    "default": false,
+                    "id": 1,
+                    "category": 1,
+                    "legend": true,
+                    "view_panel": true,
+                },
+                {
+                    "title_layer": "Incidentes_julio_2020.geojson",
+                    "url":folder_gis+'Incidentes_julio_2020.geojson',
+                    "transparent": true,
+                    "base_map": false,
+                    "default": false,
+                    "id": 1,
+                    "category": 1,
+                    "legend": true,
+                    "view_panel": true,
+                },
+                {
+                    "title_layer": "incidentes_junio_2020.geojson",
+                    "url":folder_gis+'incidentes_junio_2020.geojson',
+                    "transparent": true,
+                    "base_map": false,
+                    "default": false,
+                    "id": 1,
+                    "category": 1,
+                    "legend": true,
+                    "view_panel": true,
+                },
+                {
+                    "title_layer": "incidentes_mayo_2020.geojson",
+                    "url":folder_gis+'incidentes_mayo_2020.geojson',
+                    "transparent": true,
+                    "base_map": false,
+                    "default": false,
+                    "id": 1,
+                    "category": 1,
+                    "legend": true,
+                    "view_panel": true,
+                },
+                {
+                    "title_layer": "incidentes_octubre_2020.geojson",
+                    "url":folder_gis+'incidentes_octubre_2020.geojson',
+                    "transparent": true,
+                    "base_map": false,
+                    "default": false,
+                    "id": 1,
+                    "category": 1,
+                    "legend": true,
+                    "view_panel": true,
+                },
+                {
+                    "title_layer": "incidentes_viales_2019_3.geojson",
+                    "url":folder_gis+'incidentes_viales_2019_3.geojson',
+                    "transparent": true,
+                    "base_map": false,
+                    "default": false,
+                    "id": 1,
+                    "category": 1,
+                    "legend": true,
+                    "view_panel": true,
+                },
+                {
+                    "title_layer": "Incidentes_viales_enero_2020.geojson",
+                    "url":folder_gis+'Incidentes_viales_enero_2020.geojson',
+                    "transparent": true,
+                    "base_map": false,
+                    "default": false,
+                    "id": 1,
+                    "category": 1,
+                    "legend": true,
+                    "view_panel": true,
+                },
+                {
+                    "title_layer": "incidentes_viales_febrero_2020.geojson",
+                    "url":folder_gis+'incidentes_viales_febrero_2020.geojson',
+                    "transparent": true,
+                    "base_map": false,
+                    "default": false,
+                    "id": 1,
+                    "category": 1,
+                    "legend": true,
+                    "view_panel": true,
+                },
+                {
+                    "title_layer": "infraciclista_2020.geojson",
+                    "url":folder_gis+'infraciclista_2020.geojson',
+                    "transparent": true,
+                    "base_map": false,
+                    "default": false,
+                    "id": 1,
+                    "category": 1,
+                    "legend": true,
+                    "view_panel": true,
+                },
+                {
+                    "title_layer": "infraciclista_2021.geojson",
+                    "url":folder_gis+'infraciclista_2021.geojson',
+                    "transparent": true,
+                    "base_map": false,
+                    "default": false,
+                    "id": 1,
+                    "category": 1,
+                    "legend": true,
+                    "view_panel": true,
+                },
+                {
+                    "title_layer": "lineas_ruta_1.geojson",
+                    "url":folder_gis+'lineas_ruta_1.geojson',
+                    "transparent": true,
+                    "base_map": false,
+                    "default": false,
+                    "id": 1,
+                    "category": 1,
+                    "legend": true,
+                    "view_panel": true,
+                },
+                {
+                    "title_layer": "lineas_ruta_2.geojson",
+                    "url":folder_gis+'lineas_ruta_2.geojson',
+                    "transparent": true,
+                    "base_map": false,
+                    "default": false,
+                    "id": 1,
+                    "category": 1,
+                    "legend": true,
+                    "view_panel": true,
+                },
+                {
+                    "title_layer": "origen_destino_19.geojson",
+                    "url":folder_gis+'origen_destino_19.geojson',
+                    "transparent": true,
+                    "base_map": false,
+                    "default": false,
+                    "id": 1,
+                    "category": 1,
+                    "legend": true,
+                    "view_panel": true,
+                },
+                {
+                    "title_layer": "paraderos_ruta_1.geojson",
+                    "url":folder_gis+'paraderos_ruta_1.geojson',
+                    "transparent": true,
+                    "base_map": false,
+                    "default": false,
+                    "id": 1,
+                    "category": 1,
+                    "legend": true,
+                    "view_panel": true,
+                },
+                {
+                    "title_layer": "Mapa Base OSM",
+                    "url": "https://ows.terrestris.de/osm/service",
+                    "name_layer": "OSM-WMS",
+                    "format": "image/png",
+                    "transparent": true,
+                    "base_map": true,
+                    "default": true,
+                    "id": 6,
+                    "category": 1,
+                    "legend": true,
+                    "view_panel": true,
+                    "type": "wms"
                 }
-            }).addTo(map);
+            ]
+        };
+
+        const layers = [
+            '',
+            'alimentadoras_ruta_5.geojson',
+            'hechos_de_transito_enero_2021.geojson',
+            'hechos_de_transito_febrero_2021.geojson',
+            'hechos_de_transito_marzo_2021.geojson',
+            'incidentes_agosto_2020.geojson',
+            'Incidentes_julio_2020.geojson',
+            'incidentes_junio_2020.geojson',
+            'incidentes_mayo_2020.geojson',
+            'incidentes_octubre_2020.geojson',
+            'incidentes_viales_2019_3.geojson',
+            'Incidentes_viales_enero_2020.geojson',
+            'incidentes_viales_febrero_2020.geojson',
+            'infraciclista_2020.geojson',
+            'infraciclista_2021.geojson',
+            'lineas_ruta_1.geojson',
+            'lineas_ruta_2.geojson',
+            'origen_destino_19.geojson',
+            'paraderos_ruta_1.geojson'
+        ];
+
+        const tabSidebarGen = (categories)=>{
+            let html = ``;
+            for (const category of categories) {
+                html += `<li><a href="#tab-${category.id}" role="tab"><i class="fa ${category.icon}"></i></a></li>`;
+            }
+            return html;
+        }
+
+        const contentTabSidebarGen = (categories,layers)=>{
+            let html = ``;
+
+            for (const category of categories) {
+                html += `<div class="leaflet-sidebar-pane" id="tab-${category.id}">
+                        <h1 class="leaflet-sidebar-header">
+                            ${category.name}
+                            <span class="leaflet-sidebar-close">
+                                <i class="fa fa-caret-right"></i>
+                            </span>
+                        </h1>
+                            <div id="cat-${category.id}">
+                                <strong class="title-layer p-2 pt-5">${category.name}</strong>
+                                <div class="list-group list-group-flush">`;
+                for (const layer of layers) {
+                    if (layer.category == category.id && layer.view_panel ) {
+                        html += `<div class="list-group-item">
+                                                    <div class="form-check form-switch">
+                                                    <input class="form-check-input check-layer" layer-base="${layer.base_map}" layer-name="${layer.title_layer}" type="checkbox" id="lay-${layer.id}"`;
+                        if (layer.default) {
+                            html += `checked>`;
+                        } else {
+                            html += `>`;
+                        }
+                        html += `<label class="form-check-label" for="flexSwitchCheckDefault">${layer.title_layer}</label></div></div>`;
+
+                    }
+                }
+                html +=        `</div>
+                            </div>
+                        </div>`;
+            }
+            return html;
+        }
+
+        const categoriesResponse = {
+            "categories": [
+                {
+                    "id": "1",
+                    "name": "Mapa Base",
+                    "icon": "fa-map"
+                }
+            ]
+        };
+
+        const loadfile = (url) => {
+            return  $.ajax({
+                url: url,
+                method:'GET',
+                async: false,
+                dataType:'json',
+                data:{},
+                beforeSend:function () {
+
+                },
+                success: function (data) {
+                   console.log(data);
+                },
+                complete:function () {
+
+                }
+            }).responseJSON;
+        }
+
+        layersReponse["layers"].forEach(function (layer) {
+            var _layer;
+            var _title = layer.title_layer;
+            if (layer.base_map) {
+                //La capa es base
+                _layer = L.tileLayer.wms(
+                    layer.url,
+                    {
+                        layers: layer.name_layer,
+                        format: layer.format,
+                        transparent: layer.transparent,
+                    }
+                );
+                baseMaps[_title] = _layer;
+            } else {
+
+                _layer = L.geoJSON(loadfile(layer.url), {
+
+                });
+
+                console.log(_layer);
+                overlayMaps[_title] = _layer;
+            }
         });
 
+        $('#tabSidebar').html( tabSidebarGen(categoriesResponse["categories"]));
 
-        $('#convert').on('click',function(){
-            /*let data = console.log(JSON.stringify(editableLayers.toGeoJSON(), null, 2));*/
-            let _btn = $(this);
+        $('#contentSidebar').html( contentTabSidebarGen(categoriesResponse["categories"], layersReponse["layers"] ));
 
-            $.ajax({
-                url: '/Map/SaveGeometric',
-                method: "POST",
-                data: editableLayers.toGeoJSON(),
-                success:function(e) {
+        $('.check-layer').change(function () {
+            var isBaseMap = $(this).attr("layer-base");
+            var layerSelect;
 
-                },
-                beforeSend:function() {
-                    _btn.prop('disabled',true).find('i').removeClass('fa-floppy-o').addClass('fa-spin fa-spinner');
-                    console.log(editableLayers.toGeoJSON());
-                },
-                complete:function() {
-                    _btn.prop('disabled',false).find('i').addClass('fa-floppy-o').removeClass('fa-spin fa-spinner');
-                },
-                error:function(e) {
+            //Identificamos si es mapa base o capa para saber en que grupo buscar
+            if (isBaseMap == "true") {
+                layerSelect = baseMaps[$(this).attr("layer-name")];
+                layerSelect.setZIndex(1);
+                validateCheckBaseMap(this);
+            } else {
+                layerSelect = overlayMaps[$(this).attr("layer-name")];
+                layerSelect.setZIndex(99);
+            }
+            //Verificamos el estado del control, para activar o desactivar la capa
+            if (this.checked) {
+                map.addLayer(layerSelect);
 
+            } else {
+                map.removeLayer(layerSelect);
+            }
+        });
+
+        function validateCheckBaseMap(currentChek) {
+            $('#contentSidebar input:checkbox').each(function () {
+                var isBaseMap = $(this).attr("layer-base");
+                if (isBaseMap == "true") {
+                    if (this != currentChek) {
+                        $(this).filter(':checkbox').prop('checked', false);
+                        var layerSelect = baseMaps[$(this).attr("layer-name")];
+                        //Deshabilitar capas
+                        map.removeLayer(layerSelect);
+                    }
                 }
             });
+        }
+
+        const map = L.map('map', {
+            center: [19.042630302101365, -98.20635704789369],
+            zoom: 12,
+            layers: defaultLayer
         });
 
-        $('#btnSaveGeometry').on('click',function (){
-            let geometry    = editableLayers._layers;
-            let data        = $('#formGeometry').serializeObject();
+        var sidebar = L.control.sidebar({
+            autopan: false,
+            closeButton: true,
+            container: 'sidebar',
+            position: 'right',
+        }).addTo(map);
 
-            for ( let i in geometry)
-            {
-                if( geometry[i].feature.id == data.uuid)
-                    geometry[i].feature.properties = data;
+        layersReponse["layers"].forEach(function (layer) {
+            if(layer.default){
+                if (layer.base_map) {
+                    layerSelect = baseMaps[layer.title_layer];
+                    layerSelect.setZIndex(1);
+                } else {
+                    layerSelect = overlayMaps[layer.title_layer];
+                    layerSelect.setZIndex(99);
+                }
+                map.addLayer(layerSelect);
             }
-
-            $('#attributes').modal('hide');
         });
-
     });
 </script>
 

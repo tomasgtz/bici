@@ -1,6 +1,7 @@
 {
 "type": "FeatureCollection",
 "name": "Paraderos_RUTA",
+"type": "points",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "features": [
 { "type": "Feature", "properties": { "LÍNEA": "Línea 3 Valsequillo- Blvd. 5 de Mayo- CAPU", "NOMBRE": "Terminal CAPU", "X": -98.202698650200006, "Y": 19.074254829699999 }, "geometry": { "type": "Point", "coordinates": [ -98.202698650200674, 19.074254829693796, 0.0 ] } },

@@ -648,7 +648,15 @@
                 map.addLayer(layerSelect);
             }
         });
+
+
+		window.setTimeout(function () {
+			$('.fa-map').click()
+	
+		}, 1000);
     });
+	
+	
 </script>
 
 </html>

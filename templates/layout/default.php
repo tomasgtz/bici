@@ -130,7 +130,13 @@
 				<li class="nav-item dropdown" id="myDropdown2">
 					<a class="nav-link" href="#" data-bs-toggle="dropdown">Gobierno abierto</a>
 					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="#">Mapa interactivo</a></li>
+						<li>
+							<?php echo $this->Html->link('Mapa interactivo', [
+								'controller' => 'Map',
+								'action' => 'index'
+							], ['class' => 'dropdown-item', 'target' => '_blank']); ?>
+
+						</li>
 						<li><a class="dropdown-item" href="#">
 							
 							<?php echo $this->Html->link('Descarga de información', [
